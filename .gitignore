@@ -1,0 +1,10 @@
+node_modules/
+.env
+.env.local
+
+# Uretilen gorsellerin yerel onizlemesi (CI ayri bir branch'e yayinlar)
+out/
+*.log
+
+.DS_Store
+.vscode/

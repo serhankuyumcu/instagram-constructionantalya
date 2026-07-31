@@ -1,0 +1,85 @@
+name: Gunluk Instagram gonderisi
+
+on:
+  schedule:
+    # 17:00 UTC = 20:00 Turkiye. Aksam saatleri hem yerel hem Avrupa/Rusya
+    # kitlesinin en aktif oldugu aralik.
+    - cron: '0 17 * * *'
+  workflow_dispatch:
+    inputs:
+      dry_run:
+        description: 'Deneme modu (hicbir sey yayinlanmaz)'
+        type: boolean
+        default: false
+
+concurrency:
+  # Ayni anda iki calisma olursa ayni bolum iki kez paylasilabilir.
+  group: instagram-daily-post
+  cancel-in-progress: false
+
+jobs:
+  post:
+    runs-on: ubuntu-latest
+    permissions:
+      # state/posted.json'i geri commit etmek ve gorseli media branch'ine
+      # yazmak icin gerekli.
+      contents: write
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          cache: npm
+
+      - run: npm ci
+
+      - name: Gonderiyi olustur ve yayinla
+        env:
+          IG_USER_ID: ${{ secrets.IG_USER_ID }}
+          IG_ACCESS_TOKEN: ${{ secrets.IG_ACCESS_TOKEN }}
+          ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+          GRAPH_API_VERSION: ${{ vars.GRAPH_API_VERSION || 'v21.0' }}
+          SITE_BASE_URL: ${{ vars.SITE_BASE_URL || 'https://constructionantalya.com' }}
+          CAPTION_LOCALE: ${{ vars.CAPTION_LOCALE || 'en' }}
+          IMAGE_HOST: ${{ vars.IMAGE_HOST || 'github' }}
+          MEDIA_BRANCH: ${{ vars.MEDIA_BRANCH || 'media' }}
+          GITHUB_REPOSITORY: ${{ github.repository }}
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          CLOUDINARY_CLOUD_NAME: ${{ secrets.CLOUDINARY_CLOUD_NAME }}
+          CLOUDINARY_API_KEY: ${{ secrets.CLOUDINARY_API_KEY }}
+          CLOUDINARY_API_SECRET: ${{ secrets.CLOUDINARY_API_SECRET }}
+        run: |
+          if [ "${{ inputs.dry_run }}" = "true" ]; then
+            npm run post:dry
+          else
+            npm run post
+          fi
+
+      - name: Yayin gecmisini kaydet
+        if: ${{ inputs.dry_run != true }}
+        run: |
+          git config user.name  "instagram-bot"
+          git config user.email "bot@users.noreply.github.com"
+          # Once sahneye al: dosya ilk kez olusmussa "git diff" onu goremez.
+          git add state/posted.json
+          if git diff --cached --quiet; then
+            echo "Durum dosyasi degismedi, commit atlaniyor."
+            exit 0
+          fi
+          git commit -m "chore: gunluk gonderi kaydedildi [skip ci]"
+          # Es zamanli bir push olursa yeniden dene.
+          for attempt in 1 2 3; do
+            git pull --rebase --autostash origin "${GITHUB_REF_NAME}" && git push && exit 0
+            sleep 5
+          done
+          echo "Durum dosyasi push edilemedi." >&2
+          exit 1
+
+      - name: Deneme ciktilarini yukle
+        if: ${{ inputs.dry_run == true }}
+        uses: actions/upload-artifact@v4
+        with:
+          name: onizleme
+          path: out/
