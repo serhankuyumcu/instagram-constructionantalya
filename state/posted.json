@@ -10,6 +10,7 @@
       "publishedAt": "2026-07-31T20:48:58.429Z",
       "topics": [],
       "hashtags": [],
+      "format": "image",
       "insights": null
     },
     {
@@ -22,6 +23,7 @@
       "publishedAt": "2026-07-31T20:50:33.300Z",
       "topics": [],
       "hashtags": [],
+      "format": "image",
       "insights": null
     },
     {
@@ -34,6 +36,7 @@
       "publishedAt": "2026-07-31T21:11:56.149Z",
       "topics": [],
       "hashtags": [],
+      "format": "image",
       "insights": null
     },
     {
@@ -67,6 +70,37 @@
         "#inşaat",
         "#homedesign"
       ],
+      "format": "image",
+      "insights": null
+    },
+    {
+      "unitId": "choosing-a-contractor-in-antalya#0",
+      "articleSlug": "choosing-a-contractor-in-antalya",
+      "heading": "How to Choose a Contractor in Antalya: Contracts, Milestones and Red Flags",
+      "imageUrl": "https://constructionantalya.com/assets/blog/contractor-hero.webp",
+      "mediaId": "17895099708378961",
+      "permalink": "https://www.instagram.com/reel/DbhAoApAArA/",
+      "publishedAt": "2026-08-01T23:23:17.513Z",
+      "topics": [
+        "shell"
+      ],
+      "hashtags": [
+        "#constructionantalya",
+        "#kabainşaat",
+        "#structuralengineering",
+        "#reinforcedconcrete",
+        "#betonarme",
+        "#kalkan",
+        "#kaş",
+        "#side",
+        "#turkishriviera",
+        "#müteahhit",
+        "#inşaat",
+        "#anahtarteslim",
+        "#lüksvilla",
+        "#luxuryvilla"
+      ],
+      "format": "reel",
       "insights": null
     }
   ]
