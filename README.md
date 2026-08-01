@@ -192,7 +192,11 @@ Siteye yeni yazı eklendiğinde hem içerik hem görselleri havuza kendiliğinde
 
 ## İstatistikler
 
-Bot yayınladığı her gönderinin performansını takip eder. Ayrı bir GitHub Actions işi her sabah **09:00**'da çalışır, Instagram'dan metrikleri çekip `state/posted.json`'a işler.
+Bot yayınladığı her gönderinin performansını takip eder. Ayrı bir GitHub Actions işi **her Pazartesi 09:00**'da çalışır, Instagram'dan metrikleri çekip `state/posted.json`'a işler.
+
+Her çalışmada son 30 günün tamamı tazelenir, o yüzden haftalık ritimde veri kaybı olmaz. İstediğin an elle de çalıştırabilirsin: `npm run insights` veya Actions sekmesinden **Run workflow**.
+
+Bu iş Claude API kullanmaz — yalnızca Instagram Graph API'ye sorgu atar, maliyeti yoktur. Claude maliyeti sadece günlük caption üretiminde oluşur (aylık ~$0.30).
 
 Toplanan veriler: erişim, beğeni, yorum, kaydetme, paylaşma, toplam etkileşim.
 
@@ -269,4 +273,4 @@ Ağ erişimi gerektirmeyen tüm mantık saf fonksiyonlarda tutuldu; test kapsam�
 | İş | Saat (TR) | Ne yapar |
 |---|---|---|
 | `daily-post.yml` | 20:00 | Gönderiyi üretir ve yayınlar |
-| `collect-insights.yml` | 09:00 | Önceki gönderilerin metriklerini toplar |
+| `collect-insights.yml` | Pazartesi 09:00 | Önceki gönderilerin metriklerini toplar |

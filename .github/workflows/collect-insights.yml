@@ -2,10 +2,13 @@ name: Gonderi istatistiklerini topla
 
 on:
   schedule:
-    # 06:00 UTC = 09:00 Turkiye. Aksam yayinlanan gonderi bu saatte
-    # 13 saatlik veri biriktirmis olur; 24 saat filtresi sayesinde
-    # ilk anlamli olcum ertesi sabah degil, bir sonraki sabah alinir.
-    - cron: '0 6 * * *'
+    # Her Pazartesi 06:00 UTC = 09:00 Turkiye.
+    #
+    # Haftalik yeterli: metrikler yayindan sonraki ilk gunlerde hizla artip
+    # sonra sabitlenir, her calismada son 30 gunun tamami tazelendigi icin
+    # aradaki gunlerde veri kaybi olmaz. Toplama Instagram Graph API'ye
+    # sorgu atar, Claude API kullanmaz; maliyeti yoktur.
+    - cron: '0 6 * * 1'
   workflow_dispatch:
 
 concurrency:
