@@ -42,6 +42,11 @@ jobs:
 
       - run: npm ci
 
+      # ffmpeg runner imajinda hazir GELMIYOR (ilk reel denemesi
+      # "spawn ffmpeg ENOENT" ile dustu). Reels uretimi buna bagli.
+      - name: ffmpeg kur
+        run: sudo apt-get update -qq && sudo apt-get install -y -qq ffmpeg
+
       - name: Gonderiyi olustur ve yayinla
         env:
           IG_USER_ID: ${{ secrets.IG_USER_ID }}
@@ -58,7 +63,6 @@ jobs:
           CLOUDINARY_API_KEY: ${{ secrets.CLOUDINARY_API_KEY }}
           CLOUDINARY_API_SECRET: ${{ secrets.CLOUDINARY_API_SECRET }}
         run: |
-          # ffmpeg ubuntu-latest imajinda hazir gelir; Reels uretimi buna dayanir.
           FORMAT=""
           [ -n "${{ inputs.format }}" ] && FORMAT="-- --${{ inputs.format }}"
           if [ "${{ inputs.dry_run }}" = "true" ]; then
