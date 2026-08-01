@@ -44,6 +44,9 @@ const recordSchema = z.object({
   topics: z.array(z.string()).default([]),
   hashtags: z.array(z.string()).default([]),
 
+  /** Gonderi bicimi. Eski kayitlarda yok; hepsi fotograf gonderisiydi. */
+  format: z.enum(['image', 'reel']).default('image'),
+
   insights: insightsSchema.nullable().default(null),
 });
 

@@ -25,15 +25,16 @@ async function main(): Promise<void> {
   await mkdir(DRY_RUN_DIR, { recursive: true });
   const base = `${DRY_RUN_DIR}/${result.unit.id.replace('#', '-')}`;
 
+  const extension = result.format === 'reel' ? 'mp4' : 'jpg';
   await Promise.all([
-    writeFile(`${base}.jpg`, result.image),
+    writeFile(`${base}.${extension}`, result.media),
     writeFile(`${base}.txt`, result.caption, 'utf8'),
   ]);
 
   console.log('\n──────── CAPTION ────────\n');
   console.log(result.caption);
   console.log('\n─────────────────────────\n');
-  console.log(`Gorsel : ${base}.jpg`);
+  console.log(`Medya  : ${base}.${extension}`);
   console.log(`Caption: ${base}.txt`);
   console.log(`Kaynak : ${result.sourceImageUrl}\n`);
 }

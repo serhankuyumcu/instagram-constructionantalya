@@ -11,6 +11,11 @@ on:
         description: 'Deneme modu (hicbir sey yayinlanmaz)'
         type: boolean
         default: false
+      format:
+        description: 'Bicim (bos birakilirsa gune gore secilir: Sali/Cuma reel)'
+        type: choice
+        options: ['', 'image', 'reel']
+        default: ''
 
 concurrency:
   # Ayni anda iki calisma olursa ayni bolum iki kez paylasilabilir.
@@ -53,10 +58,13 @@ jobs:
           CLOUDINARY_API_KEY: ${{ secrets.CLOUDINARY_API_KEY }}
           CLOUDINARY_API_SECRET: ${{ secrets.CLOUDINARY_API_SECRET }}
         run: |
+          # ffmpeg ubuntu-latest imajinda hazir gelir; Reels uretimi buna dayanir.
+          FORMAT=""
+          [ -n "${{ inputs.format }}" ] && FORMAT="-- --${{ inputs.format }}"
           if [ "${{ inputs.dry_run }}" = "true" ]; then
-            npm run post:dry
+            npm run post:dry $FORMAT
           else
-            npm run post
+            npm run post $FORMAT
           fi
 
       - name: Yayin gecmisini kaydet

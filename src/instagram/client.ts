@@ -16,9 +16,22 @@ const GRAPH_BASE = `https://graph.facebook.com/${GRAPH_VERSION}`;
 const POLL_INTERVAL_MS = 3_000;
 const POLL_MAX_ATTEMPTS = 20;
 
+/**
+ * Video isleme fotograftan cok daha uzun surer; Instagram dosyayi indirip
+ * yeniden kodluyor. Bu yuzden Reels icin bekleme suresi ayri tutuluyor.
+ */
+const VIDEO_POLL_MAX_ATTEMPTS = 100;
+
 export interface PublishInput {
   readonly imageUrl: string;
   readonly caption: string;
+}
+
+export interface PublishReelInput {
+  readonly videoUrl: string;
+  readonly caption: string;
+  /** Kapak karesi olarak kullanilacak saniye. */
+  readonly coverSecond?: number;
 }
 
 export interface PublishResult {
@@ -40,6 +53,31 @@ export class InstagramClient {
     return { mediaId, permalink: await this.fetchPermalink(mediaId) };
   }
 
+  /**
+   * Reels yayinlar.
+   *
+   * Akis fotografla ayni ama iki fark var: media_type=REELS gerekiyor ve
+   * Instagram videoyu indirip yeniden kodladigi icin bekleme cok daha uzun.
+   */
+  async publishReel(input: PublishReelInput): Promise<PublishResult> {
+    const body = new URLSearchParams({
+      media_type: 'REELS',
+      video_url: input.videoUrl,
+      caption: input.caption,
+      // Kapak karesi: ilk saniyede baslik katmani ekranda oluyor.
+      thumb_offset: String((input.coverSecond ?? 1) * 1000),
+      access_token: this.accessToken,
+    });
+
+    const data = await this.post<{ id?: string }>(`${GRAPH_BASE}/${this.userId}/media`, body);
+    if (!data.id) throw new Error('Reels container olusturulamadi (id donmedi).');
+
+    await this.waitUntilReady(data.id, VIDEO_POLL_MAX_ATTEMPTS);
+    const mediaId = await this.publishContainer(data.id);
+
+    return { mediaId, permalink: await this.fetchPermalink(mediaId) };
+  }
+
   private async createContainer(input: PublishInput): Promise<string> {
     const body = new URLSearchParams({
       image_url: input.imageUrl,
@@ -57,8 +95,8 @@ export class InstagramClient {
    * Container hazir degilken yayinlamak "Media ID is not available" hatasi verir.
    * Bu yuzden FINISHED durumunu beklemek zorunludur.
    */
-  private async waitUntilReady(creationId: string): Promise<void> {
-    for (let attempt = 0; attempt < POLL_MAX_ATTEMPTS; attempt++) {
+  private async waitUntilReady(creationId: string, maxAttempts = POLL_MAX_ATTEMPTS): Promise<void> {
+    for (let attempt = 0; attempt < maxAttempts; attempt++) {
       const url = new URL(`${GRAPH_BASE}/${creationId}`);
       url.searchParams.set('fields', 'status_code,status');
       url.searchParams.set('access_token', this.accessToken);
@@ -78,7 +116,7 @@ export class InstagramClient {
       }
     }
 
-    throw new Error(`Media container ${POLL_MAX_ATTEMPTS} denemede hazir olmadi.`);
+    throw new Error(`Media container ${maxAttempts} denemede hazir olmadi.`);
   }
 
   private async publishContainer(creationId: string): Promise<string> {

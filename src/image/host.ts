@@ -82,15 +82,18 @@ async function hostOnCloudinary(
     .update(`public_id=${publicId}&timestamp=${timestamp}${config.apiSecret}`)
     .digest('hex');
 
+  const isVideo = /\.mp4$/i.test(fileName);
   const form = new FormData();
-  form.append('file', new Blob([new Uint8Array(image)], { type: 'image/jpeg' }), fileName);
+  form.append('file', new Blob([new Uint8Array(image)], { type: isVideo ? 'video/mp4' : 'image/jpeg' }), fileName);
   form.append('public_id', publicId);
   form.append('timestamp', timestamp);
   form.append('api_key', config.apiKey);
   form.append('signature', signature);
 
+  // Cloudinary video icin ayri bir kaynak yolu kullaniyor.
+  const resource = isVideo ? 'video' : 'image';
   const response = await fetchWithRetry(
-    `https://api.cloudinary.com/v1_1/${config.cloudName}/image/upload`,
+    `https://api.cloudinary.com/v1_1/${config.cloudName}/${resource}/upload`,
     { method: 'POST', body: form },
   );
 

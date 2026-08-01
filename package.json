@@ -17,7 +17,9 @@
     "stats": "tsx src/cli/stats.ts",
     "typecheck": "tsc --noEmit",
     "test": "vitest run",
-    "test:watch": "vitest"
+    "test:watch": "vitest",
+    "reel": "tsx src/index.ts --reel",
+    "reel:dry": "tsx src/index.ts --dry-run --reel"
   },
   "dependencies": {
     "@anthropic-ai/sdk": "^0.32.1",

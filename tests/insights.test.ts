@@ -29,6 +29,7 @@ function makePost(overrides: Partial<PostRecord> = {}): PostRecord {
     publishedAt: '2026-08-01T00:00:00.000Z',
     topics: ['shell'],
     hashtags: ['#antalya'],
+    format: 'image',
     insights: makeInsights(),
     ...overrides,
   };

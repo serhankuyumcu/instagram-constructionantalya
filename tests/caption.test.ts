@@ -85,6 +85,7 @@ describe('durum kaydi', () => {
       publishedAt: '2026-02-01T00:00:00.000Z',
       topics: [],
       hashtags: [],
+      format: 'image',
       insights: null,
     });
 

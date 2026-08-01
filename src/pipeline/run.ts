@@ -7,6 +7,9 @@ import type { PostUnit } from '../blog/types.js';
 import { assembleCaption, generateCaption } from '../caption/generator.js';
 import { buildHashtags } from '../caption/hashtags.js';
 import { composePostImage } from '../image/compose.js';
+import { composeReel } from '../video/compose.js';
+import { resolveFormat } from './format.js';
+import type { PostFormat } from './format.js';
 import { selectImage } from '../image/select.js';
 import { detectTopics } from '../content/topics.js';
 import { hostImage } from '../image/host.js';
@@ -20,9 +23,11 @@ export const STATE_PATH = 'state/posted.json';
 export interface RunResult {
   readonly unit: PostUnit;
   readonly isRecycled: boolean;
+  readonly format: PostFormat;
   readonly sourceImageUrl: string;
   readonly caption: string;
-  readonly image: Buffer;
+  /** Fotograf gonderisinde JPEG, reel'de MP4. */
+  readonly media: Buffer;
   readonly published: { mediaId: string; permalink: string | null } | null;
 }
 
@@ -35,6 +40,9 @@ type Logger = (message: string) => void;
  * fotografini bul -> kareyi uret -> caption yaz -> yayinla -> gecmise isle.
  */
 export async function runDailyPost(config: Config, log: Logger): Promise<RunResult> {
+  const format = resolveFormat(process.argv);
+  log(`Gonderi bicimi: ${format === 'reel' ? 'Reels (video)' : 'fotograf'}`);
+
   const sitemap = await fetchSitemap(config.siteBaseUrl);
   const blogUrls = blogUrlsFromSitemap(sitemap, config.captionLocale);
   log(`Sitemap: ${blogUrls.length} blog yazisi`);
@@ -63,15 +71,23 @@ export async function runDailyPost(config: Config, log: Logger): Promise<RunResu
   const caption = assembleCaption(body, unit.articleUrl, hashtags.text);
   log(`Caption uretildi: ${caption.length} karakter, ${hashtags.tags.length} hashtag`);
 
-  const image = await composePostImage({
-    heading: unit.heading,
-    kicker: kickerFor(unit, topics[0]),
-    imageUrl: choice.image.url,
-  });
-  log(`Gorsel uretildi: ${(image.length / 1024).toFixed(0)} KB`);
+  const kicker = kickerFor(unit, topics[0]);
+
+  // Reels icin yazinin birden fazla gorseline ihtiyac var; secilen kare basa
+  // alinip yazinin diger kareleri ardina eklenir. Havuz darsa bastan dolanir.
+  const media =
+    format === 'reel'
+      ? await composeReel({ heading: unit.heading, kicker, imageUrls: reelImages(unit, choice.image.url) })
+      : await composePostImage({ heading: unit.heading, kicker, imageUrl: choice.image.url });
+
+  log(
+    format === 'reel'
+      ? `Video uretildi: ${(media.length / 1048576).toFixed(1)} MB`
+      : `Gorsel uretildi: ${(media.length / 1024).toFixed(0)} KB`,
+  );
 
   if (config.dryRun) {
-    return { unit, isRecycled, sourceImageUrl: choice.image.url, caption, image, published: null };
+    return { unit, isRecycled, format, sourceImageUrl: choice.image.url, caption, media, published: null };
   }
 
   const instagram = new InstagramClient(config.instagram.igUserId, config.instagram.igAccessToken);
@@ -81,11 +97,15 @@ export async function runDailyPost(config: Config, log: Logger): Promise<RunResu
     throw new Error('Instagram gunluk yayin kotasi dolmus; bugun paylasim yapilmayacak.');
   }
 
-  const fileName = `${new Date().toISOString().slice(0, 10)}-${unit.id.replace('#', '-')}.jpg`;
-  const hosted = await hostImage(config.imageHost, fileName, image);
-  log(`Gorsel yayinlandi: ${hosted.url}`);
+  const extension = format === 'reel' ? 'mp4' : 'jpg';
+  const fileName = `${new Date().toISOString().slice(0, 10)}-${unit.id.replace('#', '-')}.${extension}`;
+  const hosted = await hostImage(config.imageHost, fileName, media);
+  log(`Medya yayinlandi: ${hosted.url}`);
 
-  const published = await instagram.publishImage({ imageUrl: hosted.url, caption });
+  const published =
+    format === 'reel'
+      ? await instagram.publishReel({ videoUrl: hosted.url, caption })
+      : await instagram.publishImage({ imageUrl: hosted.url, caption });
   log(`Instagram gonderisi yayinda: ${published.permalink ?? published.mediaId}`);
 
   await saveState(
@@ -101,11 +121,21 @@ export async function runDailyPost(config: Config, log: Logger): Promise<RunResu
       // Rapor kirilimlari icin: sonradan yeniden hesaplanamazlar.
       topics,
       hashtags: [...hashtags.tags],
+      format,
       insights: null,
     }),
   );
 
-  return { unit, isRecycled, sourceImageUrl: choice.image.url, caption, image, published };
+  return { unit, isRecycled, format, sourceImageUrl: choice.image.url, caption, media, published };
+}
+
+/**
+ * Reels icin gorsel dizisi: secilen kare basa alinir, yazinin kalan
+ * kareleri ardina eklenir. Yazida yeterli gorsel yoksa bastan dolanilir.
+ */
+function reelImages(unit: PostUnit, firstUrl: string, count = 4): string[] {
+  const pool = [firstUrl, ...unit.images.map((image) => image.url).filter((url) => url !== firstUrl)];
+  return Array.from({ length: count }, (_, index) => pool[index % pool.length]!);
 }
 
 /** Gorselin ust satirindaki kucuk etiket: once konu, yoksa yazinin adi. */

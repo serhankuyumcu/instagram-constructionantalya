@@ -71,6 +71,7 @@ async function main(): Promise<void> {
       publishedAt: date,
       topics,
       hashtags: [...hashtags.tags],
+      format: 'image',
       insights: null,
     });
   }
