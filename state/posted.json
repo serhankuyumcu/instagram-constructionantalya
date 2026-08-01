@@ -7,7 +7,10 @@
       "imageUrl": "https://constructionantalya.com/assets/projects/kempinski-hotel-dome-belek/cover.webp",
       "mediaId": "18121901423494989",
       "permalink": "https://www.instagram.com/p/DbeKNbQEkUO/",
-      "publishedAt": "2026-07-31T20:48:58.429Z"
+      "publishedAt": "2026-07-31T20:48:58.429Z",
+      "topics": [],
+      "hashtags": [],
+      "insights": null
     },
     {
       "unitId": "antalya-real-estate-investment-guide#0",
@@ -16,7 +19,10 @@
       "imageUrl": "https://constructionantalya.com/assets/blog/invest-hero.webp",
       "mediaId": "18136563805555012",
       "permalink": "https://www.instagram.com/p/DbeKZO0CfHi/",
-      "publishedAt": "2026-07-31T20:50:33.300Z"
+      "publishedAt": "2026-07-31T20:50:33.300Z",
+      "topics": [],
+      "hashtags": [],
+      "insights": null
     },
     {
       "unitId": "building-in-antalya-permit-to-occupancy#0",
@@ -25,7 +31,43 @@
       "imageUrl": "https://constructionantalya.com/assets/blog/permit-hero.webp",
       "mediaId": "18051426278632764",
       "permalink": "https://www.instagram.com/p/DbeM2DfFOlG/",
-      "publishedAt": "2026-07-31T21:11:56.149Z"
+      "publishedAt": "2026-07-31T21:11:56.149Z",
+      "topics": [],
+      "hashtags": [],
+      "insights": null
+    },
+    {
+      "unitId": "building-your-dream-villa#0",
+      "articleSlug": "building-your-dream-villa",
+      "heading": "Building Your Dream Villa: A Practical First Guide",
+      "imageUrl": "https://constructionantalya.com/assets/projects/1.webp",
+      "mediaId": "18141933415560973",
+      "permalink": "https://www.instagram.com/p/DbgmMlCib0k/",
+      "publishedAt": "2026-08-01T19:31:55.731Z",
+      "topics": [
+        "villa",
+        "residential",
+        "finishing",
+        "shell",
+        "exterior"
+      ],
+      "hashtags": [
+        "#constructionantalya",
+        "#villaantalya",
+        "#residentialconstruction",
+        "#apartmentdesign",
+        "#konutprojesi",
+        "#lara",
+        "#kalkan",
+        "#kaş",
+        "#side",
+        "#investinturkey",
+        "#villaforsale",
+        "#müteahhit",
+        "#inşaat",
+        "#homedesign"
+      ],
+      "insights": null
     }
   ]
 }
