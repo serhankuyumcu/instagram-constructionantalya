@@ -68,6 +68,9 @@ async function main(): Promise<void> {
       mediaId: `plan-${day}`,
       permalink: null,
       publishedAt: date,
+      topics,
+      hashtags: [...hashtags.tags],
+      insights: null,
     });
   }
 }

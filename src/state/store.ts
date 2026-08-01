@@ -10,6 +10,20 @@ import { z } from 'zod';
  * gecmisteki kayitlara bakilir.
  */
 
+/**
+ * Bir gonderinin Instagram'daki performansi. Yayin aninda bos olur;
+ * insights toplama isi sonraki gunlerde doldurur ve gunceller.
+ */
+const insightsSchema = z.object({
+  reach: z.number().nullable().default(null),
+  likes: z.number().nullable().default(null),
+  comments: z.number().nullable().default(null),
+  saved: z.number().nullable().default(null),
+  shares: z.number().nullable().default(null),
+  totalInteractions: z.number().nullable().default(null),
+  collectedAt: z.string(),
+});
+
 const recordSchema = z.object({
   unitId: z.string(),
   articleSlug: z.string(),
@@ -18,12 +32,26 @@ const recordSchema = z.object({
   mediaId: z.string(),
   permalink: z.string().nullable().default(null),
   publishedAt: z.string(),
+
+  /**
+   * Rapor kirilimlari icin yayin anindaki kararlar. Sonradan yeniden
+   * hesaplanamazlar (hashtag rotasyonu gecmise bagli, konu tespiti kod
+   * degisirse farkli sonuc verir), bu yuzden o an kaydedilirler.
+   *
+   * Varsayilanlari bos: bu alanlar eklenmeden once yazilmis kayitlar
+   * gecerliligini korur.
+   */
+  topics: z.array(z.string()).default([]),
+  hashtags: z.array(z.string()).default([]),
+
+  insights: insightsSchema.nullable().default(null),
 });
 
 const stateSchema = z.object({
   posts: z.array(recordSchema).default([]),
 });
 
+export type PostInsights = z.infer<typeof insightsSchema>;
 export type PostRecord = z.infer<typeof recordSchema>;
 export type State = z.infer<typeof stateSchema>;
 
@@ -48,6 +76,13 @@ export function withPost(state: State, record: PostRecord): State {
 export async function saveState(path: string, state: State): Promise<void> {
   await mkdir(dirname(path), { recursive: true });
   await writeFile(path, `${JSON.stringify(state, null, 2)}\n`, 'utf8');
+}
+
+/** Bir gonderinin performans verisini gunceller; digerlerine dokunmaz. */
+export function withInsights(state: State, mediaId: string, insights: PostInsights): State {
+  return {
+    posts: state.posts.map((post) => (post.mediaId === mediaId ? { ...post, insights } : post)),
+  };
 }
 
 export function postedUnitIds(state: State): Set<string> {

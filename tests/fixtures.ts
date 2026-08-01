@@ -80,6 +80,9 @@ export function makeState(unitIds: readonly string[] = [], imageUrls: readonly s
       mediaId: `media-${index}`,
       permalink: null,
       publishedAt: `2026-01-${String(index + 1).padStart(2, '0')}T00:00:00.000Z`,
+      topics: [],
+      hashtags: [],
+      insights: null,
     })),
   };
 }

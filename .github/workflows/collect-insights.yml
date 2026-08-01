@@ -1,0 +1,53 @@
+name: Gonderi istatistiklerini topla
+
+on:
+  schedule:
+    # 06:00 UTC = 09:00 Turkiye. Aksam yayinlanan gonderi bu saatte
+    # 13 saatlik veri biriktirmis olur; 24 saat filtresi sayesinde
+    # ilk anlamli olcum ertesi sabah degil, bir sonraki sabah alinir.
+    - cron: '0 6 * * *'
+  workflow_dispatch:
+
+concurrency:
+  # Gunluk yayin isiyle ayni dosyaya (state/posted.json) yaziyor.
+  group: instagram-state
+  cancel-in-progress: false
+
+jobs:
+  collect:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          cache: npm
+
+      - run: npm ci
+
+      - name: Metrikleri cek
+        env:
+          IG_ACCESS_TOKEN: ${{ secrets.IG_ACCESS_TOKEN }}
+          GRAPH_API_VERSION: ${{ vars.GRAPH_API_VERSION || 'v21.0' }}
+        run: npm run insights
+
+      - name: Sonuclari kaydet
+        run: |
+          git config user.name  "instagram-bot"
+          git config user.email "bot@users.noreply.github.com"
+          git add state/posted.json
+          if git diff --cached --quiet; then
+            echo "Metriklerde degisiklik yok."
+            exit 0
+          fi
+          git commit -m "chore: gonderi istatistikleri guncellendi [skip ci]"
+          for attempt in 1 2 3; do
+            git pull --rebase --autostash origin "${GITHUB_REF_NAME}" && git push && exit 0
+            sleep 5
+          done
+          echo "Istatistikler push edilemedi." >&2
+          exit 1

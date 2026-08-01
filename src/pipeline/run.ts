@@ -97,6 +97,10 @@ export async function runDailyPost(config: Config, log: Logger): Promise<RunResu
       mediaId: published.mediaId,
       permalink: published.permalink,
       publishedAt: new Date().toISOString(),
+      // Rapor kirilimlari icin: sonradan yeniden hesaplanamazlar.
+      topics,
+      hashtags: [...hashtags.tags],
+      insights: null,
     }),
   );
 

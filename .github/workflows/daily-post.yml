@@ -14,7 +14,9 @@ on:
 
 concurrency:
   # Ayni anda iki calisma olursa ayni bolum iki kez paylasilabilir.
-  group: instagram-daily-post
+  # Istatistik toplama isi de ayni dosyaya (state/posted.json) yazdigi icin
+  # onunla ayni grupta tutuluyor; ikisi asla es zamanli calismaz.
+  group: instagram-state
   cancel-in-progress: false
 
 jobs:

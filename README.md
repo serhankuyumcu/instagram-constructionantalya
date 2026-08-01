@@ -156,6 +156,13 @@ npm run post:dry
 # Yayınla
 npm run post
 
+# Performans
+npm run insights     # Instagram metriklerini çek (24 saatten eski gönderiler)
+npm run stats        # Performans raporu
+
+# Kurulum kontrolü
+npm run doctor       # token, izinler, bağlı hesap, kota
+
 # Testler ve tip kontrolü
 npm test
 npm run typecheck
@@ -182,6 +189,31 @@ Vurgu rengi `compose.ts` içinde `ACCENT` sabiti (`#c9a227`, mat altın). Fontla
 Siteye yeni yazı eklendiğinde hem içerik hem görselleri havuza kendiliğinden katılır; kodda değişiklik gerekmez.
 
 ---
+
+## İstatistikler
+
+Bot yayınladığı her gönderinin performansını takip eder. Ayrı bir GitHub Actions işi her sabah **09:00**'da çalışır, Instagram'dan metrikleri çekip `state/posted.json`'a işler.
+
+Toplanan veriler: erişim, beğeni, yorum, kaydetme, paylaşma, toplam etkileşim.
+
+```bash
+npm run stats
+```
+
+Rapor dört kırılım verir:
+
+| Kırılım | Cevapladığı soru |
+|---|---|
+| Konuya göre | Kaba yapı mı, bitmiş iş mi, otel mi daha çok ilgi çekiyor? |
+| Kaynak yazıya göre | Hangi blog yazısı Instagram'da daha iyi çalışıyor? |
+| Görsele göre | Hangi fotoğraf türü daha güçlü? |
+| Hashtag'e göre | Hangi etiketler gerçekten erişim getiriyor? |
+
+Sıralama **etkileşim oranı** (etkileşim ÷ erişim) üzerinden yapılır. Ham beğeni sayısı hesabın o günkü erişimine göre şişip düştüğü için yanıltıcıdır; oran içeriğin gerçekten ilgi çekip çekmediğini gösterir.
+
+Üçten az gönderi içeren gruplar `*` ile işaretlenir — o örneklemde sıralama gürültüden ibarettir. Anlamlı karşılaştırma için ~20-30 gönderi birikmesi gerekir, yani ilk gerçek okuma bir ay sonra mümkün olur.
+
+**Neden ayrı bir iş:** metrikler yayın anında boştur, birikmeleri gün alır. Aynı akışta toplanamaz.
 
 ## Bot neyi hatırlıyor?
 
@@ -223,10 +255,18 @@ src/
 ├── content/              konu tespiti (hashtag ve etiket için)
 ├── image/                görsel seçimi, kare üretimi, barındırma
 ├── caption/              Claude ile caption + hashtag stratejisi
-├── instagram/            Graph API yayın istemcisi
+├── instagram/            Graph API yayın istemcisi + metrik toplama
+├── insights/             performans hesaplama (saf fonksiyonlar)
 ├── pipeline/             gönderi seçimi ve günlük akış
-├── state/                yayın geçmişi
-└── cli/plan.ts           takvim önizleme aracı
+├── state/                yayın geçmişi ve metrikler
+└── cli/                  plan, doctor, insights, stats komutları
 ```
 
-Ağ erişimi gerektirmeyen tüm mantık saf fonksiyonlarda tutuldu; test kapsamı bu katmanlarda (51 test).
+Ağ erişimi gerektirmeyen tüm mantık saf fonksiyonlarda tutuldu; test kapsamı bu katmanlarda (72 test).
+
+İki GitHub Actions işi var ve ikisi de `state/posted.json`'a yazdığı için aynı eşzamanlılık grubunda tutulur — asla çakışmazlar:
+
+| İş | Saat (TR) | Ne yapar |
+|---|---|---|
+| `daily-post.yml` | 20:00 | Gönderiyi üretir ve yayınlar |
+| `collect-insights.yml` | 09:00 | Önceki gönderilerin metriklerini toplar |

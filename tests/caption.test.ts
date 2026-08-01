@@ -83,6 +83,9 @@ describe('durum kaydi', () => {
       mediaId: 'm1',
       permalink: null,
       publishedAt: '2026-02-01T00:00:00.000Z',
+      topics: [],
+      hashtags: [],
+      insights: null,
     });
 
     expect(state.posts).toHaveLength(1);

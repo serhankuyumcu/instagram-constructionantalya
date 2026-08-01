@@ -13,6 +13,8 @@
     "preview": "tsx src/index.ts --dry-run --open",
     "plan": "tsx src/cli/plan.ts",
     "doctor": "tsx src/cli/doctor.ts",
+    "insights": "tsx src/cli/collect-insights.ts",
+    "stats": "tsx src/cli/stats.ts",
     "typecheck": "tsc --noEmit",
     "test": "vitest run",
     "test:watch": "vitest"
