@@ -1,5 +1,6 @@
 import { blogUrlsFromSitemap, fetchSitemap } from '../blog/sitemap.js';
 import { fetchArticle } from '../blog/scraper.js';
+import { mapWithConcurrency } from '../lib/http.js';
 import { toPostUnits } from '../blog/units.js';
 import { buildHashtags } from '../caption/hashtags.js';
 import { detectTopics } from '../content/topics.js';
@@ -28,7 +29,7 @@ async function main(): Promise<void> {
   const blogUrls = blogUrlsFromSitemap(sitemap, locale);
 
   const [articles, initialState] = await Promise.all([
-    Promise.all(blogUrls.map((url) => fetchArticle(url))),
+    mapWithConcurrency(blogUrls, (url) => fetchArticle(url)),
     loadState(STATE_PATH),
   ]);
 

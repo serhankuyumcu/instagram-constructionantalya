@@ -1,6 +1,7 @@
 import Anthropic from '@anthropic-ai/sdk';
 import { blogUrlsFromSitemap, fetchSitemap } from '../blog/sitemap.js';
 import { fetchArticle } from '../blog/scraper.js';
+import { mapWithConcurrency } from '../lib/http.js';
 import { toPostUnits } from '../blog/units.js';
 import type { PostUnit } from '../blog/types.js';
 import { assembleCaption, generateCaption } from '../caption/generator.js';
@@ -39,7 +40,7 @@ export async function runDailyPost(config: Config, log: Logger): Promise<RunResu
   log(`Sitemap: ${blogUrls.length} blog yazisi`);
 
   const [articles, state] = await Promise.all([
-    Promise.all(blogUrls.map((url) => fetchArticle(url))),
+    mapWithConcurrency(blogUrls, (url) => fetchArticle(url)),
     loadState(STATE_PATH),
   ]);
 

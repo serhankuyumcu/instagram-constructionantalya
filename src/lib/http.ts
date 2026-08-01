@@ -1,6 +1,38 @@
-const DEFAULT_TIMEOUT_MS = 20_000;
+const DEFAULT_TIMEOUT_MS = 30_000;
 const MAX_RETRIES = 3;
 const RETRY_BASE_DELAY_MS = 600;
+
+/**
+ * Ayni anda kac istek acilabilecegi.
+ *
+ * Once butun yazilar tek seferde paralel cekiliyordu; site buyudukce bu
+ * onlarca es zamanli istek demek oldu ve bir gece hepsi birden zaman
+ * asimina ugrayip gonderiyi dusurdu. Kucuk parcalar halinde ilerlemek
+ * hem sunucuyu yormuyor hem de tek bir yavas istegin tumunu bogmasini
+ * engelliyor.
+ */
+const CONCURRENCY = 4;
+
+/** Istekleri sinirli es zamanlilikla calistirir, sonuclari giris sirasinda dondurur. */
+export async function mapWithConcurrency<T, R>(
+  items: readonly T[],
+  worker: (item: T) => Promise<R>,
+  limit = CONCURRENCY,
+): Promise<R[]> {
+  const results = new Array<R>(items.length);
+  let next = 0;
+
+  const runners = Array.from({ length: Math.min(limit, items.length) }, async () => {
+    while (true) {
+      const index = next++;
+      if (index >= items.length) return;
+      results[index] = await worker(items[index]!);
+    }
+  });
+
+  await Promise.all(runners);
+  return results;
+}
 
 export class HttpError extends Error {
   constructor(
