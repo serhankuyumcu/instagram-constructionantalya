@@ -89,6 +89,9 @@ jobs:
           # Birden fazla gonderi tek calismada, sirayla atilir. Workflow'u
           # arka arkaya tetiklemek ise yaramaz: eszamanlilik grubu bekleyen
           # calismalari iptal ediyor.
+          # Dikkat: buradaki kontroller if blogu olmali. '[ kosul ] && komut'
+          # bicimi, kosul yanlisken 1 dondurur; dongunun son ifadesi oldugunda
+          # gonderi basariyla ciksa bile is "failure" raporluyordu.
           for i in $(seq 1 "$COUNT"); do
             if [ "$COUNT" -gt 1 ]; then
               echo "::group::Gonderi $i / $COUNT"
@@ -97,10 +100,16 @@ jobs:
                 if [ $((i % 2)) -eq 1 ]; then FORMAT="-- --image"; else FORMAT="-- --reel"; fi
               fi
             fi
+
             npm run $CMD $FORMAT
-            [ "$COUNT" -gt 1 ] && echo "::endgroup::"
+
+            if [ "$COUNT" -gt 1 ]; then
+              echo "::endgroup::"
+            fi
             # Instagram'i art arda zorlamamak icin araya kisa bir bosluk.
-            [ "$i" -lt "$COUNT" ] && sleep 20
+            if [ "$i" -lt "$COUNT" ]; then
+              sleep 20
+            fi
           done
 
       # always(): uretim adimi dusse bile o ana kadar yayinlanan gonderiler
