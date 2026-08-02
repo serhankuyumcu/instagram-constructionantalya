@@ -3,7 +3,7 @@ import { mkdtemp, readFile, rm, writeFile } from 'node:fs/promises';
 import { tmpdir } from 'node:os';
 import { join } from 'node:path';
 import sharp from 'sharp';
-import { fetchBuffer } from '../lib/http.js';
+import { loadMedia } from '../lib/media.js';
 import { renderOverlay } from './overlay.js';
 
 /**
@@ -136,7 +136,7 @@ async function prepareFrames(urls: readonly string[], workDir: string): Promise<
   const paths: string[] = [];
 
   for (const [index, url] of urls.entries()) {
-    const photo = await fetchBuffer(url);
+    const photo = await loadMedia(url);
     const path = join(workDir, `frame-${index}.jpg`);
 
     await sharp(photo)

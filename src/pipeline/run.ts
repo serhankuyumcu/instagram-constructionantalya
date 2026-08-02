@@ -9,6 +9,7 @@ import { buildHashtags } from '../caption/hashtags.js';
 import { composePostImage } from '../image/compose.js';
 import { composeTipReel } from '../video/compose.js';
 import { generateTip } from '../caption/tip.js';
+import { loadPhotos, selectPhotos } from '../photos/library.js';
 import { resolveFormat } from './format.js';
 import type { PostFormat } from './format.js';
 import { selectImage } from '../image/select.js';
@@ -78,16 +79,25 @@ export async function runDailyPost(config: Config, log: Logger): Promise<RunResu
    */
   let caption: string;
   let media: Buffer;
+  /** Reel'de kullanilan ilk fotograf; tekrar onleme bunun uzerinden yurur. */
+  let reelPhotoPath: string | null = null;
 
   if (format === 'reel') {
     const tip = await generateTip(anthropic, unit);
     caption = assembleCaption(tip.caption, unit.articleUrl, hashtags.text);
     log(`Tip uretildi: "${tip.hook}"`);
 
+    // Reels elle secilmis fotograf havuzundan beslenir. Yazinin kendi
+    // gorselleri 4-6 taneydi ve reel 4 kare istedigi icin ayni yazidan
+    // cikan videolar hep ayni fotograflari gosteriyordu.
+    const photos = selectPhotos(await loadPhotos(), topics, 4, recentImageUrls(state));
+    reelPhotoPath = photos[0]!.path;
+    log(`Fotograflar: ${photos.map((p) => p.path.split('/').pop()).join(', ')}`);
+
     media = await composeTipReel({
       hook: tip.hook,
       lines: tip.lines,
-      imageUrls: reelImages(unit, choice.image.url),
+      imageUrls: photos.map((p) => p.path),
     });
   } else {
     const body = await generateCaption(anthropic, { unit, locale: config.captionLocale });
@@ -136,7 +146,7 @@ export async function runDailyPost(config: Config, log: Logger): Promise<RunResu
       unitId: unit.id,
       articleSlug: unit.articleSlug,
       heading: unit.heading,
-      imageUrl: choice.image.url,
+      imageUrl: reelPhotoPath ?? choice.image.url,
       mediaId: published.mediaId,
       permalink: published.permalink,
       publishedAt: new Date().toISOString(),

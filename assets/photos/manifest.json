@@ -1,0 +1,231 @@
+[
+  {
+    "path": "/assets/photos/01-luxury-dining-marble.webp",
+    "topics": [
+      "interior",
+      "finishing"
+    ],
+    "orientation": "landscape"
+  },
+  {
+    "path": "/assets/photos/02-living-room-marble-wall.webp",
+    "topics": [
+      "interior",
+      "finishing"
+    ],
+    "orientation": "landscape"
+  },
+  {
+    "path": "/assets/photos/03-living-room-pendants.webp",
+    "topics": [
+      "interior"
+    ],
+    "orientation": "portrait"
+  },
+  {
+    "path": "/assets/photos/04-street-building-antalya.webp",
+    "topics": [
+      "exterior",
+      "residential"
+    ],
+    "orientation": "portrait"
+  },
+  {
+    "path": "/assets/photos/05-apartment-facade-white.webp",
+    "topics": [
+      "residential",
+      "exterior"
+    ],
+    "orientation": "portrait"
+  },
+  {
+    "path": "/assets/photos/06-historic-stone-facade.webp",
+    "topics": [
+      "exterior"
+    ],
+    "orientation": "portrait"
+  },
+  {
+    "path": "/assets/photos/07-architectural-detail-cream.webp",
+    "topics": [
+      "interior",
+      "exterior"
+    ],
+    "orientation": "portrait"
+  },
+  {
+    "path": "/assets/photos/08-curved-facade-modern.webp",
+    "topics": [
+      "exterior"
+    ],
+    "orientation": "portrait"
+  },
+  {
+    "path": "/assets/photos/09-dining-area-simple.webp",
+    "topics": [
+      "interior"
+    ],
+    "orientation": "landscape"
+  },
+  {
+    "path": "/assets/photos/10-antalya-arch-palms.webp",
+    "topics": [
+      "exterior"
+    ],
+    "orientation": "portrait"
+  },
+  {
+    "path": "/assets/photos/11-niche-wall-seating.webp",
+    "topics": [
+      "interior",
+      "finishing"
+    ],
+    "orientation": "portrait"
+  },
+  {
+    "path": "/assets/photos/12-villa-lounge-staircase.webp",
+    "topics": [
+      "villa",
+      "interior"
+    ],
+    "orientation": "portrait"
+  },
+  {
+    "path": "/assets/photos/13-villa-lounge-dark.webp",
+    "topics": [
+      "villa",
+      "interior"
+    ],
+    "orientation": "portrait"
+  },
+  {
+    "path": "/assets/photos/14-old-town-street.webp",
+    "topics": [
+      "exterior"
+    ],
+    "orientation": "portrait"
+  },
+  {
+    "path": "/assets/photos/15-joinery-shelf-detail.webp",
+    "topics": [
+      "finishing",
+      "interior"
+    ],
+    "orientation": "portrait"
+  },
+  {
+    "path": "/assets/photos/16-garden-terrace-table.webp",
+    "topics": [
+      "exterior"
+    ],
+    "orientation": "portrait"
+  },
+  {
+    "path": "/assets/photos/17-ancient-columns-side.webp",
+    "topics": [
+      "exterior"
+    ],
+    "orientation": "portrait"
+  },
+  {
+    "path": "/assets/photos/18-living-room-led-coves.webp",
+    "topics": [
+      "interior",
+      "finishing"
+    ],
+    "orientation": "landscape"
+  },
+  {
+    "path": "/assets/photos/19-dining-room-bright-stairs.webp",
+    "topics": [
+      "villa",
+      "interior"
+    ],
+    "orientation": "portrait"
+  },
+  {
+    "path": "/assets/photos/20-dining-nook-rattan.webp",
+    "topics": [
+      "interior",
+      "finishing"
+    ],
+    "orientation": "portrait"
+  },
+  {
+    "path": "/assets/photos/21-stone-facade-terrace.webp",
+    "topics": [
+      "villa",
+      "exterior"
+    ],
+    "orientation": "portrait"
+  },
+  {
+    "path": "/assets/photos/22-apartment-bougainvillea.webp",
+    "topics": [
+      "residential",
+      "exterior"
+    ],
+    "orientation": "portrait"
+  },
+  {
+    "path": "/assets/photos/23-structural-lattice.webp",
+    "topics": [
+      "shell",
+      "exterior"
+    ],
+    "orientation": "landscape"
+  },
+  {
+    "path": "/assets/photos/24-wood-panelled-corridor.webp",
+    "topics": [
+      "interior",
+      "finishing"
+    ],
+    "orientation": "landscape"
+  },
+  {
+    "path": "/assets/photos/25-kitchen-modern-dark.webp",
+    "topics": [
+      "interior",
+      "finishing"
+    ],
+    "orientation": "landscape"
+  },
+  {
+    "path": "/assets/photos/26-living-room-round-pendants.webp",
+    "topics": [
+      "interior"
+    ],
+    "orientation": "landscape"
+  },
+  {
+    "path": "/assets/photos/27-living-room-grey-sofa.webp",
+    "topics": [
+      "interior"
+    ],
+    "orientation": "landscape"
+  },
+  {
+    "path": "/assets/photos/28-textured-wall-led.webp",
+    "topics": [
+      "finishing",
+      "interior"
+    ],
+    "orientation": "portrait"
+  },
+  {
+    "path": "/assets/photos/29-restoration-interior.webp",
+    "topics": [
+      "shell",
+      "exterior"
+    ],
+    "orientation": "portrait"
+  },
+  {
+    "path": "/assets/photos/30-old-town-palms.webp",
+    "topics": [
+      "exterior"
+    ],
+    "orientation": "portrait"
+  }
+]

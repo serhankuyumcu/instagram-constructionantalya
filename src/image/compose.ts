@@ -3,7 +3,7 @@ import { fileURLToPath } from 'node:url';
 import satori from 'satori';
 import { Resvg } from '@resvg/resvg-js';
 import sharp from 'sharp';
-import { fetchBuffer } from '../lib/http.js';
+import { loadMedia } from '../lib/media.js';
 
 /** Instagram'da dikey akista en cok alan kaplayan oran: 4:5. */
 export const CANVAS_WIDTH = 1080;
@@ -47,7 +47,7 @@ export interface ComposeInput {
  * yerelde uretilen kare ile CI'da uretilen kare birebir aynidir.
  */
 export async function composePostImage(input: ComposeInput): Promise<Buffer> {
-  const [fonts, photo] = await Promise.all([loadFonts(), fetchBuffer(input.imageUrl)]);
+  const [fonts, photo] = await Promise.all([loadFonts(), loadMedia(input.imageUrl)]);
 
   // Fotografi hedef orana kirp ve hafif karart: uzerindeki beyaz tipografi
   // her fotografta okunakli kalsin.
