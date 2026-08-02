@@ -95,11 +95,23 @@ export function loadConfig(env: NodeJS.ProcessEnv, dryRun: boolean): Config {
   };
 }
 
-/** Zod hatalarini terminalde okunabilir tek bir metne cevirir. */
+/**
+ * Hatalari terminalde okunabilir tek bir metne cevirir.
+ *
+ * Yalnizca yapilandirma semasindan gelen hatalarda .env yonlendirmesi
+ * yapilir. Icerik semasi hatalarinda ".env doldur" demek yanlis yere
+ * bakmaya yol aciyordu.
+ */
 export function formatConfigError(error: unknown): string {
-  if (error instanceof z.ZodError) {
-    const lines = error.errors.map((e) => `  - ${e.path.join('.') || '(kok)'}: ${e.message}`);
-    return `Yapilandirma hatasi:\n${lines.join('\n')}\n\n.env.example dosyasini kopyalayip .env olarak doldur.`;
-  }
-  return String(error);
+  if (!(error instanceof z.ZodError)) return String(error);
+
+  const lines = error.errors.map((e) => `  - ${e.path.join('.') || '(kok)'}: ${e.message}`);
+  const fields = new Set(error.errors.map((e) => String(e.path[0] ?? '')));
+  const isConfig = [...fields].some((f) =>
+    ['siteBaseUrl', 'captionLocale', 'anthropicApiKey', 'igUserId', 'igAccessToken', 'kind', 'repository', 'token'].includes(f),
+  );
+
+  return isConfig
+    ? `Yapilandirma hatasi:\n${lines.join('\n')}\n\n.env.example dosyasini kopyalayip .env olarak doldur.`
+    : `Dogrulama hatasi:\n${lines.join('\n')}`;
 }

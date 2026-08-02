@@ -141,7 +141,7 @@ function titleLayout(input: { readonly heading: string; readonly kicker: string 
  * kurulu; goz once merkeze gidiyor. Punto uzunluga gore kuculuyor.
  */
 function hookLayout(text: string): unknown {
-  const size = text.length <= 30 ? 96 : text.length <= 44 ? 82 : 70;
+  const size = text.length <= 30 ? 96 : text.length <= 44 ? 82 : text.length <= 56 ? 70 : 62;
 
   return el('div', {
     style: {
@@ -198,7 +198,7 @@ function lineLayout(text: string): unknown {
     el('div', {
       style: {
         fontFamily: 'Display',
-        fontSize: text.length <= 46 ? 60 : 50,
+        fontSize: text.length <= 46 ? 60 : text.length <= 70 ? 50 : 44,
         lineHeight: 1.2,
         color: '#ffffff',
       },

@@ -14,9 +14,9 @@ import type { PostUnit } from '../blog/types.js';
 
 const schema = z.object({
   /** Ilk karede ekrani kaplayan metin. Kisa olmali, yoksa okunmaz. */
-  hook: z.string().min(15).max(58),
+  hook: z.string().min(15).max(64),
   /** Kancayi acan iki kisa satir; her biri bir kareye denk gelir. */
-  lines: z.array(z.string().min(20).max(78)).length(2),
+  lines: z.array(z.string().min(20).max(88)).length(2),
   /** Gonderi metni; soruyla acilir, yorum davet eder. */
   caption: z.string().min(180).max(900),
 });
@@ -40,7 +40,31 @@ Hard rules:
 Good hook: "Your walls are only as straight as the day they were poured"
 Bad hook: "The importance of quality shell construction"`;
 
+const MAX_ATTEMPTS = 2;
+
+/**
+ * Uzunluk sinirlari kati: kanca ekrani kaplayan tek satir, tasarsa okunmaz.
+ * Model ara sira asiyor, bu yuzden hatayi geri besleyip bir kez daha
+ * deniyoruz. Ikisi de tutmazsa gonderi atlanir; kirpip yarim cumle
+ * yayinlamaktansa o gun gonderi cikmamasi daha iyi.
+ */
 export async function generateTip(client: Anthropic, unit: PostUnit): Promise<TipContent> {
+  let lastError = '';
+
+  for (let attempt = 1; attempt <= MAX_ATTEMPTS; attempt++) {
+    try {
+      return await attemptTip(client, unit, attempt === 1 ? '' : lastError);
+    } catch (error) {
+      lastError = error instanceof z.ZodError
+        ? error.errors.map((e) => `${e.path.join('.')}: ${e.message}`).join('; ')
+        : String(error);
+    }
+  }
+
+  throw new Error(`Tip uretilemedi (${MAX_ATTEMPTS} deneme): ${lastError}`);
+}
+
+async function attemptTip(client: Anthropic, unit: PostUnit, previousError: string): Promise<TipContent> {
   const response = await client.messages.create({
     model: MODEL,
     max_tokens: 1200,
@@ -56,9 +80,12 @@ export async function generateTip(client: Anthropic, unit: PostUnit): Promise<Ti
           unit.text.slice(0, 2400),
           '',
           'Return JSON with exactly these keys:',
-          '  hook    — max 58 characters, the on-screen opening line',
-          '  lines   — exactly 2 strings, max 78 characters each, the payoff shown after the hook',
+          '  hook    — max 60 characters, the on-screen opening line',
+          '  lines   — exactly 2 strings, max 85 characters each, the payoff shown after the hook',
           '  caption — the post text, 180 to 900 characters, opens with a question',
+          ...(previousError
+            ? ['', `Your previous attempt was rejected: ${previousError}`, 'Respect the character limits exactly.']
+            : []),
         ].join('\n'),
       },
     ],
