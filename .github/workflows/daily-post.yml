@@ -15,10 +15,14 @@ on:
         type: boolean
         default: false
       format:
-        description: 'Bicim (bos birakilirsa gune gore secilir: Sali/Cuma reel)'
+        description: 'Bicim (bos birakilirsa cron/saate gore secilir)'
         type: choice
         options: ['', 'image', 'reel']
         default: ''
+      count:
+        description: 'Kac gonderi atilsin (profil doldurma icin; varsayilan 1)'
+        type: string
+        default: '1'
 
 concurrency:
   # Ayni anda iki calisma olursa ayni bolum iki kez paylasilabilir.
@@ -75,11 +79,29 @@ jobs:
           esac
           # Elle tetiklemede secilen bicim her zaman onceliklidir.
           [ -n "${{ inputs.format }}" ] && FORMAT="-- --${{ inputs.format }}"
-          if [ "${{ inputs.dry_run }}" = "true" ]; then
-            npm run post:dry $FORMAT
-          else
-            npm run post $FORMAT
-          fi
+
+          CMD=post
+          [ "${{ inputs.dry_run }}" = "true" ] && CMD=post:dry
+
+          COUNT="${{ inputs.count }}"
+          [ -z "$COUNT" ] && COUNT=1
+
+          # Birden fazla gonderi tek calismada, sirayla atilir. Workflow'u
+          # arka arkaya tetiklemek ise yaramaz: eszamanlilik grubu bekleyen
+          # calismalari iptal ediyor.
+          for i in $(seq 1 "$COUNT"); do
+            if [ "$COUNT" -gt 1 ]; then
+              echo "::group::Gonderi $i / $COUNT"
+              # Bicim verilmediyse doldurmada donusumlu: bir foto, bir reel.
+              if [ -z "${{ inputs.format }}" ]; then
+                if [ $((i % 2)) -eq 1 ]; then FORMAT="-- --image"; else FORMAT="-- --reel"; fi
+              fi
+            fi
+            npm run $CMD $FORMAT
+            [ "$COUNT" -gt 1 ] && echo "::endgroup::"
+            # Instagram'i art arda zorlamamak icin araya kisa bir bosluk.
+            [ "$i" -lt "$COUNT" ] && sleep 20
+          done
 
       - name: Yayin gecmisini kaydet
         if: ${{ inputs.dry_run != true }}
