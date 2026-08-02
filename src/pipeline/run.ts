@@ -7,7 +7,8 @@ import type { PostUnit } from '../blog/types.js';
 import { assembleCaption, generateCaption } from '../caption/generator.js';
 import { buildHashtags } from '../caption/hashtags.js';
 import { composePostImage } from '../image/compose.js';
-import { composeReel } from '../video/compose.js';
+import { composeTipReel } from '../video/compose.js';
+import { generateTip } from '../caption/tip.js';
 import { resolveFormat } from './format.js';
 import type { PostFormat } from './format.js';
 import { selectImage } from '../image/select.js';
@@ -67,18 +68,39 @@ export async function runDailyPost(config: Config, log: Logger): Promise<RunResu
   const hashtags = buildHashtags(topics, state.posts.length);
 
   const anthropic = new Anthropic({ apiKey: config.anthropicApiKey });
-  const body = await generateCaption(anthropic, { unit, locale: config.captionLocale });
-  const caption = assembleCaption(body, unit.articleUrl, hashtags.text);
+
+  /**
+   * Reels ve fotograf farkli metin uretiyor.
+   *
+   * Reels "tip" formatinda: tek bir somut teknik gercek, kanca ile aciliyor.
+   * Kanca, ekran satirlari ve caption tek cagrida uretiliyor; ucu birbirine
+   * bagli oldugu icin ayirmak hem tutarsizlik hem iki kat maliyet olurdu.
+   */
+  let caption: string;
+  let media: Buffer;
+
+  if (format === 'reel') {
+    const tip = await generateTip(anthropic, unit);
+    caption = assembleCaption(tip.caption, unit.articleUrl, hashtags.text);
+    log(`Tip uretildi: "${tip.hook}"`);
+
+    media = await composeTipReel({
+      hook: tip.hook,
+      lines: tip.lines,
+      imageUrls: reelImages(unit, choice.image.url),
+    });
+  } else {
+    const body = await generateCaption(anthropic, { unit, locale: config.captionLocale });
+    caption = assembleCaption(body, unit.articleUrl, hashtags.text);
+
+    media = await composePostImage({
+      heading: unit.heading,
+      kicker: kickerFor(unit, topics[0]),
+      imageUrl: choice.image.url,
+    });
+  }
+
   log(`Caption uretildi: ${caption.length} karakter, ${hashtags.tags.length} hashtag`);
-
-  const kicker = kickerFor(unit, topics[0]);
-
-  // Reels icin yazinin birden fazla gorseline ihtiyac var; secilen kare basa
-  // alinip yazinin diger kareleri ardina eklenir. Havuz darsa bastan dolanir.
-  const media =
-    format === 'reel'
-      ? await composeReel({ heading: unit.heading, kicker, imageUrls: reelImages(unit, choice.image.url) })
-      : await composePostImage({ heading: unit.heading, kicker, imageUrl: choice.image.url });
 
   log(
     format === 'reel'

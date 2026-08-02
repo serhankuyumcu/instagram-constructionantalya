@@ -12,12 +12,23 @@ import { REEL_HEIGHT, REEL_WIDTH } from './compose.js';
 
 export type OverlayInput =
   | { readonly kind: 'title'; readonly heading: string; readonly kicker: string }
+  | { readonly kind: 'hook'; readonly text: string }
+  | { readonly kind: 'line'; readonly text: string }
   | { readonly kind: 'end' };
 
 export async function renderOverlay(input: OverlayInput): Promise<Buffer> {
   const fonts = await loadFonts();
 
-  const svg = await satori((input.kind === 'title' ? titleLayout(input) : endLayout()) as never, {
+  const layout =
+    input.kind === 'title'
+      ? titleLayout(input)
+      : input.kind === 'hook'
+        ? hookLayout(input.text)
+        : input.kind === 'line'
+          ? lineLayout(input.text)
+          : endLayout();
+
+  const svg = await satori(layout as never, {
     width: REEL_WIDTH,
     height: REEL_HEIGHT,
     fonts: satoriFonts(fonts),
@@ -119,6 +130,79 @@ function titleLayout(input: { readonly heading: string; readonly kicker: string 
           children: input.heading,
         }),
       ],
+    }),
+  ]);
+}
+
+/**
+ * Kanca karesi: ekranin ortasinda, buyuk ve tek cumle.
+ *
+ * Ustte degil ortada duruyor cunku bu format ilk saniyede okunmak uzerine
+ * kurulu; goz once merkeze gidiyor. Punto uzunluga gore kuculuyor.
+ */
+function hookLayout(text: string): unknown {
+  const size = text.length <= 30 ? 96 : text.length <= 44 ? 82 : 70;
+
+  return el('div', {
+    style: {
+      display: 'flex',
+      width: `${REEL_WIDTH}px`,
+      height: `${REEL_HEIGHT}px`,
+      position: 'relative',
+      fontFamily: 'Body',
+    },
+    children: [
+      // Kanca karesinde perde daha koyu: metin buyuk ve tam ortada,
+      // arkadaki fotografla yarismamali.
+      el('div', {
+        style: {
+          position: 'absolute',
+          top: 0,
+          left: 0,
+          width: `${REEL_WIDTH}px`,
+          height: `${REEL_HEIGHT}px`,
+          background: 'linear-gradient(to bottom, rgba(10,12,14,0.72) 0%, rgba(10,12,14,0.58) 50%, rgba(10,12,14,0.78) 100%)',
+        },
+      }),
+      el('div', {
+        style: {
+          position: 'relative',
+          display: 'flex',
+          flexDirection: 'column',
+          justifyContent: 'center',
+          width: '100%',
+          height: '100%',
+          padding: '110px 84px 260px 84px',
+        },
+        children: [
+          el('div', {
+            style: {
+              fontFamily: 'Display',
+              fontSize: `${size}px`,
+              lineHeight: 1.1,
+              color: '#ffffff',
+            },
+            children: text,
+          }),
+          el('div', { style: { width: '90px', height: '3px', backgroundColor: ACCENT, marginTop: '38px' } }),
+        ],
+      }),
+    ],
+  });
+}
+
+/** Acilim karesi: kancadan sonraki kisa cumle, altta duruyor. */
+function lineLayout(text: string): unknown {
+  return frame([
+    brandMark(),
+    el('div', {
+      style: {
+        fontFamily: 'Display',
+        fontSize: text.length <= 46 ? 60 : 50,
+        lineHeight: 1.2,
+        color: '#ffffff',
+      },
+      children: text,
     }),
   ]);
 }

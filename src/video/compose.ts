@@ -24,9 +24,28 @@ export const REEL_HEIGHT = 1920;
 
 /** Kare basina sure. Dort fotograf ile toplam ~16 saniye eder. */
 const SEGMENT_SECONDS = 4;
+/**
+ * Tip videolarinda kare suresi daha kisa: kanca formatinda izleyici ilk
+ * saniyede karar veriyor, uzun video tamamlanma oranini dusuruyor.
+ */
+const TIP_SEGMENT_SECONDS = 2.8;
 const FPS = 30;
 /** Ken Burns'un bitis olcegi; fazlasi sarsinti gibi gorunuyor. */
 const ZOOM_END = 1.12;
+
+/** Belirli bir zaman araliginda gorunen tipografi katmani. */
+export interface TimedOverlay {
+  readonly png: Buffer;
+  readonly from: number;
+  readonly to: number;
+}
+
+export interface TipReelInput {
+  readonly hook: string;
+  readonly lines: readonly string[];
+  readonly imageUrls: readonly string[];
+  readonly audioPath?: string;
+}
 
 export interface ReelInput {
   readonly heading: string;
@@ -37,23 +56,74 @@ export interface ReelInput {
 }
 
 export async function composeReel(input: ReelInput): Promise<Buffer> {
-  if (input.imageUrls.length === 0) throw new Error('Reels icin en az bir gorsel gerekli.');
+  const total = input.imageUrls.length * SEGMENT_SECONDS;
+
+  return build(input.imageUrls, SEGMENT_SECONDS, input.audioPath, async () => [
+    {
+      png: await renderOverlay({ kind: 'title', heading: input.heading, kicker: input.kicker }),
+      from: 0,
+      to: SEGMENT_SECONDS + 0.5,
+    },
+    { png: await renderOverlay({ kind: 'end' }), from: total - SEGMENT_SECONDS, to: total },
+  ]);
+}
+
+/**
+ * Kanca ile acilan kisa tip videosu.
+ *
+ * Ilk kare tek bir cumleyi ekrana basar, sonraki kareler acilimi verir,
+ * son kare markayi. Standart reel'den kisadir: kanca formatinda izleyici
+ * ilk saniyede karar veriyor, uzun video tamamlanma oranini dusuruyor.
+ */
+export async function composeTipReel(input: TipReelInput): Promise<Buffer> {
+  const segment = TIP_SEGMENT_SECONDS;
+  const count = input.lines.length + 2; // kanca + satirlar + kapanis
+  const images = Array.from({ length: count }, (_, i) => input.imageUrls[i % input.imageUrls.length]!);
+
+  return build(images, segment, input.audioPath, async () => {
+    const overlays: TimedOverlay[] = [
+      { png: await renderOverlay({ kind: 'hook', text: input.hook }), from: 0, to: segment + 0.4 },
+    ];
+
+    for (const [index, line] of input.lines.entries()) {
+      const from = segment * (index + 1);
+      overlays.push({
+        png: await renderOverlay({ kind: 'line', text: line }),
+        from,
+        to: from + segment + 0.4,
+      });
+    }
+
+    const total = segment * count;
+    overlays.push({ png: await renderOverlay({ kind: 'end' }), from: total - segment, to: total });
+    return overlays;
+  });
+}
+
+/** Ortak cekirdek: kareleri hazirla, katmanlari uret, ffmpeg'i calistir. */
+async function build(
+  imageUrls: readonly string[],
+  segmentSeconds: number,
+  audioPath: string | undefined,
+  makeOverlays: () => Promise<TimedOverlay[]>,
+): Promise<Buffer> {
+  if (imageUrls.length === 0) throw new Error('Reels icin en az bir gorsel gerekli.');
 
   const workDir = await mkdtemp(join(tmpdir(), 'reel-'));
 
   try {
-    const frames = await prepareFrames(input.imageUrls, workDir);
+    const frames = await prepareFrames(imageUrls, workDir);
+    const overlays = await makeOverlays();
 
-    // Tipografi katmanlari ayri PNG olarak uretiliyor: zoom yalnizca fotografa
-    // uygulaniyor, metin sabit kaliyor. Metni de zoomlamak okunaksiz duruyor.
-    const titleOverlay = join(workDir, 'title.png');
-    const endOverlay = join(workDir, 'end.png');
-
-    await writeFile(titleOverlay, await renderOverlay({ kind: 'title', heading: input.heading, kicker: input.kicker }));
-    await writeFile(endOverlay, await renderOverlay({ kind: 'end' }));
+    const paths: { path: string; from: number; to: number }[] = [];
+    for (const [index, overlay] of overlays.entries()) {
+      const path = join(workDir, `ov-${index}.png`);
+      await writeFile(path, overlay.png);
+      paths.push({ path, from: overlay.from, to: overlay.to });
+    }
 
     const output = join(workDir, 'reel.mp4');
-    await runFfmpeg(buildFfmpegArgs(frames, titleOverlay, endOverlay, input.audioPath, output));
+    await runFfmpeg(buildFfmpegArgs(frames, paths, segmentSeconds, audioPath, output));
 
     return await readFile(output);
   } finally {
@@ -91,8 +161,8 @@ async function prepareFrames(urls: readonly string[], workDir: string): Promise<
  */
 function buildFfmpegArgs(
   frames: readonly string[],
-  titleOverlay: string,
-  endOverlay: string,
+  overlays: readonly { path: string; from: number; to: number }[],
+  segmentSeconds: number,
   audioPath: string | undefined,
   output: string,
 ): string[] {
@@ -105,54 +175,51 @@ function buildFfmpegArgs(
   for (const frame of frames) {
     args.push('-i', frame);
   }
-  args.push('-i', titleOverlay, '-i', endOverlay);
-
+  for (const overlay of overlays) {
+    args.push('-i', overlay.path);
+  }
   if (audioPath) args.push('-i', audioPath);
 
-  const titleIndex = frames.length;
-  const endIndex = frames.length + 1;
-  const totalFrames = SEGMENT_SECONDS * FPS;
-
+  const totalFrames = Math.round(segmentSeconds * FPS);
   const filters: string[] = [];
 
   frames.forEach((_, index) => {
-    // zoompan kare kare calisir; 'on' o anki kare numarasi.
     const zoom = `min(1+(${ZOOM_END - 1})*on/${totalFrames},${ZOOM_END})`;
     // Tek sayili kareler ters yonde zoomlanir; hep ayni yonde olursa monoton duruyor.
     const expression = index % 2 === 0 ? zoom : `${ZOOM_END + 1}-(${zoom})`;
 
     filters.push(
-      // Kareler zaten ZOOM_END olceginde hazirlandi; burada tekrar buyutmek
-      // kodlamayi dakikalarca uzatiyor ve gorunur bir kazanc saglamiyor.
       `[${index}:v]zoompan=z='${expression}':x='iw/2-(iw/zoom/2)':y='ih/2-(ih/zoom/2)':` +
         `d=${totalFrames}:s=${REEL_WIDTH}x${REEL_HEIGHT}:fps=${FPS},setsar=1[v${index}]`,
     );
   });
 
   const concatInputs = frames.map((_, index) => `[v${index}]`).join('');
-  filters.push(`${concatInputs}concat=n=${frames.length}:v=1:a=0[base]`);
+  filters.push(`${concatInputs}concat=n=${frames.length}:v=1:a=0[stage0]`);
 
-  // Baslik ilk kareyle birlikte girip biraz once cikiyor; kapanis son karede.
-  const total = frames.length * SEGMENT_SECONDS;
-  filters.push(`[base][${titleIndex}:v]overlay=0:0:enable='between(t,0,${SEGMENT_SECONDS + 0.5})'[withTitle]`);
-  filters.push(
+  overlays.forEach((overlay, index) => {
+    const input = `[stage${index}]`;
+    const isLast = index === overlays.length - 1;
     // format=yuv420p sart: kaynak JPEG'ler tam aralikli (yuvj420p) geliyor ve
-    // Instagram bu formati kabul etmiyor. Cikis kodlayicisina birakmak yerine
-    // filtre zincirinde donusturuyoruz.
-    `[withTitle][${endIndex}:v]overlay=0:0:enable='between(t,${total - SEGMENT_SECONDS},${total})',format=yuv420p,setrange=tv[out]`,
-  );
+    // Instagram bu formati kabul etmiyor.
+    const tail = isLast ? ',format=yuv420p,setrange=tv[out]' : `[stage${index + 1}]`;
+
+    filters.push(
+      `${input}[${frames.length + index}:v]overlay=0:0:` +
+        `enable='between(t,${overlay.from},${overlay.to})'${tail}`,
+    );
+  });
 
   args.push('-filter_complex', filters.join(';'), '-map', '[out]');
 
   if (audioPath) {
-    args.push('-map', `${frames.length + 2}:a`, '-c:a', 'aac', '-b:a', '128k', '-shortest');
+    args.push('-map', `${frames.length + overlays.length}:a`, '-c:a', 'aac', '-b:a', '128k', '-shortest');
   }
 
   args.push(
     '-c:v', 'libx264',
     '-preset', 'veryfast',
     '-crf', '23',
-    // Instagram yuv420p disindaki formatlari reddediyor.
     '-pix_fmt', 'yuv420p',
     '-movflags', '+faststart',
     '-r', String(FPS),
