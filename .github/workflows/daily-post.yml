@@ -103,8 +103,11 @@ jobs:
             [ "$i" -lt "$COUNT" ] && sleep 20
           done
 
+      # always(): uretim adimi dusse bile o ana kadar yayinlanan gonderiler
+      # kaydedilmeli. Aksi halde Instagram'a cikan gonderi kayitsiz kaliyor
+      # ve bot ayni bolumu tekrar paylasiyor (toplu calismada yasandi).
       - name: Yayin gecmisini kaydet
-        if: ${{ inputs.dry_run != true }}
+        if: ${{ always() && inputs.dry_run != true }}
         run: |
           git config user.name  "instagram-bot"
           git config user.email "bot@users.noreply.github.com"
