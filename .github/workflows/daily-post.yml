@@ -2,8 +2,11 @@ name: Gunluk Instagram gonderisi
 
 on:
   schedule:
-    # 17:00 UTC = 20:00 Turkiye. Aksam saatleri hem yerel hem Avrupa/Rusya
-    # kitlesinin en aktif oldugu aralik.
+    # Gunde iki gonderi, ikisi farkli bicimde.
+    # 06:00 UTC = 09:00 Turkiye -> fotograf
+    - cron: '0 6 * * *'
+    # 17:00 UTC = 20:00 Turkiye -> reel
+    # Aksam saatleri hem yerel hem Avrupa/Rusya kitlesinin en aktif araligi.
     - cron: '0 17 * * *'
   workflow_dispatch:
     inputs:
@@ -63,7 +66,14 @@ jobs:
           CLOUDINARY_API_KEY: ${{ secrets.CLOUDINARY_API_KEY }}
           CLOUDINARY_API_SECRET: ${{ secrets.CLOUDINARY_API_SECRET }}
         run: |
+          # Hangi cron tetikledi? Bicim buradan belirleniyor; saate bakmak
+          # yerine acikca vermek CI gecikmelerine karsi guvenli.
           FORMAT=""
+          case "${{ github.event.schedule }}" in
+            "0 6 * * *")  FORMAT="-- --image" ;;
+            "0 17 * * *") FORMAT="-- --reel" ;;
+          esac
+          # Elle tetiklemede secilen bicim her zaman onceliklidir.
           [ -n "${{ inputs.format }}" ] && FORMAT="-- --${{ inputs.format }}"
           if [ "${{ inputs.dry_run }}" = "true" ]; then
             npm run post:dry $FORMAT
