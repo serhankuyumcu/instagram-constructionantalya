@@ -11,6 +11,7 @@
       "topics": [],
       "hashtags": [],
       "format": "image",
+      "mediaUsed": [],
       "insights": null
     },
     {
@@ -24,6 +25,7 @@
       "topics": [],
       "hashtags": [],
       "format": "image",
+      "mediaUsed": [],
       "insights": null
     },
     {
@@ -37,6 +39,7 @@
       "topics": [],
       "hashtags": [],
       "format": "image",
+      "mediaUsed": [],
       "insights": null
     },
     {
@@ -71,6 +74,7 @@
         "#homedesign"
       ],
       "format": "image",
+      "mediaUsed": [],
       "insights": null
     },
     {
@@ -101,6 +105,7 @@
         "#luxuryvilla"
       ],
       "format": "reel",
+      "mediaUsed": [],
       "insights": null
     },
     {
@@ -132,6 +137,7 @@
         "#realestate"
       ],
       "format": "reel",
+      "mediaUsed": [],
       "insights": null
     },
     {
@@ -164,6 +170,7 @@
         "#luxurylifestyle"
       ],
       "format": "image",
+      "mediaUsed": [],
       "insights": null
     },
     {
@@ -198,6 +205,7 @@
         "#architecture"
       ],
       "format": "reel",
+      "mediaUsed": [],
       "insights": null
     },
     {
@@ -231,6 +239,7 @@
         "#interiordesign"
       ],
       "format": "image",
+      "mediaUsed": [],
       "insights": null
     },
     {
@@ -266,6 +275,7 @@
         "#dreamhome"
       ],
       "format": "reel",
+      "mediaUsed": [],
       "insights": null
     },
     {
@@ -299,6 +309,7 @@
         "#luxuryhomes"
       ],
       "format": "image",
+      "mediaUsed": [],
       "insights": null
     },
     {
@@ -334,6 +345,7 @@
         "#construction"
       ],
       "format": "image",
+      "mediaUsed": [],
       "insights": null
     },
     {
@@ -366,6 +378,7 @@
         "#moderndesign"
       ],
       "format": "reel",
+      "mediaUsed": [],
       "insights": null
     },
     {
@@ -397,6 +410,7 @@
         "#homedesign"
       ],
       "format": "image",
+      "mediaUsed": [],
       "insights": null
     },
     {
@@ -428,6 +442,7 @@
         "#luxuryvilla"
       ],
       "format": "image",
+      "mediaUsed": [],
       "insights": null
     },
     {
@@ -458,6 +473,7 @@
         "#realestate"
       ],
       "format": "image",
+      "mediaUsed": [],
       "insights": null
     },
     {
@@ -488,6 +504,7 @@
         "#luxurylifestyle"
       ],
       "format": "reel",
+      "mediaUsed": [],
       "insights": null
     },
     {
@@ -518,6 +535,7 @@
         "#architecture"
       ],
       "format": "image",
+      "mediaUsed": [],
       "insights": null
     },
     {
@@ -549,6 +567,43 @@
         "#interiordesign"
       ],
       "format": "reel",
+      "mediaUsed": [],
+      "insights": null
+    },
+    {
+      "unitId": "how-long-to-build-a-villa-in-antalya#1",
+      "articleSlug": "how-long-to-build-a-villa-in-antalya",
+      "heading": "The Short Answer",
+      "imageUrl": "https://constructionantalya.com/assets/blog/timeline-1.webp",
+      "mediaId": "18104879977896436",
+      "permalink": "https://www.instagram.com/p/Dbpt9DenYFw/",
+      "publishedAt": "2026-08-05T08:32:55.697Z",
+      "topics": [
+        "villa",
+        "finishing",
+        "residential",
+        "pool"
+      ],
+      "hashtags": [
+        "#constructionantalya",
+        "#interiorfinishes",
+        "#marble",
+        "#inceişçilik",
+        "#residentialconstruction",
+        "#turkishriviera",
+        "#antalyalife",
+        "#türkiye",
+        "#antalyaemlak",
+        "#investinturkey",
+        "#villaforsale",
+        "#müteahhit",
+        "#inşaat",
+        "#dreamhome"
+      ],
+      "format": "image",
+      "mediaUsed": [
+        "https://constructionantalya.com/assets/blog/timeline-1.webp"
+      ],
       "insights": null
     }
   ]
