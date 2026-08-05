@@ -30,6 +30,7 @@ function makePost(overrides: Partial<PostRecord> = {}): PostRecord {
     topics: ['shell'],
     hashtags: ['#antalya'],
     format: 'image',
+    mediaUsed: [],
     insights: makeInsights(),
     ...overrides,
   };

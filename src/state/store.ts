@@ -47,6 +47,16 @@ const recordSchema = z.object({
   /** Gonderi bicimi. Eski kayitlarda yok; hepsi fotograf gonderisiydi. */
   format: z.enum(['image', 'reel']).default('image'),
 
+  /**
+   * Gonderide kullanilan TUM gorseller.
+   *
+   * Yalnizca imageUrl kaydetmek yetmiyordu: bir reel dort fotograf
+   * kullaniyor ama kayda biri giriyordu, kalan uc kare tekrar onleyiciye
+   * hic gorunmuyor ve surekli yeniden seciliyordu. Tekrar sikayetinin
+   * kok sebebi buydu.
+   */
+  mediaUsed: z.array(z.string()).default([]),
+
   insights: insightsSchema.nullable().default(null),
 });
 
@@ -92,8 +102,14 @@ export function postedUnitIds(state: State): Set<string> {
   return new Set(state.posts.map((post) => post.unitId));
 }
 
+/**
+ * Yakin zamanda kullanilan tum gorseller, eskiden yeniye.
+ * Eski kayitlarda mediaUsed yok; onlarda imageUrl'e duseriz.
+ */
 export function recentImageUrls(state: State): string[] {
-  return state.posts.map((post) => post.imageUrl);
+  return state.posts.flatMap((post) =>
+    post.mediaUsed.length > 0 ? post.mediaUsed : [post.imageUrl],
+  );
 }
 
 function isNotFound(error: unknown): boolean {

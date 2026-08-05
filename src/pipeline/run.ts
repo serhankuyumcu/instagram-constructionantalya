@@ -81,6 +81,8 @@ export async function runDailyPost(config: Config, log: Logger): Promise<RunResu
   let media: Buffer;
   /** Reel'de kullanilan ilk fotograf; tekrar onleme bunun uzerinden yurur. */
   let reelPhotoPath: string | null = null;
+  /** Gonderide kullanilan tum gorseller; tekrar onleme bunlarin uzerinden yurur. */
+  let mediaUsed: string[] = [];
 
   if (format === 'reel') {
     const tip = await generateTip(anthropic, unit);
@@ -92,6 +94,7 @@ export async function runDailyPost(config: Config, log: Logger): Promise<RunResu
     // cikan videolar hep ayni fotograflari gosteriyordu.
     const photos = selectPhotos(await loadPhotos(), topics, 4, recentImageUrls(state));
     reelPhotoPath = photos[0]!.path;
+    mediaUsed = photos.map((p) => p.path);
     log(`Fotograflar: ${photos.map((p) => p.path.split('/').pop()).join(', ')}`);
 
     media = await composeTipReel({
@@ -154,20 +157,12 @@ export async function runDailyPost(config: Config, log: Logger): Promise<RunResu
       topics,
       hashtags: [...hashtags.tags],
       format,
+      mediaUsed: mediaUsed.length > 0 ? mediaUsed : [choice.image.url],
       insights: null,
     }),
   );
 
   return { unit, isRecycled, format, sourceImageUrl: choice.image.url, caption, media, published };
-}
-
-/**
- * Reels icin gorsel dizisi: secilen kare basa alinir, yazinin kalan
- * kareleri ardina eklenir. Yazida yeterli gorsel yoksa bastan dolanilir.
- */
-function reelImages(unit: PostUnit, firstUrl: string, count = 4): string[] {
-  const pool = [firstUrl, ...unit.images.map((image) => image.url).filter((url) => url !== firstUrl)];
-  return Array.from({ length: count }, (_, index) => pool[index % pool.length]!);
 }
 
 /** Gorselin ust satirindaki kucuk etiket: once konu, yoksa yazinin adi. */

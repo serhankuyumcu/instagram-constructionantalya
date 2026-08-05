@@ -72,6 +72,7 @@ async function main(): Promise<void> {
       topics,
       hashtags: [...hashtags.tags],
       format: 'image',
+      mediaUsed: [choice.image.url],
       insights: null,
     });
   }

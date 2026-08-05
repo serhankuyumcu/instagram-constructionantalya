@@ -83,6 +83,7 @@ export function makeState(unitIds: readonly string[] = [], imageUrls: readonly s
       topics: [],
       hashtags: [],
       format: 'image' as const,
+      mediaUsed: [],
       insights: null,
     })),
   };

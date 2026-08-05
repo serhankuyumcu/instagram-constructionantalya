@@ -86,6 +86,7 @@ describe('durum kaydi', () => {
       topics: [],
       hashtags: [],
       format: 'image',
+      mediaUsed: [],
       insights: null,
     });
 

@@ -121,6 +121,7 @@ async function main(): Promise<void> {
       topics,
       hashtags: [...hashtags.tags],
       format,
+      mediaUsed: [unit.images[0]?.url ?? ''],
       insights: null,
     });
 
