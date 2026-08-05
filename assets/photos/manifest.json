@@ -5,7 +5,9 @@
       "interior",
       "finishing"
     ],
-    "orientation": "landscape"
+    "orientation": "landscape",
+    "width": 2000,
+    "height": 1622
   },
   {
     "path": "/assets/photos/02-living-room-marble-wall.webp",
@@ -13,14 +15,18 @@
       "interior",
       "finishing"
     ],
-    "orientation": "landscape"
+    "orientation": "landscape",
+    "width": 2000,
+    "height": 1501
   },
   {
     "path": "/assets/photos/03-living-room-pendants.webp",
     "topics": [
       "interior"
     ],
-    "orientation": "portrait"
+    "orientation": "portrait",
+    "width": 1548,
+    "height": 2000
   },
   {
     "path": "/assets/photos/04-street-building-antalya.webp",
@@ -28,7 +34,9 @@
       "exterior",
       "residential"
     ],
-    "orientation": "portrait"
+    "orientation": "portrait",
+    "width": 1333,
+    "height": 2000
   },
   {
     "path": "/assets/photos/05-apartment-facade-white.webp",
@@ -36,14 +44,18 @@
       "residential",
       "exterior"
     ],
-    "orientation": "portrait"
+    "orientation": "portrait",
+    "width": 1333,
+    "height": 2000
   },
   {
     "path": "/assets/photos/06-historic-stone-facade.webp",
     "topics": [
       "exterior"
     ],
-    "orientation": "portrait"
+    "orientation": "portrait",
+    "width": 1333,
+    "height": 2000
   },
   {
     "path": "/assets/photos/07-architectural-detail-cream.webp",
@@ -51,28 +63,36 @@
       "interior",
       "exterior"
     ],
-    "orientation": "portrait"
+    "orientation": "portrait",
+    "width": 1500,
+    "height": 2000
   },
   {
     "path": "/assets/photos/08-curved-facade-modern.webp",
     "topics": [
       "exterior"
     ],
-    "orientation": "portrait"
+    "orientation": "portrait",
+    "width": 1333,
+    "height": 2000
   },
   {
     "path": "/assets/photos/09-dining-area-simple.webp",
     "topics": [
       "interior"
     ],
-    "orientation": "landscape"
+    "orientation": "landscape",
+    "width": 2000,
+    "height": 1333
   },
   {
     "path": "/assets/photos/10-antalya-arch-palms.webp",
     "topics": [
       "exterior"
     ],
-    "orientation": "portrait"
+    "orientation": "portrait",
+    "width": 1500,
+    "height": 2000
   },
   {
     "path": "/assets/photos/11-niche-wall-seating.webp",
@@ -80,7 +100,9 @@
       "interior",
       "finishing"
     ],
-    "orientation": "portrait"
+    "orientation": "portrait",
+    "width": 1125,
+    "height": 2000
   },
   {
     "path": "/assets/photos/12-villa-lounge-staircase.webp",
@@ -88,7 +110,9 @@
       "villa",
       "interior"
     ],
-    "orientation": "portrait"
+    "orientation": "portrait",
+    "width": 1333,
+    "height": 2000
   },
   {
     "path": "/assets/photos/13-villa-lounge-dark.webp",
@@ -96,14 +120,18 @@
       "villa",
       "interior"
     ],
-    "orientation": "portrait"
+    "orientation": "portrait",
+    "width": 1333,
+    "height": 2000
   },
   {
     "path": "/assets/photos/14-old-town-street.webp",
     "topics": [
       "exterior"
     ],
-    "orientation": "portrait"
+    "orientation": "portrait",
+    "width": 1333,
+    "height": 2000
   },
   {
     "path": "/assets/photos/15-joinery-shelf-detail.webp",
@@ -111,21 +139,27 @@
       "finishing",
       "interior"
     ],
-    "orientation": "portrait"
+    "orientation": "portrait",
+    "width": 1333,
+    "height": 2000
   },
   {
     "path": "/assets/photos/16-garden-terrace-table.webp",
     "topics": [
       "exterior"
     ],
-    "orientation": "portrait"
+    "orientation": "portrait",
+    "width": 1333,
+    "height": 2000
   },
   {
     "path": "/assets/photos/17-ancient-columns-side.webp",
     "topics": [
       "exterior"
     ],
-    "orientation": "portrait"
+    "orientation": "portrait",
+    "width": 1125,
+    "height": 2000
   },
   {
     "path": "/assets/photos/18-living-room-led-coves.webp",
@@ -133,7 +167,9 @@
       "interior",
       "finishing"
     ],
-    "orientation": "landscape"
+    "orientation": "landscape",
+    "width": 2000,
+    "height": 1125
   },
   {
     "path": "/assets/photos/19-dining-room-bright-stairs.webp",
@@ -141,7 +177,9 @@
       "villa",
       "interior"
     ],
-    "orientation": "portrait"
+    "orientation": "portrait",
+    "width": 1333,
+    "height": 2000
   },
   {
     "path": "/assets/photos/20-dining-nook-rattan.webp",
@@ -149,7 +187,9 @@
       "interior",
       "finishing"
     ],
-    "orientation": "portrait"
+    "orientation": "portrait",
+    "width": 1333,
+    "height": 2000
   },
   {
     "path": "/assets/photos/21-stone-facade-terrace.webp",
@@ -157,7 +197,9 @@
       "villa",
       "exterior"
     ],
-    "orientation": "portrait"
+    "orientation": "portrait",
+    "width": 1366,
+    "height": 2000
   },
   {
     "path": "/assets/photos/22-apartment-bougainvillea.webp",
@@ -165,7 +207,9 @@
       "residential",
       "exterior"
     ],
-    "orientation": "portrait"
+    "orientation": "portrait",
+    "width": 1333,
+    "height": 2000
   },
   {
     "path": "/assets/photos/23-structural-lattice.webp",
@@ -173,7 +217,9 @@
       "shell",
       "exterior"
     ],
-    "orientation": "landscape"
+    "orientation": "landscape",
+    "width": 2000,
+    "height": 1335
   },
   {
     "path": "/assets/photos/24-wood-panelled-corridor.webp",
@@ -181,7 +227,9 @@
       "interior",
       "finishing"
     ],
-    "orientation": "landscape"
+    "orientation": "landscape",
+    "width": 2000,
+    "height": 1428
   },
   {
     "path": "/assets/photos/25-kitchen-modern-dark.webp",
@@ -189,21 +237,27 @@
       "interior",
       "finishing"
     ],
-    "orientation": "landscape"
+    "orientation": "landscape",
+    "width": 2000,
+    "height": 1428
   },
   {
     "path": "/assets/photos/26-living-room-round-pendants.webp",
     "topics": [
       "interior"
     ],
-    "orientation": "landscape"
+    "orientation": "landscape",
+    "width": 2000,
+    "height": 1316
   },
   {
     "path": "/assets/photos/27-living-room-grey-sofa.webp",
     "topics": [
       "interior"
     ],
-    "orientation": "landscape"
+    "orientation": "landscape",
+    "width": 2000,
+    "height": 2000
   },
   {
     "path": "/assets/photos/28-textured-wall-led.webp",
@@ -211,7 +265,9 @@
       "finishing",
       "interior"
     ],
-    "orientation": "portrait"
+    "orientation": "portrait",
+    "width": 1334,
+    "height": 2000
   },
   {
     "path": "/assets/photos/29-restoration-interior.webp",
@@ -219,13 +275,3271 @@
       "shell",
       "exterior"
     ],
-    "orientation": "portrait"
+    "orientation": "portrait",
+    "width": 1333,
+    "height": 2000
   },
   {
     "path": "/assets/photos/30-old-town-palms.webp",
     "topics": [
       "exterior"
     ],
-    "orientation": "portrait"
+    "orientation": "portrait",
+    "width": 1500,
+    "height": 2000
+  },
+  {
+    "path": "/assets/photos/projects/kempinski-hotel-dome-belek--cover.webp",
+    "topics": [
+      "hotel",
+      "shell",
+      "exterior"
+    ],
+    "orientation": "landscape",
+    "project": "kempinski-hotel-dome-belek",
+    "width": 1920,
+    "height": 1238
+  },
+  {
+    "path": "/assets/photos/projects/kempinski-hotel-dome-belek--finished-0905c6c0.webp",
+    "topics": [
+      "hotel",
+      "finishing",
+      "interior"
+    ],
+    "orientation": "landscape",
+    "project": "kempinski-hotel-dome-belek",
+    "width": 1200,
+    "height": 800
+  },
+  {
+    "path": "/assets/photos/projects/kempinski-hotel-dome-belek--finished-31d50576.webp",
+    "topics": [
+      "hotel",
+      "finishing",
+      "interior"
+    ],
+    "orientation": "landscape",
+    "project": "kempinski-hotel-dome-belek",
+    "width": 1200,
+    "height": 800
+  },
+  {
+    "path": "/assets/photos/projects/kempinski-hotel-dome-belek--finished-9676863f.webp",
+    "topics": [
+      "hotel",
+      "finishing",
+      "interior"
+    ],
+    "orientation": "landscape",
+    "project": "kempinski-hotel-dome-belek",
+    "width": 1200,
+    "height": 945
+  },
+  {
+    "path": "/assets/photos/projects/kempinski-hotel-dome-belek--finished-f01.webp",
+    "topics": [
+      "hotel",
+      "finishing",
+      "interior"
+    ],
+    "orientation": "landscape",
+    "project": "kempinski-hotel-dome-belek",
+    "width": 1200,
+    "height": 925
+  },
+  {
+    "path": "/assets/photos/projects/kempinski-hotel-dome-belek--finished-f02.webp",
+    "topics": [
+      "hotel",
+      "finishing",
+      "interior"
+    ],
+    "orientation": "landscape",
+    "project": "kempinski-hotel-dome-belek",
+    "width": 1200,
+    "height": 800
+  },
+  {
+    "path": "/assets/photos/projects/kempinski-hotel-dome-belek--finished-f03.webp",
+    "topics": [
+      "hotel",
+      "finishing",
+      "interior"
+    ],
+    "orientation": "landscape",
+    "project": "kempinski-hotel-dome-belek",
+    "width": 1200,
+    "height": 800
+  },
+  {
+    "path": "/assets/photos/projects/kempinski-hotel-dome-belek--finished-f04.webp",
+    "topics": [
+      "hotel",
+      "finishing",
+      "interior"
+    ],
+    "orientation": "landscape",
+    "project": "kempinski-hotel-dome-belek",
+    "width": 1200,
+    "height": 800
+  },
+  {
+    "path": "/assets/photos/projects/kempinski-hotel-dome-belek--finished-f05.webp",
+    "topics": [
+      "hotel",
+      "finishing",
+      "interior"
+    ],
+    "orientation": "landscape",
+    "project": "kempinski-hotel-dome-belek",
+    "width": 1200,
+    "height": 800
+  },
+  {
+    "path": "/assets/photos/projects/kempinski-hotel-dome-belek--finished-f06.webp",
+    "topics": [
+      "hotel",
+      "finishing",
+      "interior"
+    ],
+    "orientation": "landscape",
+    "project": "kempinski-hotel-dome-belek",
+    "width": 1200,
+    "height": 800
+  },
+  {
+    "path": "/assets/photos/projects/kempinski-hotel-dome-belek--finished-f07.webp",
+    "topics": [
+      "hotel",
+      "finishing",
+      "interior"
+    ],
+    "orientation": "landscape",
+    "project": "kempinski-hotel-dome-belek",
+    "width": 1200,
+    "height": 1087
+  },
+  {
+    "path": "/assets/photos/projects/kempinski-hotel-dome-belek--finished-f08.webp",
+    "topics": [
+      "hotel",
+      "finishing",
+      "interior"
+    ],
+    "orientation": "landscape",
+    "project": "kempinski-hotel-dome-belek",
+    "width": 1200,
+    "height": 800
+  },
+  {
+    "path": "/assets/photos/projects/kempinski-hotel-dome-belek--finished-f09.webp",
+    "topics": [
+      "hotel",
+      "finishing",
+      "interior"
+    ],
+    "orientation": "landscape",
+    "project": "kempinski-hotel-dome-belek",
+    "width": 1200,
+    "height": 945
+  },
+  {
+    "path": "/assets/photos/projects/kempinski-hotel-dome-belek--finished-f10.webp",
+    "topics": [
+      "hotel",
+      "finishing",
+      "interior"
+    ],
+    "orientation": "landscape",
+    "project": "kempinski-hotel-dome-belek",
+    "width": 1200,
+    "height": 800
+  },
+  {
+    "path": "/assets/photos/projects/kempinski-hotel-dome-belek--finished-f11.webp",
+    "topics": [
+      "hotel",
+      "finishing",
+      "interior"
+    ],
+    "orientation": "landscape",
+    "project": "kempinski-hotel-dome-belek",
+    "width": 1200,
+    "height": 674
+  },
+  {
+    "path": "/assets/photos/projects/kempinski-hotel-dome-belek--finished-f12.webp",
+    "topics": [
+      "hotel",
+      "finishing",
+      "interior"
+    ],
+    "orientation": "landscape",
+    "project": "kempinski-hotel-dome-belek",
+    "width": 1200,
+    "height": 800
+  },
+  {
+    "path": "/assets/photos/projects/kempinski-hotel-dome-belek--finished-f13.webp",
+    "topics": [
+      "hotel",
+      "finishing",
+      "interior"
+    ],
+    "orientation": "landscape",
+    "project": "kempinski-hotel-dome-belek",
+    "width": 1200,
+    "height": 800
+  },
+  {
+    "path": "/assets/photos/projects/kempinski-hotel-dome-belek--g01.webp",
+    "topics": [
+      "hotel",
+      "shell",
+      "exterior"
+    ],
+    "orientation": "landscape",
+    "project": "kempinski-hotel-dome-belek",
+    "width": 1500,
+    "height": 1125
+  },
+  {
+    "path": "/assets/photos/projects/kempinski-hotel-dome-belek--g02.webp",
+    "topics": [
+      "hotel",
+      "shell",
+      "exterior"
+    ],
+    "orientation": "landscape",
+    "project": "kempinski-hotel-dome-belek",
+    "width": 1500,
+    "height": 1125
+  },
+  {
+    "path": "/assets/photos/projects/kempinski-hotel-dome-belek--g03.webp",
+    "topics": [
+      "hotel",
+      "shell",
+      "exterior"
+    ],
+    "orientation": "landscape",
+    "project": "kempinski-hotel-dome-belek",
+    "width": 1500,
+    "height": 845
+  },
+  {
+    "path": "/assets/photos/projects/kempinski-hotel-dome-belek--g04.webp",
+    "topics": [
+      "hotel",
+      "shell",
+      "exterior"
+    ],
+    "orientation": "portrait",
+    "project": "kempinski-hotel-dome-belek",
+    "width": 845,
+    "height": 1500
+  },
+  {
+    "path": "/assets/photos/projects/kempinski-hotel-dome-belek--g05.webp",
+    "topics": [
+      "hotel",
+      "shell",
+      "exterior"
+    ],
+    "orientation": "portrait",
+    "project": "kempinski-hotel-dome-belek",
+    "width": 845,
+    "height": 1500
+  },
+  {
+    "path": "/assets/photos/projects/kempinski-hotel-dome-belek--g06.webp",
+    "topics": [
+      "hotel",
+      "shell",
+      "exterior"
+    ],
+    "orientation": "portrait",
+    "project": "kempinski-hotel-dome-belek",
+    "width": 845,
+    "height": 1500
+  },
+  {
+    "path": "/assets/photos/projects/kempinski-hotel-dome-belek--g07.webp",
+    "topics": [
+      "hotel",
+      "shell",
+      "exterior"
+    ],
+    "orientation": "portrait",
+    "project": "kempinski-hotel-dome-belek",
+    "width": 1013,
+    "height": 1800
+  },
+  {
+    "path": "/assets/photos/projects/kempinski-hotel-dome-belek--g08.webp",
+    "topics": [
+      "hotel",
+      "shell",
+      "exterior"
+    ],
+    "orientation": "portrait",
+    "project": "kempinski-hotel-dome-belek",
+    "width": 845,
+    "height": 1500
+  },
+  {
+    "path": "/assets/photos/projects/kempinski-hotel-dome-belek--g09.webp",
+    "topics": [
+      "hotel",
+      "shell",
+      "exterior"
+    ],
+    "orientation": "portrait",
+    "project": "kempinski-hotel-dome-belek",
+    "width": 1125,
+    "height": 1500
+  },
+  {
+    "path": "/assets/photos/projects/kempinski-hotel-dome-belek--g10.webp",
+    "topics": [
+      "hotel",
+      "shell",
+      "exterior"
+    ],
+    "orientation": "portrait",
+    "project": "kempinski-hotel-dome-belek",
+    "width": 845,
+    "height": 1500
+  },
+  {
+    "path": "/assets/photos/projects/kempinski-hotel-dome-belek--g11.webp",
+    "topics": [
+      "hotel",
+      "shell",
+      "exterior"
+    ],
+    "orientation": "landscape",
+    "project": "kempinski-hotel-dome-belek",
+    "width": 1500,
+    "height": 845
+  },
+  {
+    "path": "/assets/photos/projects/kempinski-hotel-dome-belek--g12.webp",
+    "topics": [
+      "hotel",
+      "shell",
+      "exterior"
+    ],
+    "orientation": "portrait",
+    "project": "kempinski-hotel-dome-belek",
+    "width": 845,
+    "height": 1500
+  },
+  {
+    "path": "/assets/photos/projects/kempinski-hotel-dome-belek--g13.webp",
+    "topics": [
+      "hotel",
+      "shell",
+      "exterior"
+    ],
+    "orientation": "portrait",
+    "project": "kempinski-hotel-dome-belek",
+    "width": 845,
+    "height": 1500
+  },
+  {
+    "path": "/assets/photos/projects/kempinski-hotel-dome-belek--g14.webp",
+    "topics": [
+      "hotel",
+      "shell",
+      "exterior"
+    ],
+    "orientation": "portrait",
+    "project": "kempinski-hotel-dome-belek",
+    "width": 1125,
+    "height": 1500
+  },
+  {
+    "path": "/assets/photos/projects/kempinski-hotel-dome-belek--g15.webp",
+    "topics": [
+      "hotel",
+      "shell",
+      "exterior"
+    ],
+    "orientation": "portrait",
+    "project": "kempinski-hotel-dome-belek",
+    "width": 1125,
+    "height": 1500
+  },
+  {
+    "path": "/assets/photos/projects/kempinski-hotel-dome-belek--g16.webp",
+    "topics": [
+      "hotel",
+      "shell",
+      "exterior"
+    ],
+    "orientation": "portrait",
+    "project": "kempinski-hotel-dome-belek",
+    "width": 845,
+    "height": 1500
+  },
+  {
+    "path": "/assets/photos/projects/kempinski-hotel-dome-belek--g17.webp",
+    "topics": [
+      "hotel",
+      "shell",
+      "exterior"
+    ],
+    "orientation": "portrait",
+    "project": "kempinski-hotel-dome-belek",
+    "width": 1350,
+    "height": 1800
+  },
+  {
+    "path": "/assets/photos/projects/kempinski-hotel-dome-belek--g18.webp",
+    "topics": [
+      "hotel",
+      "shell",
+      "exterior"
+    ],
+    "orientation": "portrait",
+    "project": "kempinski-hotel-dome-belek",
+    "width": 1125,
+    "height": 1500
+  },
+  {
+    "path": "/assets/photos/projects/kempinski-hotel-dome-belek--g19.webp",
+    "topics": [
+      "hotel",
+      "shell",
+      "exterior"
+    ],
+    "orientation": "portrait",
+    "project": "kempinski-hotel-dome-belek",
+    "width": 845,
+    "height": 1500
+  },
+  {
+    "path": "/assets/photos/projects/kempinski-hotel-dome-belek--g20.webp",
+    "topics": [
+      "hotel",
+      "shell",
+      "exterior"
+    ],
+    "orientation": "portrait",
+    "project": "kempinski-hotel-dome-belek",
+    "width": 845,
+    "height": 1500
+  },
+  {
+    "path": "/assets/photos/projects/kaya-palazzo-golf-resort-belek--cover.webp",
+    "topics": [
+      "hotel",
+      "shell",
+      "exterior"
+    ],
+    "orientation": "landscape",
+    "project": "kaya-palazzo-golf-resort-belek",
+    "width": 1024,
+    "height": 683
+  },
+  {
+    "path": "/assets/photos/projects/kaya-palazzo-golf-resort-belek--finished-2b8e5214.webp",
+    "topics": [
+      "hotel",
+      "finishing",
+      "interior"
+    ],
+    "orientation": "landscape",
+    "project": "kaya-palazzo-golf-resort-belek",
+    "width": 1200,
+    "height": 674
+  },
+  {
+    "path": "/assets/photos/projects/kaya-palazzo-golf-resort-belek--finished-3f7cfed5.webp",
+    "topics": [
+      "hotel",
+      "finishing",
+      "interior"
+    ],
+    "orientation": "landscape",
+    "project": "kaya-palazzo-golf-resort-belek",
+    "width": 1200,
+    "height": 705
+  },
+  {
+    "path": "/assets/photos/projects/kaya-palazzo-golf-resort-belek--finished-56d94ca8.webp",
+    "topics": [
+      "hotel",
+      "finishing",
+      "interior"
+    ],
+    "orientation": "landscape",
+    "project": "kaya-palazzo-golf-resort-belek",
+    "width": 1200,
+    "height": 798
+  },
+  {
+    "path": "/assets/photos/projects/kaya-palazzo-golf-resort-belek--finished-f01.webp",
+    "topics": [
+      "hotel",
+      "finishing",
+      "interior"
+    ],
+    "orientation": "landscape",
+    "project": "kaya-palazzo-golf-resort-belek",
+    "width": 1200,
+    "height": 1033
+  },
+  {
+    "path": "/assets/photos/projects/kaya-palazzo-golf-resort-belek--finished-f02.webp",
+    "topics": [
+      "hotel",
+      "finishing",
+      "interior"
+    ],
+    "orientation": "landscape",
+    "project": "kaya-palazzo-golf-resort-belek",
+    "width": 1200,
+    "height": 800
+  },
+  {
+    "path": "/assets/photos/projects/kaya-palazzo-golf-resort-belek--finished-f03.webp",
+    "topics": [
+      "hotel",
+      "finishing",
+      "interior"
+    ],
+    "orientation": "landscape",
+    "project": "kaya-palazzo-golf-resort-belek",
+    "width": 1200,
+    "height": 674
+  },
+  {
+    "path": "/assets/photos/projects/kaya-palazzo-golf-resort-belek--finished-f04.webp",
+    "topics": [
+      "hotel",
+      "finishing",
+      "interior"
+    ],
+    "orientation": "landscape",
+    "project": "kaya-palazzo-golf-resort-belek",
+    "width": 1200,
+    "height": 705
+  },
+  {
+    "path": "/assets/photos/projects/kaya-palazzo-golf-resort-belek--finished-f05.webp",
+    "topics": [
+      "hotel",
+      "finishing",
+      "interior"
+    ],
+    "orientation": "landscape",
+    "project": "kaya-palazzo-golf-resort-belek",
+    "width": 1200,
+    "height": 798
+  },
+  {
+    "path": "/assets/photos/projects/kaya-palazzo-golf-resort-belek--finished-f06.webp",
+    "topics": [
+      "hotel",
+      "finishing",
+      "interior"
+    ],
+    "orientation": "landscape",
+    "project": "kaya-palazzo-golf-resort-belek",
+    "width": 1200,
+    "height": 800
+  },
+  {
+    "path": "/assets/photos/projects/kaya-palazzo-golf-resort-belek--finished-f07.webp",
+    "topics": [
+      "hotel",
+      "finishing",
+      "interior"
+    ],
+    "orientation": "portrait",
+    "project": "kaya-palazzo-golf-resort-belek",
+    "width": 1200,
+    "height": 1202
+  },
+  {
+    "path": "/assets/photos/projects/kaya-palazzo-golf-resort-belek--g01.webp",
+    "topics": [
+      "hotel",
+      "shell",
+      "exterior"
+    ],
+    "orientation": "portrait",
+    "project": "kaya-palazzo-golf-resort-belek",
+    "width": 855,
+    "height": 1500
+  },
+  {
+    "path": "/assets/photos/projects/kaya-palazzo-golf-resort-belek--g02.webp",
+    "topics": [
+      "hotel",
+      "shell",
+      "exterior"
+    ],
+    "orientation": "portrait",
+    "project": "kaya-palazzo-golf-resort-belek",
+    "width": 999,
+    "height": 1500
+  },
+  {
+    "path": "/assets/photos/projects/kaya-palazzo-golf-resort-belek--g03.webp",
+    "topics": [
+      "hotel",
+      "shell",
+      "exterior"
+    ],
+    "orientation": "portrait",
+    "project": "kaya-palazzo-golf-resort-belek",
+    "width": 1223,
+    "height": 1800
+  },
+  {
+    "path": "/assets/photos/projects/kaya-palazzo-golf-resort-belek--g04.webp",
+    "topics": [
+      "hotel",
+      "shell",
+      "exterior"
+    ],
+    "orientation": "portrait",
+    "project": "kaya-palazzo-golf-resort-belek",
+    "width": 1034,
+    "height": 1500
+  },
+  {
+    "path": "/assets/photos/projects/kaya-palazzo-golf-resort-belek--g05.webp",
+    "topics": [
+      "hotel",
+      "shell",
+      "exterior"
+    ],
+    "orientation": "portrait",
+    "project": "kaya-palazzo-golf-resort-belek",
+    "width": 999,
+    "height": 1500
+  },
+  {
+    "path": "/assets/photos/projects/kaya-palazzo-golf-resort-belek--g06.webp",
+    "topics": [
+      "hotel",
+      "shell",
+      "exterior"
+    ],
+    "orientation": "portrait",
+    "project": "kaya-palazzo-golf-resort-belek",
+    "width": 1084,
+    "height": 1800
+  },
+  {
+    "path": "/assets/photos/projects/kaya-palazzo-golf-resort-belek--g10.webp",
+    "topics": [
+      "hotel",
+      "shell",
+      "exterior"
+    ],
+    "orientation": "portrait",
+    "project": "kaya-palazzo-golf-resort-belek",
+    "width": 1132,
+    "height": 1800
+  },
+  {
+    "path": "/assets/photos/projects/kaya-palazzo-golf-resort-belek--g14.webp",
+    "topics": [
+      "hotel",
+      "shell",
+      "exterior"
+    ],
+    "orientation": "portrait",
+    "project": "kaya-palazzo-golf-resort-belek",
+    "width": 1003,
+    "height": 1500
+  },
+  {
+    "path": "/assets/photos/projects/sirene-hotel-bodrum--1.webp",
+    "topics": [
+      "hotel",
+      "shell",
+      "exterior"
+    ],
+    "orientation": "landscape",
+    "project": "sirene-hotel-bodrum",
+    "width": 1600,
+    "height": 900
+  },
+  {
+    "path": "/assets/photos/projects/sirene-hotel-bodrum--cover.webp",
+    "topics": [
+      "hotel",
+      "shell",
+      "exterior"
+    ],
+    "orientation": "landscape",
+    "project": "sirene-hotel-bodrum",
+    "width": 1600,
+    "height": 900
+  },
+  {
+    "path": "/assets/photos/projects/sirene-hotel-bodrum--finished-f01.webp",
+    "topics": [
+      "hotel",
+      "finishing",
+      "interior"
+    ],
+    "orientation": "landscape",
+    "project": "sirene-hotel-bodrum",
+    "width": 1500,
+    "height": 844
+  },
+  {
+    "path": "/assets/photos/projects/sirene-hotel-bodrum--finished-f02.webp",
+    "topics": [
+      "hotel",
+      "finishing",
+      "interior"
+    ],
+    "orientation": "landscape",
+    "project": "sirene-hotel-bodrum",
+    "width": 1500,
+    "height": 844
+  },
+  {
+    "path": "/assets/photos/projects/sirene-hotel-bodrum--finished-f03.webp",
+    "topics": [
+      "hotel",
+      "finishing",
+      "interior"
+    ],
+    "orientation": "landscape",
+    "project": "sirene-hotel-bodrum",
+    "width": 1500,
+    "height": 844
+  },
+  {
+    "path": "/assets/photos/projects/sirene-hotel-bodrum--finished-f04.webp",
+    "topics": [
+      "hotel",
+      "finishing",
+      "interior"
+    ],
+    "orientation": "landscape",
+    "project": "sirene-hotel-bodrum",
+    "width": 1500,
+    "height": 1000
+  },
+  {
+    "path": "/assets/photos/projects/sirene-hotel-bodrum--finished-f05.webp",
+    "topics": [
+      "hotel",
+      "finishing",
+      "interior"
+    ],
+    "orientation": "landscape",
+    "project": "sirene-hotel-bodrum",
+    "width": 1700,
+    "height": 1133
+  },
+  {
+    "path": "/assets/photos/projects/sirene-hotel-bodrum--finished-f06.webp",
+    "topics": [
+      "hotel",
+      "finishing",
+      "interior"
+    ],
+    "orientation": "landscape",
+    "project": "sirene-hotel-bodrum",
+    "width": 1500,
+    "height": 1000
+  },
+  {
+    "path": "/assets/photos/projects/sirene-hotel-bodrum--finished-f07.webp",
+    "topics": [
+      "hotel",
+      "finishing",
+      "interior"
+    ],
+    "orientation": "landscape",
+    "project": "sirene-hotel-bodrum",
+    "width": 1500,
+    "height": 843
+  },
+  {
+    "path": "/assets/photos/projects/sirene-hotel-bodrum--finished-f08.webp",
+    "topics": [
+      "hotel",
+      "finishing",
+      "interior"
+    ],
+    "orientation": "landscape",
+    "project": "sirene-hotel-bodrum",
+    "width": 1500,
+    "height": 843
+  },
+  {
+    "path": "/assets/photos/projects/sirene-hotel-bodrum--finished-f09.webp",
+    "topics": [
+      "hotel",
+      "finishing",
+      "interior"
+    ],
+    "orientation": "landscape",
+    "project": "sirene-hotel-bodrum",
+    "width": 1500,
+    "height": 1000
+  },
+  {
+    "path": "/assets/photos/projects/sirene-hotel-bodrum--finished-f10.webp",
+    "topics": [
+      "hotel",
+      "finishing",
+      "interior"
+    ],
+    "orientation": "landscape",
+    "project": "sirene-hotel-bodrum",
+    "width": 1500,
+    "height": 1000
+  },
+  {
+    "path": "/assets/photos/projects/sirene-hotel-bodrum--finished-f11.webp",
+    "topics": [
+      "hotel",
+      "finishing",
+      "interior"
+    ],
+    "orientation": "landscape",
+    "project": "sirene-hotel-bodrum",
+    "width": 1500,
+    "height": 1000
+  },
+  {
+    "path": "/assets/photos/projects/sirene-hotel-bodrum--finished-f12.webp",
+    "topics": [
+      "hotel",
+      "finishing",
+      "interior"
+    ],
+    "orientation": "landscape",
+    "project": "sirene-hotel-bodrum",
+    "width": 1500,
+    "height": 1000
+  },
+  {
+    "path": "/assets/photos/projects/sirene-hotel-bodrum--finished-f13.webp",
+    "topics": [
+      "hotel",
+      "finishing",
+      "interior"
+    ],
+    "orientation": "landscape",
+    "project": "sirene-hotel-bodrum",
+    "width": 1700,
+    "height": 1133
+  },
+  {
+    "path": "/assets/photos/projects/sirene-hotel-bodrum--finished-f14.webp",
+    "topics": [
+      "hotel",
+      "finishing",
+      "interior"
+    ],
+    "orientation": "landscape",
+    "project": "sirene-hotel-bodrum",
+    "width": 1700,
+    "height": 1126
+  },
+  {
+    "path": "/assets/photos/projects/sirene-hotel-bodrum--finished-f15.webp",
+    "topics": [
+      "hotel",
+      "finishing",
+      "interior"
+    ],
+    "orientation": "landscape",
+    "project": "sirene-hotel-bodrum",
+    "width": 1700,
+    "height": 1133
+  },
+  {
+    "path": "/assets/photos/projects/sirene-hotel-bodrum--finished-f16.webp",
+    "topics": [
+      "hotel",
+      "finishing",
+      "interior"
+    ],
+    "orientation": "landscape",
+    "project": "sirene-hotel-bodrum",
+    "width": 1500,
+    "height": 1000
+  },
+  {
+    "path": "/assets/photos/projects/sirene-hotel-bodrum--finished-f17.webp",
+    "topics": [
+      "hotel",
+      "finishing",
+      "interior"
+    ],
+    "orientation": "landscape",
+    "project": "sirene-hotel-bodrum",
+    "width": 1700,
+    "height": 1133
+  },
+  {
+    "path": "/assets/photos/projects/sirene-hotel-bodrum--finished-f18.webp",
+    "topics": [
+      "hotel",
+      "finishing",
+      "interior"
+    ],
+    "orientation": "landscape",
+    "project": "sirene-hotel-bodrum",
+    "width": 1500,
+    "height": 1000
+  },
+  {
+    "path": "/assets/photos/projects/sirene-hotel-bodrum--finished-f19.webp",
+    "topics": [
+      "hotel",
+      "finishing",
+      "interior"
+    ],
+    "orientation": "landscape",
+    "project": "sirene-hotel-bodrum",
+    "width": 1500,
+    "height": 1000
+  },
+  {
+    "path": "/assets/photos/projects/sirene-hotel-bodrum--g01.webp",
+    "topics": [
+      "hotel",
+      "shell",
+      "exterior"
+    ],
+    "orientation": "portrait",
+    "project": "sirene-hotel-bodrum",
+    "width": 1350,
+    "height": 1800
+  },
+  {
+    "path": "/assets/photos/projects/sirene-hotel-bodrum--g02.webp",
+    "topics": [
+      "hotel",
+      "shell",
+      "exterior"
+    ],
+    "orientation": "portrait",
+    "project": "sirene-hotel-bodrum",
+    "width": 1350,
+    "height": 1800
+  },
+  {
+    "path": "/assets/photos/projects/sirene-hotel-bodrum--g03.webp",
+    "topics": [
+      "hotel",
+      "shell",
+      "exterior"
+    ],
+    "orientation": "portrait",
+    "project": "sirene-hotel-bodrum",
+    "width": 1125,
+    "height": 1500
+  },
+  {
+    "path": "/assets/photos/projects/sirene-hotel-bodrum--g04.webp",
+    "topics": [
+      "hotel",
+      "shell",
+      "exterior"
+    ],
+    "orientation": "portrait",
+    "project": "sirene-hotel-bodrum",
+    "width": 1125,
+    "height": 1500
+  },
+  {
+    "path": "/assets/photos/projects/sirene-hotel-bodrum--g05.webp",
+    "topics": [
+      "hotel",
+      "shell",
+      "exterior"
+    ],
+    "orientation": "portrait",
+    "project": "sirene-hotel-bodrum",
+    "width": 845,
+    "height": 1500
+  },
+  {
+    "path": "/assets/photos/projects/sirene-hotel-bodrum--g06.webp",
+    "topics": [
+      "hotel",
+      "shell",
+      "exterior"
+    ],
+    "orientation": "portrait",
+    "project": "sirene-hotel-bodrum",
+    "width": 1013,
+    "height": 1800
+  },
+  {
+    "path": "/assets/photos/projects/sirene-hotel-bodrum--g07.webp",
+    "topics": [
+      "hotel",
+      "shell",
+      "exterior"
+    ],
+    "orientation": "portrait",
+    "project": "sirene-hotel-bodrum",
+    "width": 1013,
+    "height": 1800
+  },
+  {
+    "path": "/assets/photos/projects/sirene-hotel-bodrum--g08.webp",
+    "topics": [
+      "hotel",
+      "shell",
+      "exterior"
+    ],
+    "orientation": "portrait",
+    "project": "sirene-hotel-bodrum",
+    "width": 1350,
+    "height": 1800
+  },
+  {
+    "path": "/assets/photos/projects/sirene-hotel-bodrum--g11.webp",
+    "topics": [
+      "hotel",
+      "shell",
+      "exterior"
+    ],
+    "orientation": "portrait",
+    "project": "sirene-hotel-bodrum",
+    "width": 845,
+    "height": 1500
+  },
+  {
+    "path": "/assets/photos/projects/sirene-hotel-bodrum--g12.webp",
+    "topics": [
+      "hotel",
+      "shell",
+      "exterior"
+    ],
+    "orientation": "portrait",
+    "project": "sirene-hotel-bodrum",
+    "width": 1013,
+    "height": 1800
+  },
+  {
+    "path": "/assets/photos/projects/sirene-hotel-bodrum--g13.webp",
+    "topics": [
+      "hotel",
+      "shell",
+      "exterior"
+    ],
+    "orientation": "portrait",
+    "project": "sirene-hotel-bodrum",
+    "width": 1125,
+    "height": 1500
+  },
+  {
+    "path": "/assets/photos/projects/sirene-hotel-bodrum--g14.webp",
+    "topics": [
+      "hotel",
+      "shell",
+      "exterior"
+    ],
+    "orientation": "portrait",
+    "project": "sirene-hotel-bodrum",
+    "width": 845,
+    "height": 1500
+  },
+  {
+    "path": "/assets/photos/projects/sirene-hotel-bodrum--g15.webp",
+    "topics": [
+      "hotel",
+      "shell",
+      "exterior"
+    ],
+    "orientation": "portrait",
+    "project": "sirene-hotel-bodrum",
+    "width": 845,
+    "height": 1500
+  },
+  {
+    "path": "/assets/photos/projects/sirene-hotel-bodrum--g16.webp",
+    "topics": [
+      "hotel",
+      "shell",
+      "exterior"
+    ],
+    "orientation": "portrait",
+    "project": "sirene-hotel-bodrum",
+    "width": 1125,
+    "height": 1500
+  },
+  {
+    "path": "/assets/photos/projects/sirene-hotel-bodrum--g17.webp",
+    "topics": [
+      "hotel",
+      "shell",
+      "exterior"
+    ],
+    "orientation": "portrait",
+    "project": "sirene-hotel-bodrum",
+    "width": 845,
+    "height": 1500
+  },
+  {
+    "path": "/assets/photos/projects/sirene-hotel-bodrum--g18.webp",
+    "topics": [
+      "hotel",
+      "shell",
+      "exterior"
+    ],
+    "orientation": "portrait",
+    "project": "sirene-hotel-bodrum",
+    "width": 845,
+    "height": 1500
+  },
+  {
+    "path": "/assets/photos/projects/sirene-hotel-bodrum--g19.webp",
+    "topics": [
+      "hotel",
+      "shell",
+      "exterior"
+    ],
+    "orientation": "portrait",
+    "project": "sirene-hotel-bodrum",
+    "width": 1125,
+    "height": 1500
+  },
+  {
+    "path": "/assets/photos/projects/sirene-hotel-bodrum--g20.webp",
+    "topics": [
+      "hotel",
+      "shell",
+      "exterior"
+    ],
+    "orientation": "portrait",
+    "project": "sirene-hotel-bodrum",
+    "width": 1125,
+    "height": 1500
+  },
+  {
+    "path": "/assets/photos/projects/sirene-hotel-bodrum--g21.webp",
+    "topics": [
+      "hotel",
+      "shell",
+      "exterior"
+    ],
+    "orientation": "portrait",
+    "project": "sirene-hotel-bodrum",
+    "width": 1125,
+    "height": 1500
+  },
+  {
+    "path": "/assets/photos/projects/sirene-hotel-bodrum--g22.webp",
+    "topics": [
+      "hotel",
+      "shell",
+      "exterior"
+    ],
+    "orientation": "portrait",
+    "project": "sirene-hotel-bodrum",
+    "width": 1125,
+    "height": 1500
+  },
+  {
+    "path": "/assets/photos/projects/sirene-hotel-bodrum--g23.webp",
+    "topics": [
+      "hotel",
+      "shell",
+      "exterior"
+    ],
+    "orientation": "portrait",
+    "project": "sirene-hotel-bodrum",
+    "width": 1125,
+    "height": 1500
+  },
+  {
+    "path": "/assets/photos/projects/sirene-hotel-bodrum--g24.webp",
+    "topics": [
+      "hotel",
+      "shell",
+      "exterior"
+    ],
+    "orientation": "portrait",
+    "project": "sirene-hotel-bodrum",
+    "width": 1125,
+    "height": 1500
+  },
+  {
+    "path": "/assets/photos/projects/sirene-hotel-bodrum--g25.webp",
+    "topics": [
+      "hotel",
+      "shell",
+      "exterior"
+    ],
+    "orientation": "portrait",
+    "project": "sirene-hotel-bodrum",
+    "width": 1350,
+    "height": 1800
+  },
+  {
+    "path": "/assets/photos/projects/sirene-hotel-bodrum--g26.webp",
+    "topics": [
+      "hotel",
+      "shell",
+      "exterior"
+    ],
+    "orientation": "portrait",
+    "project": "sirene-hotel-bodrum",
+    "width": 1125,
+    "height": 1500
+  },
+  {
+    "path": "/assets/photos/projects/sirene-hotel-bodrum--g27.webp",
+    "topics": [
+      "hotel",
+      "shell",
+      "exterior"
+    ],
+    "orientation": "portrait",
+    "project": "sirene-hotel-bodrum",
+    "width": 1125,
+    "height": 1500
+  },
+  {
+    "path": "/assets/photos/projects/sirene-hotel-bodrum--g28.webp",
+    "topics": [
+      "hotel",
+      "shell",
+      "exterior"
+    ],
+    "orientation": "portrait",
+    "project": "sirene-hotel-bodrum",
+    "width": 1125,
+    "height": 1500
+  },
+  {
+    "path": "/assets/photos/projects/sirene-hotel-bodrum--g29.webp",
+    "topics": [
+      "hotel",
+      "shell",
+      "exterior"
+    ],
+    "orientation": "portrait",
+    "project": "sirene-hotel-bodrum",
+    "width": 1350,
+    "height": 1800
+  },
+  {
+    "path": "/assets/photos/projects/sirene-hotel-bodrum--g30.webp",
+    "topics": [
+      "hotel",
+      "shell",
+      "exterior"
+    ],
+    "orientation": "portrait",
+    "project": "sirene-hotel-bodrum",
+    "width": 1125,
+    "height": 1500
+  },
+  {
+    "path": "/assets/photos/projects/sirene-hotel-bodrum--g31.webp",
+    "topics": [
+      "hotel",
+      "shell",
+      "exterior"
+    ],
+    "orientation": "landscape",
+    "project": "sirene-hotel-bodrum",
+    "width": 1500,
+    "height": 845
+  },
+  {
+    "path": "/assets/photos/projects/sirene-hotel-bodrum--g32.webp",
+    "topics": [
+      "hotel",
+      "shell",
+      "exterior"
+    ],
+    "orientation": "portrait",
+    "project": "sirene-hotel-bodrum",
+    "width": 1013,
+    "height": 1800
+  },
+  {
+    "path": "/assets/photos/projects/sirene-hotel-bodrum--g33.webp",
+    "topics": [
+      "hotel",
+      "shell",
+      "exterior"
+    ],
+    "orientation": "portrait",
+    "project": "sirene-hotel-bodrum",
+    "width": 1125,
+    "height": 1500
+  },
+  {
+    "path": "/assets/photos/projects/mercure-konyaalti--cover.webp",
+    "topics": [
+      "hotel",
+      "shell",
+      "exterior"
+    ],
+    "orientation": "portrait",
+    "project": "mercure-konyaalti",
+    "width": 1440,
+    "height": 1920
+  },
+  {
+    "path": "/assets/photos/projects/mercure-konyaalti--finished-f01.webp",
+    "topics": [
+      "hotel",
+      "finishing",
+      "interior"
+    ],
+    "orientation": "landscape",
+    "project": "mercure-konyaalti",
+    "width": 1200,
+    "height": 800
+  },
+  {
+    "path": "/assets/photos/projects/mercure-konyaalti--finished-f02.webp",
+    "topics": [
+      "hotel",
+      "finishing",
+      "interior"
+    ],
+    "orientation": "landscape",
+    "project": "mercure-konyaalti",
+    "width": 1200,
+    "height": 800
+  },
+  {
+    "path": "/assets/photos/projects/mercure-konyaalti--finished-f03.webp",
+    "topics": [
+      "hotel",
+      "finishing",
+      "interior"
+    ],
+    "orientation": "landscape",
+    "project": "mercure-konyaalti",
+    "width": 1200,
+    "height": 514
+  },
+  {
+    "path": "/assets/photos/projects/mercure-konyaalti--finished-f04.webp",
+    "topics": [
+      "hotel",
+      "finishing",
+      "interior"
+    ],
+    "orientation": "landscape",
+    "project": "mercure-konyaalti",
+    "width": 1200,
+    "height": 800
+  },
+  {
+    "path": "/assets/photos/projects/mercure-konyaalti--finished-f05.webp",
+    "topics": [
+      "hotel",
+      "finishing",
+      "interior"
+    ],
+    "orientation": "landscape",
+    "project": "mercure-konyaalti",
+    "width": 1200,
+    "height": 800
+  },
+  {
+    "path": "/assets/photos/projects/mercure-konyaalti--finished-f06.webp",
+    "topics": [
+      "hotel",
+      "finishing",
+      "interior"
+    ],
+    "orientation": "landscape",
+    "project": "mercure-konyaalti",
+    "width": 1200,
+    "height": 800
+  },
+  {
+    "path": "/assets/photos/projects/mercure-konyaalti--finished-f07.webp",
+    "topics": [
+      "hotel",
+      "finishing",
+      "interior"
+    ],
+    "orientation": "landscape",
+    "project": "mercure-konyaalti",
+    "width": 1200,
+    "height": 800
+  },
+  {
+    "path": "/assets/photos/projects/mercure-konyaalti--finished-f08.webp",
+    "topics": [
+      "hotel",
+      "finishing",
+      "interior"
+    ],
+    "orientation": "landscape",
+    "project": "mercure-konyaalti",
+    "width": 1200,
+    "height": 800
+  },
+  {
+    "path": "/assets/photos/projects/mercure-konyaalti--finished-f09.webp",
+    "topics": [
+      "hotel",
+      "finishing",
+      "interior"
+    ],
+    "orientation": "landscape",
+    "project": "mercure-konyaalti",
+    "width": 1200,
+    "height": 800
+  },
+  {
+    "path": "/assets/photos/projects/mercure-konyaalti--finished-f10.webp",
+    "topics": [
+      "hotel",
+      "finishing",
+      "interior"
+    ],
+    "orientation": "landscape",
+    "project": "mercure-konyaalti",
+    "width": 1200,
+    "height": 800
+  },
+  {
+    "path": "/assets/photos/projects/mercure-konyaalti--finished-f11.webp",
+    "topics": [
+      "hotel",
+      "finishing",
+      "interior"
+    ],
+    "orientation": "landscape",
+    "project": "mercure-konyaalti",
+    "width": 1200,
+    "height": 514
+  },
+  {
+    "path": "/assets/photos/projects/mercure-konyaalti--finished-f12.webp",
+    "topics": [
+      "hotel",
+      "finishing",
+      "interior"
+    ],
+    "orientation": "landscape",
+    "project": "mercure-konyaalti",
+    "width": 1024,
+    "height": 768
+  },
+  {
+    "path": "/assets/photos/projects/mercure-konyaalti--finished-f13.webp",
+    "topics": [
+      "hotel",
+      "finishing",
+      "interior"
+    ],
+    "orientation": "landscape",
+    "project": "mercure-konyaalti",
+    "width": 1024,
+    "height": 768
+  },
+  {
+    "path": "/assets/photos/projects/mercure-konyaalti--finished-f14.webp",
+    "topics": [
+      "hotel",
+      "finishing",
+      "interior"
+    ],
+    "orientation": "landscape",
+    "project": "mercure-konyaalti",
+    "width": 1238,
+    "height": 810
+  },
+  {
+    "path": "/assets/photos/projects/mercure-konyaalti--finished-f15.webp",
+    "topics": [
+      "hotel",
+      "finishing",
+      "interior"
+    ],
+    "orientation": "landscape",
+    "project": "mercure-konyaalti",
+    "width": 1423,
+    "height": 810
+  },
+  {
+    "path": "/assets/photos/projects/mercure-konyaalti--finished-f16.webp",
+    "topics": [
+      "hotel",
+      "finishing",
+      "interior"
+    ],
+    "orientation": "landscape",
+    "project": "mercure-konyaalti",
+    "width": 975,
+    "height": 811
+  },
+  {
+    "path": "/assets/photos/projects/mercure-konyaalti--finished-f17.webp",
+    "topics": [
+      "hotel",
+      "finishing",
+      "interior"
+    ],
+    "orientation": "portrait",
+    "project": "mercure-konyaalti",
+    "width": 1066,
+    "height": 1598
+  },
+  {
+    "path": "/assets/photos/projects/mercure-konyaalti--g01.webp",
+    "topics": [
+      "hotel",
+      "shell",
+      "exterior"
+    ],
+    "orientation": "landscape",
+    "project": "mercure-konyaalti",
+    "width": 1500,
+    "height": 1125
+  },
+  {
+    "path": "/assets/photos/projects/mercure-konyaalti--g02.webp",
+    "topics": [
+      "hotel",
+      "shell",
+      "exterior"
+    ],
+    "orientation": "portrait",
+    "project": "mercure-konyaalti",
+    "width": 1125,
+    "height": 1500
+  },
+  {
+    "path": "/assets/photos/projects/mercure-konyaalti--g03.webp",
+    "topics": [
+      "hotel",
+      "shell",
+      "exterior"
+    ],
+    "orientation": "portrait",
+    "project": "mercure-konyaalti",
+    "width": 1125,
+    "height": 1500
+  },
+  {
+    "path": "/assets/photos/projects/mercure-konyaalti--g04.webp",
+    "topics": [
+      "hotel",
+      "shell",
+      "exterior"
+    ],
+    "orientation": "portrait",
+    "project": "mercure-konyaalti",
+    "width": 1125,
+    "height": 1500
+  },
+  {
+    "path": "/assets/photos/projects/mercure-konyaalti--g05.webp",
+    "topics": [
+      "hotel",
+      "shell",
+      "exterior"
+    ],
+    "orientation": "portrait",
+    "project": "mercure-konyaalti",
+    "width": 1125,
+    "height": 1500
+  },
+  {
+    "path": "/assets/photos/projects/mercure-konyaalti--g06.webp",
+    "topics": [
+      "hotel",
+      "shell",
+      "exterior"
+    ],
+    "orientation": "portrait",
+    "project": "mercure-konyaalti",
+    "width": 1125,
+    "height": 1500
+  },
+  {
+    "path": "/assets/photos/projects/mercure-konyaalti--g07.webp",
+    "topics": [
+      "hotel",
+      "shell",
+      "exterior"
+    ],
+    "orientation": "portrait",
+    "project": "mercure-konyaalti",
+    "width": 1125,
+    "height": 1500
+  },
+  {
+    "path": "/assets/photos/projects/mercure-konyaalti--g08.webp",
+    "topics": [
+      "hotel",
+      "shell",
+      "exterior"
+    ],
+    "orientation": "portrait",
+    "project": "mercure-konyaalti",
+    "width": 1125,
+    "height": 1500
+  },
+  {
+    "path": "/assets/photos/projects/mercure-konyaalti--g09.webp",
+    "topics": [
+      "hotel",
+      "shell",
+      "exterior"
+    ],
+    "orientation": "portrait",
+    "project": "mercure-konyaalti",
+    "width": 845,
+    "height": 1500
+  },
+  {
+    "path": "/assets/photos/projects/mercure-konyaalti--g10.webp",
+    "topics": [
+      "hotel",
+      "shell",
+      "exterior"
+    ],
+    "orientation": "portrait",
+    "project": "mercure-konyaalti",
+    "width": 1125,
+    "height": 1500
+  },
+  {
+    "path": "/assets/photos/projects/mercure-konyaalti--g11.webp",
+    "topics": [
+      "hotel",
+      "shell",
+      "exterior"
+    ],
+    "orientation": "portrait",
+    "project": "mercure-konyaalti",
+    "width": 1125,
+    "height": 1500
+  },
+  {
+    "path": "/assets/photos/projects/mercure-konyaalti--g12.webp",
+    "topics": [
+      "hotel",
+      "shell",
+      "exterior"
+    ],
+    "orientation": "portrait",
+    "project": "mercure-konyaalti",
+    "width": 1125,
+    "height": 1500
+  },
+  {
+    "path": "/assets/photos/projects/mercure-konyaalti--g13.webp",
+    "topics": [
+      "hotel",
+      "shell",
+      "exterior"
+    ],
+    "orientation": "portrait",
+    "project": "mercure-konyaalti",
+    "width": 1125,
+    "height": 1500
+  },
+  {
+    "path": "/assets/photos/projects/mercure-konyaalti--g14.webp",
+    "topics": [
+      "hotel",
+      "shell",
+      "exterior"
+    ],
+    "orientation": "portrait",
+    "project": "mercure-konyaalti",
+    "width": 1125,
+    "height": 1500
+  },
+  {
+    "path": "/assets/photos/projects/mercure-konyaalti--g15.webp",
+    "topics": [
+      "hotel",
+      "shell",
+      "exterior"
+    ],
+    "orientation": "landscape",
+    "project": "mercure-konyaalti",
+    "width": 1500,
+    "height": 1500
+  },
+  {
+    "path": "/assets/photos/projects/mercure-konyaalti--g16.webp",
+    "topics": [
+      "hotel",
+      "shell",
+      "exterior"
+    ],
+    "orientation": "landscape",
+    "project": "mercure-konyaalti",
+    "width": 1640,
+    "height": 1232
+  },
+  {
+    "path": "/assets/photos/projects/mercure-konyaalti--g17.webp",
+    "topics": [
+      "hotel",
+      "shell",
+      "exterior"
+    ],
+    "orientation": "portrait",
+    "project": "mercure-konyaalti",
+    "width": 1126,
+    "height": 1500
+  },
+  {
+    "path": "/assets/photos/projects/mercure-konyaalti--g18.webp",
+    "topics": [
+      "hotel",
+      "shell",
+      "exterior"
+    ],
+    "orientation": "portrait",
+    "project": "mercure-konyaalti",
+    "width": 1125,
+    "height": 1500
+  },
+  {
+    "path": "/assets/photos/projects/mercure-konyaalti--g19.webp",
+    "topics": [
+      "hotel",
+      "shell",
+      "exterior"
+    ],
+    "orientation": "portrait",
+    "project": "mercure-konyaalti",
+    "width": 1125,
+    "height": 1500
+  },
+  {
+    "path": "/assets/photos/projects/mercure-konyaalti--g20.webp",
+    "topics": [
+      "hotel",
+      "shell",
+      "exterior"
+    ],
+    "orientation": "portrait",
+    "project": "mercure-konyaalti",
+    "width": 1125,
+    "height": 1500
+  },
+  {
+    "path": "/assets/photos/projects/mercure-konyaalti--g21.webp",
+    "topics": [
+      "hotel",
+      "shell",
+      "exterior"
+    ],
+    "orientation": "portrait",
+    "project": "mercure-konyaalti",
+    "width": 1125,
+    "height": 1500
+  },
+  {
+    "path": "/assets/photos/projects/mercure-konyaalti--g22.webp",
+    "topics": [
+      "hotel",
+      "shell",
+      "exterior"
+    ],
+    "orientation": "portrait",
+    "project": "mercure-konyaalti",
+    "width": 1125,
+    "height": 1500
+  },
+  {
+    "path": "/assets/photos/projects/mercure-konyaalti--g23.webp",
+    "topics": [
+      "hotel",
+      "shell",
+      "exterior"
+    ],
+    "orientation": "portrait",
+    "project": "mercure-konyaalti",
+    "width": 1013,
+    "height": 1800
+  },
+  {
+    "path": "/assets/photos/projects/mercure-konyaalti--g24.webp",
+    "topics": [
+      "hotel",
+      "shell",
+      "exterior"
+    ],
+    "orientation": "portrait",
+    "project": "mercure-konyaalti",
+    "width": 830,
+    "height": 1800
+  },
+  {
+    "path": "/assets/photos/projects/mercure-konyaalti--g25.webp",
+    "topics": [
+      "hotel",
+      "shell",
+      "exterior"
+    ],
+    "orientation": "portrait",
+    "project": "mercure-konyaalti",
+    "width": 1125,
+    "height": 1500
+  },
+  {
+    "path": "/assets/photos/projects/mercure-konyaalti--g26.webp",
+    "topics": [
+      "hotel",
+      "shell",
+      "exterior"
+    ],
+    "orientation": "landscape",
+    "project": "mercure-konyaalti",
+    "width": 1500,
+    "height": 1125
+  },
+  {
+    "path": "/assets/photos/projects/mercure-konyaalti--g27.webp",
+    "topics": [
+      "hotel",
+      "shell",
+      "exterior"
+    ],
+    "orientation": "portrait",
+    "project": "mercure-konyaalti",
+    "width": 1125,
+    "height": 1500
+  },
+  {
+    "path": "/assets/photos/projects/mercure-konyaalti--g28.webp",
+    "topics": [
+      "hotel",
+      "shell",
+      "exterior"
+    ],
+    "orientation": "portrait",
+    "project": "mercure-konyaalti",
+    "width": 845,
+    "height": 1500
+  },
+  {
+    "path": "/assets/photos/projects/mercure-konyaalti--g29.webp",
+    "topics": [
+      "hotel",
+      "shell",
+      "exterior"
+    ],
+    "orientation": "portrait",
+    "project": "mercure-konyaalti",
+    "width": 845,
+    "height": 1500
+  },
+  {
+    "path": "/assets/photos/projects/mercure-konyaalti--g30.webp",
+    "topics": [
+      "hotel",
+      "shell",
+      "exterior"
+    ],
+    "orientation": "landscape",
+    "project": "mercure-konyaalti",
+    "width": 1500,
+    "height": 845
+  },
+  {
+    "path": "/assets/photos/projects/mercure-konyaalti--g31.webp",
+    "topics": [
+      "hotel",
+      "shell",
+      "exterior"
+    ],
+    "orientation": "landscape",
+    "project": "mercure-konyaalti",
+    "width": 1500,
+    "height": 845
+  },
+  {
+    "path": "/assets/photos/projects/mercure-konyaalti--g32.webp",
+    "topics": [
+      "hotel",
+      "shell",
+      "exterior"
+    ],
+    "orientation": "portrait",
+    "project": "mercure-konyaalti",
+    "width": 845,
+    "height": 1500
+  },
+  {
+    "path": "/assets/photos/projects/mercure-konyaalti--g33.webp",
+    "topics": [
+      "hotel",
+      "shell",
+      "exterior"
+    ],
+    "orientation": "portrait",
+    "project": "mercure-konyaalti",
+    "width": 845,
+    "height": 1500
+  },
+  {
+    "path": "/assets/photos/projects/arasta-yasam-merkezi-korkuteli--1.webp",
+    "topics": [
+      "residential",
+      "shell",
+      "exterior"
+    ],
+    "orientation": "portrait",
+    "project": "arasta-yasam-merkezi-korkuteli",
+    "width": 1500,
+    "height": 2000
+  },
+  {
+    "path": "/assets/photos/projects/arasta-yasam-merkezi-korkuteli--WhatsApp Image 2026-06-17 at 22.45.06 (1).webp",
+    "topics": [
+      "residential",
+      "shell",
+      "exterior"
+    ],
+    "orientation": "portrait",
+    "project": "arasta-yasam-merkezi-korkuteli",
+    "width": 1500,
+    "height": 2000
+  },
+  {
+    "path": "/assets/photos/projects/arasta-yasam-merkezi-korkuteli--WhatsApp Image 2026-06-17 at 22.45.06 (2).webp",
+    "topics": [
+      "residential",
+      "shell",
+      "exterior"
+    ],
+    "orientation": "portrait",
+    "project": "arasta-yasam-merkezi-korkuteli",
+    "width": 1500,
+    "height": 2000
+  },
+  {
+    "path": "/assets/photos/projects/arasta-yasam-merkezi-korkuteli--WhatsApp Image 2026-06-17 at 22.45.06.webp",
+    "topics": [
+      "residential",
+      "shell",
+      "exterior"
+    ],
+    "orientation": "portrait",
+    "project": "arasta-yasam-merkezi-korkuteli",
+    "width": 924,
+    "height": 2000
+  },
+  {
+    "path": "/assets/photos/projects/arasta-yasam-merkezi-korkuteli--WhatsApp Image 2026-06-17 at 22.45.07.webp",
+    "topics": [
+      "residential",
+      "shell",
+      "exterior"
+    ],
+    "orientation": "portrait",
+    "project": "arasta-yasam-merkezi-korkuteli",
+    "width": 1500,
+    "height": 2000
+  },
+  {
+    "path": "/assets/photos/projects/arasta-yasam-merkezi-korkuteli--WhatsApp Image 2026-06-17 at 22.45.08.webp",
+    "topics": [
+      "residential",
+      "shell",
+      "exterior"
+    ],
+    "orientation": "portrait",
+    "project": "arasta-yasam-merkezi-korkuteli",
+    "width": 1125,
+    "height": 2000
+  },
+  {
+    "path": "/assets/photos/projects/arasta-yasam-merkezi-korkuteli--WhatsApp Image 2026-06-17 at 22.45.10.webp",
+    "topics": [
+      "residential",
+      "shell",
+      "exterior"
+    ],
+    "orientation": "portrait",
+    "project": "arasta-yasam-merkezi-korkuteli",
+    "width": 1125,
+    "height": 2000
+  },
+  {
+    "path": "/assets/photos/projects/arasta-yasam-merkezi-korkuteli--WhatsApp Image 2026-06-17 at 22.45.30.webp",
+    "topics": [
+      "residential",
+      "shell",
+      "exterior"
+    ],
+    "orientation": "portrait",
+    "project": "arasta-yasam-merkezi-korkuteli",
+    "width": 1500,
+    "height": 2000
+  },
+  {
+    "path": "/assets/photos/projects/arasta-yasam-merkezi-korkuteli--WhatsApp Image 2026-06-17 at 22.45.31 (1).webp",
+    "topics": [
+      "residential",
+      "shell",
+      "exterior"
+    ],
+    "orientation": "landscape",
+    "project": "arasta-yasam-merkezi-korkuteli",
+    "width": 1599,
+    "height": 899
+  },
+  {
+    "path": "/assets/photos/projects/arasta-yasam-merkezi-korkuteli--WhatsApp Image 2026-06-17 at 22.45.31.webp",
+    "topics": [
+      "residential",
+      "shell",
+      "exterior"
+    ],
+    "orientation": "landscape",
+    "project": "arasta-yasam-merkezi-korkuteli",
+    "width": 1600,
+    "height": 900
+  },
+  {
+    "path": "/assets/photos/projects/arasta-yasam-merkezi-korkuteli--WhatsApp Image 2026-06-17 at 22.45.32.webp",
+    "topics": [
+      "residential",
+      "shell",
+      "exterior"
+    ],
+    "orientation": "landscape",
+    "project": "arasta-yasam-merkezi-korkuteli",
+    "width": 1599,
+    "height": 899
+  },
+  {
+    "path": "/assets/photos/projects/arasta-yasam-merkezi-korkuteli--WhatsApp Image 2026-06-17 at 22.45.33 (1).webp",
+    "topics": [
+      "residential",
+      "shell",
+      "exterior"
+    ],
+    "orientation": "portrait",
+    "project": "arasta-yasam-merkezi-korkuteli",
+    "width": 1125,
+    "height": 2000
+  },
+  {
+    "path": "/assets/photos/projects/arasta-yasam-merkezi-korkuteli--WhatsApp Image 2026-06-17 at 22.45.33.webp",
+    "topics": [
+      "residential",
+      "shell",
+      "exterior"
+    ],
+    "orientation": "landscape",
+    "project": "arasta-yasam-merkezi-korkuteli",
+    "width": 1600,
+    "height": 737
+  },
+  {
+    "path": "/assets/photos/projects/arasta-yasam-merkezi-korkuteli--WhatsApp Image 2026-06-17 at 22.45.34 (1).webp",
+    "topics": [
+      "residential",
+      "shell",
+      "exterior"
+    ],
+    "orientation": "portrait",
+    "project": "arasta-yasam-merkezi-korkuteli",
+    "width": 1200,
+    "height": 1600
+  },
+  {
+    "path": "/assets/photos/projects/arasta-yasam-merkezi-korkuteli--WhatsApp Image 2026-06-17 at 22.45.34.webp",
+    "topics": [
+      "residential",
+      "shell",
+      "exterior"
+    ],
+    "orientation": "portrait",
+    "project": "arasta-yasam-merkezi-korkuteli",
+    "width": 1500,
+    "height": 2000
+  },
+  {
+    "path": "/assets/photos/projects/arasta-yasam-merkezi-korkuteli--WhatsApp Image 2026-06-17 at 22.45.35 (1).webp",
+    "topics": [
+      "residential",
+      "shell",
+      "exterior"
+    ],
+    "orientation": "portrait",
+    "project": "arasta-yasam-merkezi-korkuteli",
+    "width": 1125,
+    "height": 2000
+  },
+  {
+    "path": "/assets/photos/projects/arasta-yasam-merkezi-korkuteli--WhatsApp Image 2026-06-17 at 22.45.35 (2).webp",
+    "topics": [
+      "residential",
+      "shell",
+      "exterior"
+    ],
+    "orientation": "landscape",
+    "project": "arasta-yasam-merkezi-korkuteli",
+    "width": 2000,
+    "height": 1500
+  },
+  {
+    "path": "/assets/photos/projects/arasta-yasam-merkezi-korkuteli--WhatsApp Image 2026-06-17 at 22.45.35.webp",
+    "topics": [
+      "residential",
+      "shell",
+      "exterior"
+    ],
+    "orientation": "portrait",
+    "project": "arasta-yasam-merkezi-korkuteli",
+    "width": 1125,
+    "height": 2000
+  },
+  {
+    "path": "/assets/photos/projects/arasta-yasam-merkezi-korkuteli--WhatsApp Image 2026-06-17 at 22.45.37.webp",
+    "topics": [
+      "residential",
+      "shell",
+      "exterior"
+    ],
+    "orientation": "landscape",
+    "project": "arasta-yasam-merkezi-korkuteli",
+    "width": 2000,
+    "height": 1500
+  },
+  {
+    "path": "/assets/photos/projects/arasta-yasam-merkezi-korkuteli--WhatsApp Image 2026-06-17 at 22.45.41.webp",
+    "topics": [
+      "residential",
+      "shell",
+      "exterior"
+    ],
+    "orientation": "portrait",
+    "project": "arasta-yasam-merkezi-korkuteli",
+    "width": 1125,
+    "height": 2000
+  },
+  {
+    "path": "/assets/photos/projects/arasta-yasam-merkezi-korkuteli--WhatsApp Image 2026-06-17 at 22.45.45.webp",
+    "topics": [
+      "residential",
+      "shell",
+      "exterior"
+    ],
+    "orientation": "portrait",
+    "project": "arasta-yasam-merkezi-korkuteli",
+    "width": 1125,
+    "height": 2000
+  },
+  {
+    "path": "/assets/photos/projects/arasta-yasam-merkezi-korkuteli--WhatsApp Image 2026-06-17 at 22.45.48.webp",
+    "topics": [
+      "residential",
+      "shell",
+      "exterior"
+    ],
+    "orientation": "portrait",
+    "project": "arasta-yasam-merkezi-korkuteli",
+    "width": 1125,
+    "height": 2000
+  },
+  {
+    "path": "/assets/photos/projects/arasta-yasam-merkezi-korkuteli--WhatsApp Image 2026-06-17 at 22.45.50.webp",
+    "topics": [
+      "residential",
+      "shell",
+      "exterior"
+    ],
+    "orientation": "portrait",
+    "project": "arasta-yasam-merkezi-korkuteli",
+    "width": 1125,
+    "height": 2000
+  },
+  {
+    "path": "/assets/photos/projects/arasta-yasam-merkezi-korkuteli--WhatsApp Image 2026-06-17 at 22.45.51.webp",
+    "topics": [
+      "residential",
+      "shell",
+      "exterior"
+    ],
+    "orientation": "landscape",
+    "project": "arasta-yasam-merkezi-korkuteli",
+    "width": 2000,
+    "height": 1500
+  },
+  {
+    "path": "/assets/photos/projects/arasta-yasam-merkezi-korkuteli--WhatsApp Image 2026-06-17 at 22.45.54.webp",
+    "topics": [
+      "residential",
+      "shell",
+      "exterior"
+    ],
+    "orientation": "portrait",
+    "project": "arasta-yasam-merkezi-korkuteli",
+    "width": 1500,
+    "height": 2000
+  },
+  {
+    "path": "/assets/photos/projects/arasta-yasam-merkezi-korkuteli--WhatsApp Image 2026-06-17 at 22.45.56.webp",
+    "topics": [
+      "residential",
+      "shell",
+      "exterior"
+    ],
+    "orientation": "portrait",
+    "project": "arasta-yasam-merkezi-korkuteli",
+    "width": 1125,
+    "height": 2000
+  },
+  {
+    "path": "/assets/photos/projects/arasta-yasam-merkezi-korkuteli--WhatsApp Image 2026-06-17 at 22.45.58.webp",
+    "topics": [
+      "residential",
+      "shell",
+      "exterior"
+    ],
+    "orientation": "portrait",
+    "project": "arasta-yasam-merkezi-korkuteli",
+    "width": 1125,
+    "height": 2000
+  },
+  {
+    "path": "/assets/photos/projects/arasta-yasam-merkezi-korkuteli--WhatsApp Image 2026-06-17 at 22.46.01.webp",
+    "topics": [
+      "residential",
+      "shell",
+      "exterior"
+    ],
+    "orientation": "portrait",
+    "project": "arasta-yasam-merkezi-korkuteli",
+    "width": 1500,
+    "height": 2000
+  },
+  {
+    "path": "/assets/photos/projects/arasta-yasam-merkezi-korkuteli--WhatsApp Image 2026-06-17 at 22.46.04.webp",
+    "topics": [
+      "residential",
+      "shell",
+      "exterior"
+    ],
+    "orientation": "portrait",
+    "project": "arasta-yasam-merkezi-korkuteli",
+    "width": 1500,
+    "height": 2000
+  },
+  {
+    "path": "/assets/photos/projects/arasta-yasam-merkezi-korkuteli--WhatsApp Image 2026-06-17 at 22.46.48.webp",
+    "topics": [
+      "residential",
+      "shell",
+      "exterior"
+    ],
+    "orientation": "portrait",
+    "project": "arasta-yasam-merkezi-korkuteli",
+    "width": 1125,
+    "height": 2000
+  },
+  {
+    "path": "/assets/photos/projects/arasta-yasam-merkezi-korkuteli--WhatsApp Image 2026-06-17 at 22.48.51.webp",
+    "topics": [
+      "residential",
+      "shell",
+      "exterior"
+    ],
+    "orientation": "portrait",
+    "project": "arasta-yasam-merkezi-korkuteli",
+    "width": 1125,
+    "height": 2000
+  },
+  {
+    "path": "/assets/photos/projects/arasta-yasam-merkezi-korkuteli--WhatsApp Image 2026-06-17 at 22.48.54.webp",
+    "topics": [
+      "residential",
+      "shell",
+      "exterior"
+    ],
+    "orientation": "portrait",
+    "project": "arasta-yasam-merkezi-korkuteli",
+    "width": 1125,
+    "height": 2000
+  },
+  {
+    "path": "/assets/photos/projects/arasta-yasam-merkezi-korkuteli--cover.webp",
+    "topics": [
+      "residential",
+      "shell",
+      "exterior"
+    ],
+    "orientation": "portrait",
+    "project": "arasta-yasam-merkezi-korkuteli",
+    "width": 1440,
+    "height": 1920
+  },
+  {
+    "path": "/assets/photos/projects/arasta-yasam-merkezi-korkuteli--finished-f01.webp",
+    "topics": [
+      "residential",
+      "finishing",
+      "interior"
+    ],
+    "orientation": "landscape",
+    "project": "arasta-yasam-merkezi-korkuteli",
+    "width": 1024,
+    "height": 466
+  },
+  {
+    "path": "/assets/photos/projects/arasta-yasam-merkezi-korkuteli--finished-f02.webp",
+    "topics": [
+      "residential",
+      "finishing",
+      "interior"
+    ],
+    "orientation": "landscape",
+    "project": "arasta-yasam-merkezi-korkuteli",
+    "width": 1024,
+    "height": 466
+  },
+  {
+    "path": "/assets/photos/projects/arasta-yasam-merkezi-korkuteli--finished-f03.webp",
+    "topics": [
+      "residential",
+      "finishing",
+      "interior"
+    ],
+    "orientation": "landscape",
+    "project": "arasta-yasam-merkezi-korkuteli",
+    "width": 1024,
+    "height": 466
+  },
+  {
+    "path": "/assets/photos/projects/arasta-yasam-merkezi-korkuteli--finished-f04.webp",
+    "topics": [
+      "residential",
+      "finishing",
+      "interior"
+    ],
+    "orientation": "landscape",
+    "project": "arasta-yasam-merkezi-korkuteli",
+    "width": 1024,
+    "height": 466
+  },
+  {
+    "path": "/assets/photos/projects/arasta-yasam-merkezi-korkuteli--finished-f05.webp",
+    "topics": [
+      "residential",
+      "finishing",
+      "interior"
+    ],
+    "orientation": "landscape",
+    "project": "arasta-yasam-merkezi-korkuteli",
+    "width": 1024,
+    "height": 466
+  },
+  {
+    "path": "/assets/photos/projects/arasta-yasam-merkezi-korkuteli--finished-f06.webp",
+    "topics": [
+      "residential",
+      "finishing",
+      "interior"
+    ],
+    "orientation": "landscape",
+    "project": "arasta-yasam-merkezi-korkuteli",
+    "width": 1024,
+    "height": 466
+  },
+  {
+    "path": "/assets/photos/projects/arasta-yasam-merkezi-korkuteli--finished-f07.webp",
+    "topics": [
+      "residential",
+      "finishing",
+      "interior"
+    ],
+    "orientation": "landscape",
+    "project": "arasta-yasam-merkezi-korkuteli",
+    "width": 1024,
+    "height": 423
+  },
+  {
+    "path": "/assets/photos/projects/arasta-yasam-merkezi-korkuteli--finished-housearch_large (1).webp",
+    "topics": [
+      "residential",
+      "finishing",
+      "interior"
+    ],
+    "orientation": "landscape",
+    "project": "arasta-yasam-merkezi-korkuteli",
+    "width": 1024,
+    "height": 576
+  },
+  {
+    "path": "/assets/photos/projects/arasta-yasam-merkezi-korkuteli--finished-housearch_large (2).webp",
+    "topics": [
+      "residential",
+      "finishing",
+      "interior"
+    ],
+    "orientation": "landscape",
+    "project": "arasta-yasam-merkezi-korkuteli",
+    "width": 1024,
+    "height": 576
+  },
+  {
+    "path": "/assets/photos/projects/arasta-yasam-merkezi-korkuteli--finished-housearch_large (3).webp",
+    "topics": [
+      "residential",
+      "finishing",
+      "interior"
+    ],
+    "orientation": "landscape",
+    "project": "arasta-yasam-merkezi-korkuteli",
+    "width": 1024,
+    "height": 576
+  },
+  {
+    "path": "/assets/photos/projects/arasta-yasam-merkezi-korkuteli--finished-housearch_large (4).webp",
+    "topics": [
+      "residential",
+      "finishing",
+      "interior"
+    ],
+    "orientation": "landscape",
+    "project": "arasta-yasam-merkezi-korkuteli",
+    "width": 1024,
+    "height": 576
+  },
+  {
+    "path": "/assets/photos/projects/arasta-yasam-merkezi-korkuteli--finished-housearch_large (5).webp",
+    "topics": [
+      "residential",
+      "finishing",
+      "interior"
+    ],
+    "orientation": "landscape",
+    "project": "arasta-yasam-merkezi-korkuteli",
+    "width": 1024,
+    "height": 576
+  },
+  {
+    "path": "/assets/photos/projects/arasta-yasam-merkezi-korkuteli--finished-housearch_large (6).webp",
+    "topics": [
+      "residential",
+      "finishing",
+      "interior"
+    ],
+    "orientation": "landscape",
+    "project": "arasta-yasam-merkezi-korkuteli",
+    "width": 1024,
+    "height": 533
+  },
+  {
+    "path": "/assets/photos/projects/arasta-yasam-merkezi-korkuteli--finished-housearch_large.webp",
+    "topics": [
+      "residential",
+      "finishing",
+      "interior"
+    ],
+    "orientation": "landscape",
+    "project": "arasta-yasam-merkezi-korkuteli",
+    "width": 1024,
+    "height": 576
+  },
+  {
+    "path": "/assets/photos/projects/arasta-yasam-merkezi-korkuteli--finished-images.webp",
+    "topics": [
+      "residential",
+      "finishing",
+      "interior"
+    ],
+    "orientation": "landscape",
+    "project": "arasta-yasam-merkezi-korkuteli",
+    "width": 515,
+    "height": 388
+  },
+  {
+    "path": "/assets/photos/projects/arasta-yasam-merkezi-korkuteli--g01.webp",
+    "topics": [
+      "residential",
+      "shell",
+      "exterior"
+    ],
+    "orientation": "portrait",
+    "project": "arasta-yasam-merkezi-korkuteli",
+    "width": 1350,
+    "height": 1800
+  },
+  {
+    "path": "/assets/photos/projects/arasta-yasam-merkezi-korkuteli--g02.webp",
+    "topics": [
+      "residential",
+      "shell",
+      "exterior"
+    ],
+    "orientation": "portrait",
+    "project": "arasta-yasam-merkezi-korkuteli",
+    "width": 1125,
+    "height": 1500
+  },
+  {
+    "path": "/assets/photos/projects/arasta-yasam-merkezi-korkuteli--g03.webp",
+    "topics": [
+      "residential",
+      "shell",
+      "exterior"
+    ],
+    "orientation": "portrait",
+    "project": "arasta-yasam-merkezi-korkuteli",
+    "width": 832,
+    "height": 1800
+  },
+  {
+    "path": "/assets/photos/projects/arasta-yasam-merkezi-korkuteli--g04.webp",
+    "topics": [
+      "residential",
+      "shell",
+      "exterior"
+    ],
+    "orientation": "portrait",
+    "project": "arasta-yasam-merkezi-korkuteli",
+    "width": 1125,
+    "height": 1500
+  },
+  {
+    "path": "/assets/photos/projects/arasta-yasam-merkezi-korkuteli--g05.webp",
+    "topics": [
+      "residential",
+      "shell",
+      "exterior"
+    ],
+    "orientation": "portrait",
+    "project": "arasta-yasam-merkezi-korkuteli",
+    "width": 845,
+    "height": 1500
+  },
+  {
+    "path": "/assets/photos/projects/arasta-yasam-merkezi-korkuteli--g06.webp",
+    "topics": [
+      "residential",
+      "shell",
+      "exterior"
+    ],
+    "orientation": "portrait",
+    "project": "arasta-yasam-merkezi-korkuteli",
+    "width": 1013,
+    "height": 1800
+  },
+  {
+    "path": "/assets/photos/projects/arasta-yasam-merkezi-korkuteli--g07.webp",
+    "topics": [
+      "residential",
+      "shell",
+      "exterior"
+    ],
+    "orientation": "portrait",
+    "project": "arasta-yasam-merkezi-korkuteli",
+    "width": 1125,
+    "height": 1500
+  },
+  {
+    "path": "/assets/photos/projects/arasta-yasam-merkezi-korkuteli--g08.webp",
+    "topics": [
+      "residential",
+      "shell",
+      "exterior"
+    ],
+    "orientation": "landscape",
+    "project": "arasta-yasam-merkezi-korkuteli",
+    "width": 1500,
+    "height": 844
+  },
+  {
+    "path": "/assets/photos/projects/arasta-yasam-merkezi-korkuteli--g09.webp",
+    "topics": [
+      "residential",
+      "shell",
+      "exterior"
+    ],
+    "orientation": "landscape",
+    "project": "arasta-yasam-merkezi-korkuteli",
+    "width": 1500,
+    "height": 844
+  },
+  {
+    "path": "/assets/photos/projects/arasta-yasam-merkezi-korkuteli--g10.webp",
+    "topics": [
+      "residential",
+      "shell",
+      "exterior"
+    ],
+    "orientation": "landscape",
+    "project": "arasta-yasam-merkezi-korkuteli",
+    "width": 1500,
+    "height": 844
+  },
+  {
+    "path": "/assets/photos/projects/arasta-yasam-merkezi-korkuteli--g11.webp",
+    "topics": [
+      "residential",
+      "shell",
+      "exterior"
+    ],
+    "orientation": "portrait",
+    "project": "arasta-yasam-merkezi-korkuteli",
+    "width": 845,
+    "height": 1500
+  },
+  {
+    "path": "/assets/photos/projects/arasta-yasam-merkezi-korkuteli--g12.webp",
+    "topics": [
+      "residential",
+      "shell",
+      "exterior"
+    ],
+    "orientation": "landscape",
+    "project": "arasta-yasam-merkezi-korkuteli",
+    "width": 1600,
+    "height": 737
+  },
+  {
+    "path": "/assets/photos/projects/arasta-yasam-merkezi-korkuteli--g13.webp",
+    "topics": [
+      "residential",
+      "shell",
+      "exterior"
+    ],
+    "orientation": "portrait",
+    "project": "arasta-yasam-merkezi-korkuteli",
+    "width": 1125,
+    "height": 1500
+  },
+  {
+    "path": "/assets/photos/projects/arasta-yasam-merkezi-korkuteli--g14.webp",
+    "topics": [
+      "residential",
+      "shell",
+      "exterior"
+    ],
+    "orientation": "portrait",
+    "project": "arasta-yasam-merkezi-korkuteli",
+    "width": 1125,
+    "height": 1500
+  },
+  {
+    "path": "/assets/photos/projects/arasta-yasam-merkezi-korkuteli--g15.webp",
+    "topics": [
+      "residential",
+      "shell",
+      "exterior"
+    ],
+    "orientation": "portrait",
+    "project": "arasta-yasam-merkezi-korkuteli",
+    "width": 845,
+    "height": 1500
+  },
+  {
+    "path": "/assets/photos/projects/arasta-yasam-merkezi-korkuteli--g16.webp",
+    "topics": [
+      "residential",
+      "shell",
+      "exterior"
+    ],
+    "orientation": "landscape",
+    "project": "arasta-yasam-merkezi-korkuteli",
+    "width": 1500,
+    "height": 1125
+  },
+  {
+    "path": "/assets/photos/projects/arasta-yasam-merkezi-korkuteli--g17.webp",
+    "topics": [
+      "residential",
+      "shell",
+      "exterior"
+    ],
+    "orientation": "portrait",
+    "project": "arasta-yasam-merkezi-korkuteli",
+    "width": 845,
+    "height": 1500
+  },
+  {
+    "path": "/assets/photos/projects/arasta-yasam-merkezi-korkuteli--g18.webp",
+    "topics": [
+      "residential",
+      "shell",
+      "exterior"
+    ],
+    "orientation": "landscape",
+    "project": "arasta-yasam-merkezi-korkuteli",
+    "width": 1500,
+    "height": 1125
+  },
+  {
+    "path": "/assets/photos/projects/arasta-yasam-merkezi-korkuteli--g19.webp",
+    "topics": [
+      "residential",
+      "shell",
+      "exterior"
+    ],
+    "orientation": "portrait",
+    "project": "arasta-yasam-merkezi-korkuteli",
+    "width": 845,
+    "height": 1500
+  },
+  {
+    "path": "/assets/photos/projects/arasta-yasam-merkezi-korkuteli--g20.webp",
+    "topics": [
+      "residential",
+      "shell",
+      "exterior"
+    ],
+    "orientation": "portrait",
+    "project": "arasta-yasam-merkezi-korkuteli",
+    "width": 845,
+    "height": 1500
+  },
+  {
+    "path": "/assets/photos/projects/arasta-yasam-merkezi-korkuteli--g21.webp",
+    "topics": [
+      "residential",
+      "shell",
+      "exterior"
+    ],
+    "orientation": "portrait",
+    "project": "arasta-yasam-merkezi-korkuteli",
+    "width": 845,
+    "height": 1500
+  },
+  {
+    "path": "/assets/photos/projects/arasta-yasam-merkezi-korkuteli--g22.webp",
+    "topics": [
+      "residential",
+      "shell",
+      "exterior"
+    ],
+    "orientation": "portrait",
+    "project": "arasta-yasam-merkezi-korkuteli",
+    "width": 845,
+    "height": 1500
+  },
+  {
+    "path": "/assets/photos/projects/arasta-yasam-merkezi-korkuteli--g23.webp",
+    "topics": [
+      "residential",
+      "shell",
+      "exterior"
+    ],
+    "orientation": "landscape",
+    "project": "arasta-yasam-merkezi-korkuteli",
+    "width": 1500,
+    "height": 1125
+  },
+  {
+    "path": "/assets/photos/projects/arasta-yasam-merkezi-korkuteli--g24.webp",
+    "topics": [
+      "residential",
+      "shell",
+      "exterior"
+    ],
+    "orientation": "portrait",
+    "project": "arasta-yasam-merkezi-korkuteli",
+    "width": 1125,
+    "height": 1500
+  },
+  {
+    "path": "/assets/photos/projects/arasta-yasam-merkezi-korkuteli--g25.webp",
+    "topics": [
+      "residential",
+      "shell",
+      "exterior"
+    ],
+    "orientation": "portrait",
+    "project": "arasta-yasam-merkezi-korkuteli",
+    "width": 845,
+    "height": 1500
+  },
+  {
+    "path": "/assets/photos/projects/arasta-yasam-merkezi-korkuteli--g26.webp",
+    "topics": [
+      "residential",
+      "shell",
+      "exterior"
+    ],
+    "orientation": "portrait",
+    "project": "arasta-yasam-merkezi-korkuteli",
+    "width": 845,
+    "height": 1500
+  },
+  {
+    "path": "/assets/photos/projects/arasta-yasam-merkezi-korkuteli--g27.webp",
+    "topics": [
+      "residential",
+      "shell",
+      "exterior"
+    ],
+    "orientation": "portrait",
+    "project": "arasta-yasam-merkezi-korkuteli",
+    "width": 1125,
+    "height": 1500
+  },
+  {
+    "path": "/assets/photos/projects/arasta-yasam-merkezi-korkuteli--g28.webp",
+    "topics": [
+      "residential",
+      "shell",
+      "exterior"
+    ],
+    "orientation": "portrait",
+    "project": "arasta-yasam-merkezi-korkuteli",
+    "width": 1125,
+    "height": 1500
+  },
+  {
+    "path": "/assets/photos/projects/arasta-yasam-merkezi-korkuteli--g29.webp",
+    "topics": [
+      "residential",
+      "shell",
+      "exterior"
+    ],
+    "orientation": "portrait",
+    "project": "arasta-yasam-merkezi-korkuteli",
+    "width": 845,
+    "height": 1500
+  },
+  {
+    "path": "/assets/photos/projects/arasta-yasam-merkezi-korkuteli--g30.webp",
+    "topics": [
+      "residential",
+      "shell",
+      "exterior"
+    ],
+    "orientation": "portrait",
+    "project": "arasta-yasam-merkezi-korkuteli",
+    "width": 845,
+    "height": 1500
+  },
+  {
+    "path": "/assets/photos/projects/arasta-yasam-merkezi-korkuteli--g31.webp",
+    "topics": [
+      "residential",
+      "shell",
+      "exterior"
+    ],
+    "orientation": "portrait",
+    "project": "arasta-yasam-merkezi-korkuteli",
+    "width": 845,
+    "height": 1500
+  },
+  {
+    "path": "/assets/photos/projects/blue-waters-apartment--cover.webp",
+    "topics": [
+      "residential",
+      "shell",
+      "exterior"
+    ],
+    "orientation": "landscape",
+    "project": "blue-waters-apartment",
+    "width": 1920,
+    "height": 1148
+  },
+  {
+    "path": "/assets/photos/projects/blue-waters-apartment--finished-f01.webp",
+    "topics": [
+      "residential",
+      "finishing",
+      "interior"
+    ],
+    "orientation": "landscape",
+    "project": "blue-waters-apartment",
+    "width": 2000,
+    "height": 1196
+  },
+  {
+    "path": "/assets/photos/projects/blue-waters-apartment--finished-f02.webp",
+    "topics": [
+      "residential",
+      "finishing",
+      "interior"
+    ],
+    "orientation": "landscape",
+    "project": "blue-waters-apartment",
+    "width": 2000,
+    "height": 1189
+  },
+  {
+    "path": "/assets/photos/projects/blue-waters-apartment--finished-f03.webp",
+    "topics": [
+      "residential",
+      "finishing",
+      "interior"
+    ],
+    "orientation": "landscape",
+    "project": "blue-waters-apartment",
+    "width": 2000,
+    "height": 1195
+  },
+  {
+    "path": "/assets/photos/projects/blue-waters-apartment--finished-f04.webp",
+    "topics": [
+      "residential",
+      "finishing",
+      "interior"
+    ],
+    "orientation": "landscape",
+    "project": "blue-waters-apartment",
+    "width": 2000,
+    "height": 1197
+  },
+  {
+    "path": "/assets/photos/projects/blue-waters-apartment--finished-f05.webp",
+    "topics": [
+      "residential",
+      "finishing",
+      "interior"
+    ],
+    "orientation": "landscape",
+    "project": "blue-waters-apartment",
+    "width": 2000,
+    "height": 1196
+  },
+  {
+    "path": "/assets/photos/projects/blue-waters-apartment--finished-f06.webp",
+    "topics": [
+      "residential",
+      "finishing",
+      "interior"
+    ],
+    "orientation": "landscape",
+    "project": "blue-waters-apartment",
+    "width": 2000,
+    "height": 1200
+  },
+  {
+    "path": "/assets/photos/projects/blue-waters-apartment--finished-f07.webp",
+    "topics": [
+      "residential",
+      "finishing",
+      "interior"
+    ],
+    "orientation": "landscape",
+    "project": "blue-waters-apartment",
+    "width": 2000,
+    "height": 1204
+  },
+  {
+    "path": "/assets/photos/projects/blue-waters-apartment--finished-f08.webp",
+    "topics": [
+      "residential",
+      "finishing",
+      "interior"
+    ],
+    "orientation": "landscape",
+    "project": "blue-waters-apartment",
+    "width": 2000,
+    "height": 1201
+  },
+  {
+    "path": "/assets/photos/projects/blue-waters-apartment--finished-f09.webp",
+    "topics": [
+      "residential",
+      "finishing",
+      "interior"
+    ],
+    "orientation": "landscape",
+    "project": "blue-waters-apartment",
+    "width": 2000,
+    "height": 1195
+  },
+  {
+    "path": "/assets/photos/projects/blue-waters-apartment--finished-f10.webp",
+    "topics": [
+      "residential",
+      "finishing",
+      "interior"
+    ],
+    "orientation": "landscape",
+    "project": "blue-waters-apartment",
+    "width": 2000,
+    "height": 1205
+  },
+  {
+    "path": "/assets/photos/projects/blue-waters-apartment--finished-f11.webp",
+    "topics": [
+      "residential",
+      "finishing",
+      "interior"
+    ],
+    "orientation": "landscape",
+    "project": "blue-waters-apartment",
+    "width": 2000,
+    "height": 1195
+  },
+  {
+    "path": "/assets/photos/projects/blue-waters-apartment--finished-f12.webp",
+    "topics": [
+      "residential",
+      "finishing",
+      "interior"
+    ],
+    "orientation": "landscape",
+    "project": "blue-waters-apartment",
+    "width": 2000,
+    "height": 1206
+  },
+  {
+    "path": "/assets/photos/projects/blue-waters-apartment--finished-f13.webp",
+    "topics": [
+      "residential",
+      "finishing",
+      "interior"
+    ],
+    "orientation": "landscape",
+    "project": "blue-waters-apartment",
+    "width": 2000,
+    "height": 1219
+  },
+  {
+    "path": "/assets/photos/projects/blue-waters-apartment--finished-f14.webp",
+    "topics": [
+      "residential",
+      "finishing",
+      "interior"
+    ],
+    "orientation": "landscape",
+    "project": "blue-waters-apartment",
+    "width": 2000,
+    "height": 1233
+  },
+  {
+    "path": "/assets/photos/projects/blue-waters-apartment--finished-f15.webp",
+    "topics": [
+      "residential",
+      "finishing",
+      "interior"
+    ],
+    "orientation": "landscape",
+    "project": "blue-waters-apartment",
+    "width": 2000,
+    "height": 1330
+  },
+  {
+    "path": "/assets/photos/projects/blue-waters-apartment--finished-f16.webp",
+    "topics": [
+      "residential",
+      "finishing",
+      "interior"
+    ],
+    "orientation": "landscape",
+    "project": "blue-waters-apartment",
+    "width": 2000,
+    "height": 1334
+  },
+  {
+    "path": "/assets/photos/projects/blue-waters-apartment--finished-f17.webp",
+    "topics": [
+      "residential",
+      "finishing",
+      "interior"
+    ],
+    "orientation": "landscape",
+    "project": "blue-waters-apartment",
+    "width": 2000,
+    "height": 1248
+  },
+  {
+    "path": "/assets/photos/projects/villa-project--cover.webp",
+    "topics": [
+      "villa",
+      "residential",
+      "shell",
+      "exterior"
+    ],
+    "orientation": "landscape",
+    "project": "villa-project",
+    "width": 1920,
+    "height": 1228
+  },
+  {
+    "path": "/assets/photos/projects/villa-project--finished-f01.webp",
+    "topics": [
+      "villa",
+      "residential",
+      "finishing",
+      "interior"
+    ],
+    "orientation": "landscape",
+    "project": "villa-project",
+    "width": 1500,
+    "height": 959
+  },
+  {
+    "path": "/assets/photos/projects/villa-project--finished-f02.webp",
+    "topics": [
+      "villa",
+      "residential",
+      "finishing",
+      "interior"
+    ],
+    "orientation": "landscape",
+    "project": "villa-project",
+    "width": 2000,
+    "height": 1275
+  },
+  {
+    "path": "/assets/photos/projects/villa-project--finished-f03.webp",
+    "topics": [
+      "villa",
+      "residential",
+      "finishing",
+      "interior"
+    ],
+    "orientation": "landscape",
+    "project": "villa-project",
+    "width": 1500,
+    "height": 957
+  },
+  {
+    "path": "/assets/photos/projects/villa-project--finished-f04.webp",
+    "topics": [
+      "villa",
+      "residential",
+      "finishing",
+      "interior"
+    ],
+    "orientation": "landscape",
+    "project": "villa-project",
+    "width": 2000,
+    "height": 1247
+  },
+  {
+    "path": "/assets/photos/projects/villa-project--finished-f05.webp",
+    "topics": [
+      "villa",
+      "residential",
+      "finishing",
+      "interior"
+    ],
+    "orientation": "landscape",
+    "project": "villa-project",
+    "width": 2000,
+    "height": 1246
+  },
+  {
+    "path": "/assets/photos/projects/villa-project--finished-f06.webp",
+    "topics": [
+      "villa",
+      "residential",
+      "finishing",
+      "interior"
+    ],
+    "orientation": "landscape",
+    "project": "villa-project",
+    "width": 2000,
+    "height": 1336
+  },
+  {
+    "path": "/assets/photos/projects/villa-project--finished-f07.webp",
+    "topics": [
+      "villa",
+      "residential",
+      "finishing",
+      "interior"
+    ],
+    "orientation": "landscape",
+    "project": "villa-project",
+    "width": 2000,
+    "height": 1326
+  },
+  {
+    "path": "/assets/photos/projects/villa-project--finished-f08.webp",
+    "topics": [
+      "villa",
+      "residential",
+      "finishing",
+      "interior"
+    ],
+    "orientation": "landscape",
+    "project": "villa-project",
+    "width": 1500,
+    "height": 996
+  },
+  {
+    "path": "/assets/photos/projects/villa-project--finished-f09.webp",
+    "topics": [
+      "villa",
+      "residential",
+      "finishing",
+      "interior"
+    ],
+    "orientation": "landscape",
+    "project": "villa-project",
+    "width": 2000,
+    "height": 1330
+  },
+  {
+    "path": "/assets/photos/projects/villa-project--finished-f10.webp",
+    "topics": [
+      "villa",
+      "residential",
+      "finishing",
+      "interior"
+    ],
+    "orientation": "landscape",
+    "project": "villa-project",
+    "width": 1500,
+    "height": 963
+  },
+  {
+    "path": "/assets/photos/projects/villa-project--finished-f11.webp",
+    "topics": [
+      "villa",
+      "residential",
+      "finishing",
+      "interior"
+    ],
+    "orientation": "landscape",
+    "project": "villa-project",
+    "width": 1500,
+    "height": 956
+  },
+  {
+    "path": "/assets/photos/projects/villa-project--finished-f12.webp",
+    "topics": [
+      "villa",
+      "residential",
+      "finishing",
+      "interior"
+    ],
+    "orientation": "landscape",
+    "project": "villa-project",
+    "width": 2000,
+    "height": 1247
+  },
+  {
+    "path": "/assets/photos/projects/villa-project--finished-f13.webp",
+    "topics": [
+      "villa",
+      "residential",
+      "finishing",
+      "interior"
+    ],
+    "orientation": "landscape",
+    "project": "villa-project",
+    "width": 1500,
+    "height": 942
   }
 ]

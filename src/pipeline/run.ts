@@ -92,7 +92,7 @@ export async function runDailyPost(config: Config, log: Logger): Promise<RunResu
     // Reels elle secilmis fotograf havuzundan beslenir. Yazinin kendi
     // gorselleri 4-6 taneydi ve reel 4 kare istedigi icin ayni yazidan
     // cikan videolar hep ayni fotograflari gosteriyordu.
-    const photos = selectPhotos(await loadPhotos(), topics, 4, recentImageUrls(state));
+    const photos = selectPhotos(await loadPhotos(), topics, 4, recentImageUrls(state), { preferTall: true });
     reelPhotoPath = photos[0]!.path;
     mediaUsed = photos.map((p) => p.path);
     log(`Fotograflar: ${photos.map((p) => p.path.split('/').pop()).join(', ')}`);
