@@ -26,16 +26,42 @@ Hard rules:
 - Never invent numbers, project names, timelines or claims that are not in the source text.
 - No hashtags anywhere in your output — those are appended separately by the system.
 - No "link in bio" phrasing; close with a calm, concrete invitation instead.
-- Short paragraphs separated by a blank line. Between 90 and 160 words total.
-- Do not use em dashes.`;
+- Short paragraphs separated by a blank line.
+- Do not use em dashes.
+
+You write the caption TWICE: once in English, once in Russian.
+
+The Russian version is not a literal translation. It carries the same substance for a Russian speaking buyer or investor looking at Antalya property, in natural Russian. Russian punctuation applies, including тире where the language requires it.
+
+Each version is 70 to 110 words. Both must stand on their own.
+
+Return a JSON object exactly like this and nothing else:
+{"english": "...", "russian": "..."}`;
 
 export interface CaptionInput {
   readonly unit: PostUnit;
   readonly locale: Locale;
 }
 
-export async function generateCaption(client: Anthropic, input: CaptionInput): Promise<string> {
-  const { unit, locale } = input;
+export interface BilingualCaption {
+  readonly english: string;
+  readonly russian: string;
+}
+
+/**
+ * Caption iki dilde uretilir: Ingilizce ve Rusca.
+ *
+ * Gerekce: Antalya luks konut pazarinin en buyuk yabanci alici grubu Rusca
+ * konusuyor, otel yatirimcisi ve Avrupali alici Ingilizce. Tek dil secmek
+ * pazarin buyuk bolumunu disarida birakiyordu. Ucuncu dil (Turkce)
+ * eklenmedi: caption "devamini gor" esiginin altina tasar ve cagri metni
+ * gorunmez olur.
+ *
+ * Ikisi tek cagrida uretiliyor; ayri cagri hem maliyeti ikiye katlar hem
+ * iki metnin farkli seyler soylemesine yol acar.
+ */
+export async function generateCaption(client: Anthropic, input: CaptionInput): Promise<BilingualCaption> {
+  const { unit } = input;
 
   const response = await client.messages.create({
     model: MODEL,
@@ -45,7 +71,7 @@ export async function generateCaption(client: Anthropic, input: CaptionInput): P
       {
         role: 'user',
         content: [
-          `Write the caption in ${LANGUAGE_NAMES[locale]}.`,
+          'Write the caption in English and in Russian.',
           '',
           `Source article: "${unit.articleTitle}"`,
           `Section: "${unit.heading}"`,
@@ -53,7 +79,7 @@ export async function generateCaption(client: Anthropic, input: CaptionInput): P
           'Section text:',
           truncate(unit.text, 2400),
           '',
-          'Write only the caption body. No preamble, no explanation, no hashtags.',
+          'Return only the JSON object. No preamble, no explanation, no hashtags.',
         ].join('\n'),
       },
     ],
@@ -65,11 +91,29 @@ export async function generateCaption(client: Anthropic, input: CaptionInput): P
     .join('')
     .trim();
 
-  if (text.length === 0) {
-    throw new Error(`Caption uretilemedi (bos yanit): ${unit.id}`);
+  const start = text.indexOf('{');
+  const end = text.lastIndexOf('}');
+  if (start === -1 || end <= start) {
+    throw new Error(`Caption uretilemedi (JSON bulunamadi): ${unit.id}`);
   }
 
-  return stripStrayHashtags(text);
+  const parsed = JSON.parse(text.slice(start, end + 1)) as Partial<BilingualCaption>;
+  if (!parsed.english?.trim() || !parsed.russian?.trim()) {
+    throw new Error(`Caption eksik dil icin uretildi: ${unit.id}`);
+  }
+
+  return {
+    english: stripStrayHashtags(parsed.english),
+    russian: stripStrayHashtags(parsed.russian),
+  };
+}
+
+/** Iki dil arasindaki ayrac; dilden bagimsiz ve gorsel olarak sakin. */
+const SEPARATOR = '· · ·';
+
+/** Iki dilli govdeyi tek metne cevirir. */
+export function joinBilingual(caption: BilingualCaption): string {
+  return `${caption.english}\n\n${SEPARATOR}\n\n${caption.russian}`;
 }
 
 /**

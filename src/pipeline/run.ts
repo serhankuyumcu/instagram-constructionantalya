@@ -4,7 +4,7 @@ import { fetchArticle } from '../blog/scraper.js';
 import { mapWithConcurrency } from '../lib/http.js';
 import { toPostUnits } from '../blog/units.js';
 import type { PostUnit } from '../blog/types.js';
-import { assembleCaption, generateCaption } from '../caption/generator.js';
+import { assembleCaption, generateCaption, joinBilingual } from '../caption/generator.js';
 import { buildHashtags } from '../caption/hashtags.js';
 import { composePostImage } from '../image/compose.js';
 import { composeTipReel } from '../video/compose.js';
@@ -86,7 +86,11 @@ export async function runDailyPost(config: Config, log: Logger): Promise<RunResu
 
   if (format === 'reel') {
     const tip = await generateTip(anthropic, unit);
-    caption = assembleCaption(tip.caption, unit.articleUrl, hashtags.text);
+    caption = assembleCaption(
+      joinBilingual({ english: tip.caption, russian: tip.captionRu }),
+      unit.articleUrl,
+      hashtags.text,
+    );
     log(`Tip uretildi: "${tip.hook}"`);
 
     // Reels elle secilmis fotograf havuzundan beslenir. Yazinin kendi
@@ -104,7 +108,7 @@ export async function runDailyPost(config: Config, log: Logger): Promise<RunResu
     });
   } else {
     const body = await generateCaption(anthropic, { unit, locale: config.captionLocale });
-    caption = assembleCaption(body, unit.articleUrl, hashtags.text);
+    caption = assembleCaption(joinBilingual(body), unit.articleUrl, hashtags.text);
 
     media = await composePostImage({
       heading: unit.heading,

@@ -34,6 +34,9 @@ const NICHE = [
   '#villaconstruction', '#turnkeyvilla', '#luxuryconstruction', '#villaproject',
   '#propertyinvestment', '#turkeyrealestate', '#investinturkey', '#villaforsale',
   '#müteahhit', '#inşaat', '#anahtarteslim', '#lüksvilla', '#villayapımı',
+  // Rusca etiketler: caption iki dilli oldugu icin etiket havuzu da
+  // Rusca konusan aliciyi kapsamali.
+  '#анталия', '#недвижимостьтурция', '#домвтурции', '#строительствотурция',
   '#buildingdesign', '#civilengineering', '#residentialdesign',
 ] as const;
 

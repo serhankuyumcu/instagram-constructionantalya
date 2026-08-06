@@ -18,7 +18,12 @@ const schema = z.object({
   /** Kancayi acan iki kisa satir; her biri bir kareye denk gelir. */
   lines: z.array(z.string().min(20).max(88)).length(2),
   /** Gonderi metni; soruyla acilir, yorum davet eder. */
-  caption: z.string().min(180).max(900),
+  caption: z.string().min(140).max(700),
+  /**
+   * Ayni metnin Rusca karsiligi. Birebir ceviri degil: Antalya'ya bakan
+   * Rusca konusan alici icin ayni ozu tasir. Hesap iki dilli yayin yapiyor.
+   */
+  captionRu: z.string().min(140).max(700),
 });
 
 export type TipContent = z.infer<typeof schema>;
@@ -36,6 +41,7 @@ Hard rules:
 - No emoji, no exclamation marks, no em dashes, no hashtags.
 - Plain international English. Short words. A builder speaking, not a marketer.
 - The caption opens with a genuine question that invites a reply, then gives the substance, then a calm invitation to talk.
+- You write the caption twice: once in English (caption), once in Russian (captionRu). The Russian is not a literal translation; it carries the same substance in natural Russian, with Russian punctuation including тире where the language requires it.
 
 Good hook: "Your walls are only as straight as the day they were poured"
 Bad hook: "The importance of quality shell construction"`;
@@ -82,7 +88,8 @@ async function attemptTip(client: Anthropic, unit: PostUnit, previousError: stri
           'Return JSON with exactly these keys:',
           '  hook    — max 60 characters, the on-screen opening line',
           '  lines   — exactly 2 strings, max 85 characters each, the payoff shown after the hook',
-          '  caption — the post text, 180 to 900 characters, opens with a question',
+          '  caption   — English post text, 140 to 700 characters, opens with a question',
+          '  captionRu — the same in natural Russian, 140 to 700 characters',
           ...(previousError
             ? ['', `Your previous attempt was rejected: ${previousError}`, 'Respect the character limits exactly.']
             : []),
