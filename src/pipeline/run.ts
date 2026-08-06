@@ -6,6 +6,7 @@ import { toPostUnits } from '../blog/units.js';
 import type { PostUnit } from '../blog/types.js';
 import { assembleCaption, generateCaption, joinBilingual } from '../caption/generator.js';
 import { buildHashtags } from '../caption/hashtags.js';
+import { findFigures } from '../caption/figures.js';
 import { composePostImage } from '../image/compose.js';
 import { composeTipReel } from '../video/compose.js';
 import { generateTip } from '../caption/tip.js';
@@ -115,6 +116,19 @@ export async function runDailyPost(config: Config, log: Logger): Promise<RunResu
       kicker: kickerFor(unit, topics[0]),
       imageUrl: choice.image.url,
     });
+  }
+
+  /**
+   * Fiyat ve sure bilgisi yayinlanmaz. Prompt bunu zaten yasakliyor ama
+   * kaynak yazilarin bazilari bastan sona takvim anlatiyor ve model
+   * oradan aliyor; asil bariyer burasi.
+   */
+  const figures = findFigures(caption);
+  if (figures.length > 0) {
+    throw new Error(
+      `Caption'da fiyat/sure bilgisi var, yayin yapilmadi:\n` +
+        figures.map((f) => `  - ${f.reason}: "${f.match}"`).join('\n'),
+    );
   }
 
   log(`Caption uretildi: ${caption.length} karakter, ${hashtags.tags.length} hashtag`);

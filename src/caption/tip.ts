@@ -36,7 +36,7 @@ The format is a 10 second vertical reel. It opens with one blunt line on screen 
 
 Hard rules:
 - Everything you write must come from the source text. Never introduce a technical claim, number, material or standard that is not in it.
-- No prices, no durations, no percentages.
+- NEVER state a figure for cost or time: no prices, no budgets, no currency amounts, no durations, no delivery timelines, no percentages. This holds even when the source text contains them.
 - The hook states a consequence or a mistake, not a topic. It must feel like a warning from someone who has seen it go wrong.
 - No emoji, no exclamation marks, no em dashes, no hashtags.
 - Plain international English. Short words. A builder speaking, not a marketer.
