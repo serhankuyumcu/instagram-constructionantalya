@@ -31,6 +31,13 @@ export type TipContent = z.infer<typeof schema>;
 
 const MODEL = 'claude-sonnet-5';
 
+/**
+ * Iki dilli cikti (kanca + satirlar + Ingilizce ve Rusca caption) onceki
+ * 1200 token sinirina sigmiyordu; model cumle ortasinda kesilip JSON
+ * kapanmiyordu. 7 Agustos aksam gonderisi bu yuzden dustu.
+ */
+const MAX_TOKENS = 2500;
+
 const SYSTEM = `You turn construction expertise into short-form video scripts for Construction Antalya, a turnkey luxury builder on the Turkish Riviera specialising in shell and structural work (kaba inşaat).
 
 The format is a 10 second vertical reel. It opens with one blunt line on screen that makes a property owner stop scrolling, then delivers one concrete technical truth.
@@ -47,7 +54,7 @@ Hard rules:
 Good hook: "Your walls are only as straight as the day they were poured"
 Bad hook: "The importance of quality shell construction"`;
 
-const MAX_ATTEMPTS = 2;
+const MAX_ATTEMPTS = 3;
 
 /**
  * Uzunluk sinirlari kati: kanca ekrani kaplayan tek satir, tasarsa okunmaz.
@@ -74,7 +81,7 @@ export async function generateTip(client: Anthropic, unit: PostUnit): Promise<Ti
 async function attemptTip(client: Anthropic, unit: PostUnit, previousError: string): Promise<TipContent> {
   const response = await client.messages.create({
     model: MODEL,
-    max_tokens: 1200,
+    max_tokens: MAX_TOKENS,
     system: `${SYSTEM}\n\nRespond with a single valid JSON object and nothing else.`,
     messages: [
       {
@@ -98,6 +105,12 @@ async function attemptTip(client: Anthropic, unit: PostUnit, previousError: stri
       },
     ],
   });
+
+  // Yanit token siniri yuzunden kesildiyse JSON zaten kapanmaz; hatayi
+  // "JSON bulunamadi" diye degil, sebebiyle bildirmek teshisi kolaylastirir.
+  if (response.stop_reason === 'max_tokens') {
+    throw new Error('Yanit token sinirinda kesildi; MAX_TOKENS artirilmali.');
+  }
 
   const raw = response.content
     .filter((block): block is Anthropic.TextBlock => block.type === 'text')

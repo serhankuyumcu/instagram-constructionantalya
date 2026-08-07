@@ -7,7 +7,8 @@ import { parseModelJson } from '../lib/json.js';
 export const CAPTION_LIMIT = 2200;
 
 const MODEL = 'claude-sonnet-5';
-const MAX_TOKENS = 900;
+// Iki dilli cikti icin pay birakilir; kesilen yanit gecersiz JSON demek.
+const MAX_TOKENS = 2000;
 
 const LANGUAGE_NAMES: Readonly<Record<Locale, string>> = {
   tr: 'Turkish',
@@ -111,6 +112,10 @@ async function attemptCaption(
       },
     ],
   });
+
+  if (response.stop_reason === 'max_tokens') {
+    throw new Error('Yanit token sinirinda kesildi; MAX_TOKENS artirilmali.');
+  }
 
   const text = response.content
     .filter((block): block is Anthropic.TextBlock => block.type === 'text')
