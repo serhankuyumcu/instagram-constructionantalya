@@ -1,6 +1,7 @@
 import Anthropic from '@anthropic-ai/sdk';
 import { z } from 'zod';
 import type { PostUnit } from '../blog/types.js';
+import { parseModelJson } from '../lib/json.js';
 
 /**
  * "Tip reel" icerigi: tek bir somut teknik gercek, kanca ile acilan kisa video.
@@ -103,9 +104,5 @@ async function attemptTip(client: Anthropic, unit: PostUnit, previousError: stri
     .map((block) => block.text)
     .join('');
 
-  const start = raw.indexOf('{');
-  const end = raw.lastIndexOf('}');
-  if (start === -1 || end <= start) throw new Error('Tip uretiminde JSON bulunamadi.');
-
-  return schema.parse(JSON.parse(raw.slice(start, end + 1)));
+  return schema.parse(parseModelJson(raw));
 }

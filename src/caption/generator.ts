@@ -1,6 +1,7 @@
 import Anthropic from '@anthropic-ai/sdk';
 import type { PostUnit } from '../blog/types.js';
 import type { Locale } from '../config.js';
+import { parseModelJson } from '../lib/json.js';
 
 /** Instagram caption ust siniri; hashtag'ler de bu limite dahildir. */
 export const CAPTION_LIMIT = 2200;
@@ -61,7 +62,31 @@ export interface BilingualCaption {
  * Ikisi tek cagrida uretiliyor; ayri cagri hem maliyeti ikiye katlar hem
  * iki metnin farkli seyler soylemesine yol acar.
  */
+const MAX_ATTEMPTS = 3;
+
+/**
+ * Model ara sira bozuk JSON dondurebiliyor (kacissiz satir sonu gibi).
+ * Once onarim denenir, o da tutmazsa hata geri beslenip yeniden istenir.
+ */
 export async function generateCaption(client: Anthropic, input: CaptionInput): Promise<BilingualCaption> {
+  let lastError = '';
+
+  for (let attempt = 1; attempt <= MAX_ATTEMPTS; attempt++) {
+    try {
+      return await attemptCaption(client, input, attempt === 1 ? '' : lastError);
+    } catch (error) {
+      lastError = error instanceof Error ? error.message.slice(0, 300) : String(error);
+    }
+  }
+
+  throw new Error(`Caption uretilemedi (${MAX_ATTEMPTS} deneme): ${lastError}`);
+}
+
+async function attemptCaption(
+  client: Anthropic,
+  input: CaptionInput,
+  previousError: string,
+): Promise<BilingualCaption> {
   const { unit } = input;
 
   const response = await client.messages.create({
@@ -81,6 +106,7 @@ export async function generateCaption(client: Anthropic, input: CaptionInput): P
           truncate(unit.text, 2400),
           '',
           'Return only the JSON object. No preamble, no explanation, no hashtags.',
+          ...(previousError ? ['', `Your previous attempt failed: ${previousError}`] : []),
         ].join('\n'),
       },
     ],
@@ -92,13 +118,7 @@ export async function generateCaption(client: Anthropic, input: CaptionInput): P
     .join('')
     .trim();
 
-  const start = text.indexOf('{');
-  const end = text.lastIndexOf('}');
-  if (start === -1 || end <= start) {
-    throw new Error(`Caption uretilemedi (JSON bulunamadi): ${unit.id}`);
-  }
-
-  const parsed = JSON.parse(text.slice(start, end + 1)) as Partial<BilingualCaption>;
+  const parsed = parseModelJson<Partial<BilingualCaption>>(text);
   if (!parsed.english?.trim() || !parsed.russian?.trim()) {
     throw new Error(`Caption eksik dil icin uretildi: ${unit.id}`);
   }
