@@ -17,7 +17,7 @@ on:
       format:
         description: 'Bicim (bos birakilirsa cron/saate gore secilir)'
         type: choice
-        options: ['', 'image', 'reel']
+        options: ['', 'carousel', 'image', 'reel']
         default: ''
       count:
         description: 'Kac gonderi atilsin (profil doldurma icin; varsayilan 1)'
@@ -74,7 +74,7 @@ jobs:
           # yerine acikca vermek CI gecikmelerine karsi guvenli.
           FORMAT=""
           case "${{ github.event.schedule }}" in
-            "0 6 * * *")  FORMAT="-- --image" ;;
+            "0 6 * * *")  FORMAT="-- --carousel" ;;
             "0 17 * * *") FORMAT="-- --reel" ;;
           esac
           # Elle tetiklemede secilen bicim her zaman onceliklidir.
@@ -95,9 +95,9 @@ jobs:
           for i in $(seq 1 "$COUNT"); do
             if [ "$COUNT" -gt 1 ]; then
               echo "::group::Gonderi $i / $COUNT"
-              # Bicim verilmediyse doldurmada donusumlu: bir foto, bir reel.
+              # Bicim verilmediyse doldurmada donusumlu: bir carousel, bir reel.
               if [ -z "${{ inputs.format }}" ]; then
-                if [ $((i % 2)) -eq 1 ]; then FORMAT="-- --image"; else FORMAT="-- --reel"; fi
+                if [ $((i % 2)) -eq 1 ]; then FORMAT="-- --carousel"; else FORMAT="-- --reel"; fi
               fi
             fi
 

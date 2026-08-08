@@ -16,7 +16,7 @@ const LANGUAGE_NAMES: Readonly<Record<Locale, string>> = {
   ru: 'Russian',
 };
 
-const SYSTEM_PROMPT = `You write Instagram captions for Construction Antalya, a turnkey luxury construction company on the Turkish Riviera. Their built work includes five-star hotels (Kempinski, Mercure, Kaya Palazzo, Sirene), mixed-use developments and private villas.
+export const VOICE_PROMPT = `You write Instagram captions for Construction Antalya, a turnkey luxury construction company on the Turkish Riviera. Their built work includes five-star hotels (Kempinski, Mercure, Kaya Palazzo, Sirene), mixed-use developments and private villas.
 
 Audience: international buyers and investors considering building or buying property in Antalya, plus architecture-minded followers.
 
@@ -93,7 +93,7 @@ async function attemptCaption(
   const response = await client.messages.create({
     model: MODEL,
     max_tokens: MAX_TOKENS,
-    system: SYSTEM_PROMPT,
+    system: VOICE_PROMPT,
     messages: [
       {
         role: 'user',

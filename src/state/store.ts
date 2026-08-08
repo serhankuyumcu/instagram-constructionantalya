@@ -45,7 +45,7 @@ const recordSchema = z.object({
   hashtags: z.array(z.string()).default([]),
 
   /** Gonderi bicimi. Eski kayitlarda yok; hepsi fotograf gonderisiydi. */
-  format: z.enum(['image', 'reel']).default('image'),
+  format: z.enum(['carousel', 'image', 'reel']).default('image'),
 
   /**
    * Gonderide kullanilan TUM gorseller.

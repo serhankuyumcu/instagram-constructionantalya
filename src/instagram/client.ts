@@ -34,6 +34,12 @@ export interface PublishReelInput {
   readonly coverSecond?: number;
 }
 
+export interface CarouselInput {
+  /** Carousel sirasi bu dizinin sirasidir; Instagram 2-10 gorsel kabul eder. */
+  readonly imageUrls: readonly string[];
+  readonly caption: string;
+}
+
 export interface PublishResult {
   readonly mediaId: string;
   readonly permalink: string | null;
@@ -73,6 +79,53 @@ export class InstagramClient {
     if (!data.id) throw new Error('Reels container olusturulamadi (id donmedi).');
 
     await this.waitUntilReady(data.id, VIDEO_POLL_MAX_ATTEMPTS);
+    const mediaId = await this.publishContainer(data.id);
+
+    return { mediaId, permalink: await this.fetchPermalink(mediaId) };
+  }
+
+  /**
+   * Carousel (kaydirmali cok gorselli gonderi) yayinlar.
+   *
+   * Uc adim: once her gorsel icin `is_carousel_item` isaretli birer
+   * container, sonra bunlari `children` olarak toplayan bir CAROUSEL
+   * container, en sonunda yayin. Caption yalnizca ust container'a
+   * yaziliyor; alt gorsellere caption verilirse Instagram sessizce
+   * yok sayiyor.
+   */
+  async publishCarousel(input: CarouselInput): Promise<PublishResult> {
+    if (input.imageUrls.length < 2 || input.imageUrls.length > 10) {
+      throw new Error(`Carousel 2-10 gorsel ister, ${input.imageUrls.length} verildi.`);
+    }
+
+    // Alt container'lar sirayla olusturuluyor: Instagram ayni anda gelen
+    // isteklerde zaman zaman ayni id'yi donduruyor ve carousel bozuluyor.
+    const children: string[] = [];
+    for (const imageUrl of input.imageUrls) {
+      const body = new URLSearchParams({
+        image_url: imageUrl,
+        is_carousel_item: 'true',
+        access_token: this.accessToken,
+      });
+
+      const data = await this.post<{ id?: string }>(`${GRAPH_BASE}/${this.userId}/media`, body);
+      if (!data.id) throw new Error('Carousel alt gorseli icin container olusturulamadi.');
+      children.push(data.id);
+    }
+
+    for (const child of children) await this.waitUntilReady(child);
+
+    const body = new URLSearchParams({
+      media_type: 'CAROUSEL',
+      children: children.join(','),
+      caption: input.caption,
+      access_token: this.accessToken,
+    });
+
+    const data = await this.post<{ id?: string }>(`${GRAPH_BASE}/${this.userId}/media`, body);
+    if (!data.id) throw new Error('Carousel container olusturulamadi (id donmedi).');
+
+    await this.waitUntilReady(data.id);
     const mediaId = await this.publishContainer(data.id);
 
     return { mediaId, permalink: await this.fetchPermalink(mediaId) };

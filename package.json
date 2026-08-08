@@ -21,7 +21,10 @@
     "reel": "tsx src/index.ts --reel",
     "reel:dry": "tsx src/index.ts --dry-run --reel",
     "reconcile": "tsx src/cli/reconcile.ts",
-    "post:video": "tsx src/cli/post-video.ts"
+    "post:video": "tsx src/cli/post-video.ts",
+    "plan:sync": "tsx src/cli/sync-plan.ts",
+    "carousel": "tsx src/index.ts --carousel",
+    "carousel:dry": "tsx src/index.ts --dry-run --carousel"
   },
   "dependencies": {
     "@anthropic-ai/sdk": "^0.32.1",

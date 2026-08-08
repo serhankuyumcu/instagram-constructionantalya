@@ -33,11 +33,28 @@ const manifestPath = fileURLToPath(new URL('../../assets/photos/manifest.json', 
 
 let cached: Photo[] | null = null;
 
+/**
+ * Icerik takvimiyle ortusen kareler.
+ *
+ * Takvimdeki proje fotograflari havuzda da var — ayni cekim, farkli isim ve
+ * kodlama. Dosya adi eslesmedigi icin tekrar onleme bunu goremiyor ve ayni
+ * kare sabah carousel'inde, aksam reel'inde cikabiliyordu. Liste `plan:sync`
+ * sirasinda algisal karsilastirmayla uretiliyor.
+ */
+const overlapPath = fileURLToPath(new URL('../../assets/plan/overlap.json', import.meta.url));
+
 export async function loadPhotos(): Promise<Photo[]> {
   if (cached) return cached;
 
   const raw = await readFile(manifestPath, 'utf8');
-  cached = manifestSchema.parse(JSON.parse(raw));
+  const all = manifestSchema.parse(JSON.parse(raw));
+
+  // Takvim yoksa (ya da henuz senkronlanmadiysa) havuzun tamami kullanilir.
+  const overlap = await readFile(overlapPath, 'utf8')
+    .then((text) => new Set(z.array(z.string()).parse(JSON.parse(text))))
+    .catch(() => new Set<string>());
+
+  cached = all.filter((photo) => !overlap.has(photo.path));
   return cached;
 }
 
