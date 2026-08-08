@@ -1,6 +1,7 @@
 import { describe, expect, test } from 'vitest';
 import { detectTopics } from '../src/content/topics.js';
 import { selectImage } from '../src/image/select.js';
+import { selectPhotos } from '../src/photos/library.js';
 import { selectNextUnit } from '../src/pipeline/select-unit.js';
 import { makeImages, makeState, makeUnit } from './fixtures.js';
 
@@ -61,7 +62,7 @@ describe('selectImage', () => {
     expect(third.image.url).toBe(first.image.url);
   });
 
-  test('yakin zamanda kullanilan gorseli atlar', () => {
+  test('daha once kullanilan gorseli atlar', () => {
     const images = makeImages(3);
     const preferred = images[1]!.url;
     const choice = selectImage(makeUnit({ sectionIndex: 1, images }), [preferred]);
@@ -69,11 +70,93 @@ describe('selectImage', () => {
     expect(choice.image.url).not.toBe(preferred);
   });
 
-  test('tum gorseller yakin zamanda kullanilmissa yine de bir sonuc dondurur', () => {
+  test('kullanilmis gorsel ne kadar eski olursa olsun geri gelmez', () => {
+    const images = makeImages(3);
+    const preferred = images[1]!.url;
+    // Aradan 200 gonderi gecmis olmasi hicbir sey degistirmemeli: eski
+    // "son N gonderi" penceresi tam burada tekrara yol aciyordu.
+    const history = [preferred, ...Array.from({ length: 200 }, (_, i) => `https://other/${i}.webp`)];
+
+    expect(selectImage(makeUnit({ sectionIndex: 1, images }), history).image.url).not.toBe(preferred);
+  });
+
+  test('tum gorseller kullanilmissa isFresh false doner', () => {
     const images = makeImages(2);
     const choice = selectImage(makeUnit({ images }), images.map((i) => i.url));
 
+    expect(choice.isFresh).toBe(false);
     expect(images.map((i) => i.url)).toContain(choice.image.url);
+  });
+
+  test('taze gorsel varken isFresh true doner', () => {
+    const images = makeImages(3);
+    expect(selectImage(makeUnit({ images }), [images[0]!.url]).isFresh).toBe(true);
+  });
+});
+
+describe('selectPhotos', () => {
+  const photo = (path: string, topics: string[], project?: string, height = 2000) => ({
+    path,
+    topics,
+    orientation: 'portrait' as const,
+    width: 1500,
+    height,
+    ...(project === undefined ? {} : { project }),
+  });
+
+  const pool = [
+    photo('/a1.webp', ['hotel'], 'alpha'),
+    photo('/a2.webp', ['hotel'], 'alpha'),
+    photo('/a3.webp', ['hotel'], 'alpha'),
+    photo('/b1.webp', ['hotel'], 'beta'),
+    photo('/b2.webp', ['hotel'], 'beta'),
+    photo('/c1.webp', ['hotel'], 'gamma'),
+    photo('/d1.webp', ['villa'], 'delta'),
+  ];
+
+  test('kullanilmis kareyi taze kare varken secmez', () => {
+    const picked = selectPhotos(pool, ['hotel'], 3, ['/a1.webp', '/b1.webp']);
+
+    expect(picked.map((p) => p.path)).not.toContain('/a1.webp');
+    expect(picked.map((p) => p.path)).not.toContain('/b1.webp');
+  });
+
+  test('bir reel icin ayni projeden iki kare secmez', () => {
+    const projects = selectPhotos(pool, ['hotel'], 3, []).map((p) => p.project);
+
+    expect(new Set(projects).size).toBe(3);
+  });
+
+  test('yeterli proje yoksa cesitlilik kisitini gevsetir', () => {
+    const picked = selectPhotos([pool[0]!, pool[1]!, pool[2]!], ['hotel'], 3, []);
+
+    expect(picked).toHaveLength(3);
+    expect(new Set(picked.map((p) => p.path)).size).toBe(3);
+  });
+
+  test('konusu uymayan taze kareyi, konusu uyan kullanilmis kareye tercih eder', () => {
+    const used = ['/a1.webp', '/a2.webp', '/a3.webp', '/b1.webp', '/b2.webp', '/c1.webp'];
+    const picked = selectPhotos(pool, ['hotel'], 1, used);
+
+    expect(picked[0]!.path).toBe('/d1.webp');
+  });
+
+  test('havuz tamamen tukendiginde en eski kullanilana doner', () => {
+    const used = pool.map((p) => p.path);
+    expect(selectPhotos(pool, ['hotel'], 1, used)[0]!.path).toBe('/a1.webp');
+  });
+
+  test('preferTall ile kisa kareler geriye duser', () => {
+    const mixed = [photo('/short.webp', ['hotel'], 'x', 900), photo('/tall.webp', ['hotel'], 'y', 2000)];
+
+    expect(selectPhotos(mixed, ['hotel'], 1, [], { preferTall: true })[0]!.path).toBe('/tall.webp');
+  });
+
+  test('ayni girdi icin her zaman ayni sonucu verir', () => {
+    const a = selectPhotos(pool, ['hotel'], 3, ['/a1.webp']).map((p) => p.path);
+    const b = selectPhotos(pool, ['hotel'], 3, ['/a1.webp']).map((p) => p.path);
+
+    expect(a).toEqual(b);
   });
 
   test('yazinin gorseli yoksa acik hata verir', () => {

@@ -41,9 +41,6 @@ export async function loadPhotos(): Promise<Photo[]> {
   return cached;
 }
 
-/** Son N gonderide kullanilan fotograflar mumkunse tekrar secilmez. */
-const RECENCY_WINDOW = 40;
-
 /**
  * Reels 9:16 dikey kirpiyor ve uzerine hafif zoom uyguluyor; bunun icin
  * yaklasik 2150 piksel yukseklik gerekiyor. Sitedeki proje fotograflari
@@ -53,68 +50,127 @@ const RECENCY_WINDOW = 40;
  */
 const REEL_MIN_HEIGHT = 1500;
 
-/**
- * Konuya uyan fotograflari secer.
- *
- * Siralama: once konu eslesmesinin gucu, sonra yakin zamanda kullanilmamis
- * olma. Konu hic eslesmezse havuzun tamami aday olur; bir reel'in gorselsiz
- * kalmasindansa konusu zayif eslesen bir kare daha iyidir.
- */
 export interface SelectOptions {
   /** Reels icin: dusuk cozunurluklu kareler geriye dusurulur. */
   readonly preferTall?: boolean;
 }
 
+interface Ranked {
+  readonly photo: Photo;
+  readonly topic: number;
+  readonly short: boolean;
+  /** Kacinci sirada kullanildigi; hic kullanilmamissa -1. */
+  readonly usedAt: number;
+}
+
+/**
+ * Konuya uyan fotograflari secer.
+ *
+ * Iki kural bu fonksiyonun tamamini belirliyor:
+ *
+ * 1. BIR KEZ KULLANILAN KARE GERI GELMEZ. Once "son N gonderi" penceresi
+ *    vardi ve tekrara yol acti: pencere kaydikca eski kareler yeniden
+ *    aday oluyordu. 300 karelik havuzda pencereye gerek yok; kullanilmis
+ *    olan tamamen eleniyor ve ancak havuz bitince geri aliniyor.
+ *
+ * 2. BIR REEL'DE AYNI PROJEDEN TEK KARE. Siralama esitliginde yola gore
+ *    diziliyordu ve ayni galerinin ardisik dosyalari (g01, g02, g03, g04)
+ *    tek videoya doluyordu; izleyen icin bu "ayni fotograf dort kez"
+ *    demek. Cesitlilik ancak havuz zorlarsa gevsetiliyor.
+ */
 export function selectPhotos(
   photos: readonly Photo[],
   topics: readonly Topic[],
   count: number,
-  recentlyUsed: readonly string[],
+  usedPaths: readonly string[],
   options: SelectOptions = {},
 ): Photo[] {
   if (photos.length === 0) throw new Error('Fotograf havuzu bos (assets/photos/manifest.json).');
 
-  // Her fotografin en son kacinci gonderide kullanildigi. Hic kullanilmamis
-  // olanlar -1 alir ve her zaman once gelir.
-  const lastUsed = new Map<string, number>();
-  recentlyUsed.forEach((path, index) => lastUsed.set(path, index));
+  const usedAt = new Map<string, number>();
+  usedPaths.forEach((path, index) => usedAt.set(path, index));
 
-  const topicScore = (photo: Photo): number =>
-    photo.topics.reduce((sum, topic) => {
-      const rank = topics.indexOf(topic as Topic);
-      return rank === -1 ? sum : sum + (10 - Math.min(rank, 9));
-    }, 0);
-
-  const scored = photos.map((photo) => ({
+  const ranked: Ranked[] = photos.map((photo) => ({
     photo,
-    topic: topicScore(photo),
+    topic: topicScore(photo, topics),
     // Dikey videoda kisa kaynak buyutulmek zorunda kalir ve yumusar.
     short: options.preferTall === true && (photo.height ?? 0) < REEL_MIN_HEIGHT,
-    lastUsed: lastUsed.get(photo.path) ?? -1,
+    usedAt: usedAt.get(photo.path) ?? -1,
   }));
 
-  // Konuya uyan kare varsa yalnizca onlar aday; hicbiri uymuyorsa havuzun
-  // tamami aday olur. Gorselsiz reel uretmektense konusu zayif eslesen bir
-  // kare daha iyidir.
-  const matching = scored.filter((entry) => entry.topic > 0);
-  const pool = matching.length >= count ? matching : scored;
+  const fresh = ranked.filter((entry) => entry.usedAt === -1);
+  const spent = ranked.filter((entry) => entry.usedAt !== -1);
 
   /**
-   * Siralama onceligi: once hic kullanilmamislar, sonra en uzun suredir
-   * kullanilmayanlar. Konu puani bundan sonra geliyor.
-   *
-   * Tersi denendi ve tekrara yol acti: konu puani basta oldugunda ayni
-   * yuksek puanli kareler, tekrar penceresi gecer gecmez geri geliyordu.
-   * Havuzda taze kare varken kullanilmisa donmek dogru degil.
+   * Aday siralamasi, katman katman:
+   *   1. konuya uyan taze kareler
+   *   2. konusu uymayan taze kareler — gorselsiz reel uretmektense
+   *      konusu zayif eslesen taze bir kare daha iyi
+   *   3. havuz tukendiyse en uzun suredir kullanilmayanlar
    */
-  const sorted = [...pool].sort((a, b) => {
-    if (a.short !== b.short) return a.short ? 1 : -1;
-    if (a.lastUsed !== b.lastUsed) return a.lastUsed - b.lastUsed;
-    if (a.topic !== b.topic) return b.topic - a.topic;
-    return a.photo.path.localeCompare(b.photo.path);
-  });
+  const candidates = [
+    ...byQuality(fresh.filter((entry) => entry.topic > 0)),
+    ...byQuality(fresh.filter((entry) => entry.topic === 0)),
+    ...[...spent].sort((a, b) => Number(a.short) - Number(b.short) || a.usedAt - b.usedAt),
+  ];
 
-  const picked = sorted.slice(0, count).map((entry) => entry.photo);
+  return pickDiverse(candidates, count).map((entry) => entry.photo);
+}
+
+/**
+ * Havuzda daha once yayinlanmamis kac kare kaldigi.
+ *
+ * Tekrarsizlik havuzun buyuklugu kadar surer: reel basina 4, fotograf
+ * gonderisinde 1 kare gidiyor. Sifira yaklastiginda havuza yeni fotograf
+ * eklenmesi gerekiyor, bu yuzden her calistirmada raporlaniyor.
+ */
+export function freshCount(photos: readonly Photo[], usedPaths: readonly string[]): number {
+  const used = new Set(usedPaths);
+  return photos.filter((photo) => !used.has(photo.path)).length;
+}
+
+/** Metnin baskin konusu daha cok puan getirir; hic eslesme yoksa 0. */
+function topicScore(photo: Photo, topics: readonly Topic[]): number {
+  return photo.topics.reduce((sum, topic) => {
+    const rank = topics.indexOf(topic as Topic);
+    return rank === -1 ? sum : sum + (10 - Math.min(rank, 9));
+  }, 0);
+}
+
+/** Once yeterince buyuk kareler, sonra konuya en cok uyan. Deterministik. */
+function byQuality(entries: readonly Ranked[]): Ranked[] {
+  return [...entries].sort(
+    (a, b) =>
+      Number(a.short) - Number(b.short) ||
+      b.topic - a.topic ||
+      a.photo.path.localeCompare(b.photo.path),
+  );
+}
+
+/**
+ * Siradan `count` kare secer, ayni projeden ikinciyi almadan.
+ *
+ * Havuz bu kadar farkli proje sunamiyorsa ikinci gecis kisiti gevsetir;
+ * eksik kare birakmak yerine benzer iki kareyi kabul etmek daha iyi.
+ */
+function pickDiverse(candidates: readonly Ranked[], count: number): Ranked[] {
+  const picked: Ranked[] = [];
+  const seenProjects = new Set<string>();
+
+  for (const entry of candidates) {
+    if (picked.length >= count) break;
+    // Projesi olmayan kareler elle secilmis tekil fotograflar; her biri
+    // kendi basina bir "proje" sayilir ki birbirlerini elemesinler.
+    const project = entry.photo.project ?? entry.photo.path;
+    if (seenProjects.has(project)) continue;
+    seenProjects.add(project);
+    picked.push(entry);
+  }
+
+  for (const entry of candidates) {
+    if (picked.length >= count) break;
+    if (!picked.includes(entry)) picked.push(entry);
+  }
 
   // Havuz istenen sayidan kucukse bastan dolanilir.
   const base = [...picked];

@@ -105,7 +105,12 @@
         "#luxuryvilla"
       ],
       "format": "reel",
-      "mediaUsed": [],
+      "mediaUsed": [
+        "https://constructionantalya.com/assets/blog/contractor-hero.webp",
+        "https://constructionantalya.com/assets/blog/contractor-1.webp",
+        "https://constructionantalya.com/assets/blog/contractor-2.webp",
+        "https://constructionantalya.com/assets/blog/contractor-3.webp"
+      ],
       "insights": null
     },
     {
@@ -137,7 +142,12 @@
         "#realestate"
       ],
       "format": "reel",
-      "mediaUsed": [],
+      "mediaUsed": [
+        "https://constructionantalya.com/assets/blog/earthquake-resistant-construction-antalya-hero.webp",
+        "https://constructionantalya.com/assets/blog/earthquake-resistant-construction-antalya-1.webp",
+        "https://constructionantalya.com/assets/blog/earthquake-resistant-construction-antalya-2.webp",
+        "https://constructionantalya.com/assets/blog/earthquake-resistant-construction-antalya-3.webp"
+      ],
       "insights": null
     },
     {
@@ -205,7 +215,12 @@
         "#architecture"
       ],
       "format": "reel",
-      "mediaUsed": [],
+      "mediaUsed": [
+        "https://constructionantalya.com/assets/blog/renovate-hero.webp",
+        "https://constructionantalya.com/assets/blog/renovate-1.webp",
+        "https://constructionantalya.com/assets/blog/renovate-2.webp",
+        "https://constructionantalya.com/assets/blog/renovate-3.webp"
+      ],
       "insights": null
     },
     {
@@ -275,7 +290,12 @@
         "#dreamhome"
       ],
       "format": "reel",
-      "mediaUsed": [],
+      "mediaUsed": [
+        "https://constructionantalya.com/assets/projects/1.webp",
+        "https://constructionantalya.com/assets/projects/kempinski-hotel-dome-belek/cover.webp",
+        "https://constructionantalya.com/assets/projects/arasta-yasam-merkezi-korkuteli/g05.webp",
+        "https://constructionantalya.com/assets/projects/kaya-palazzo-golf-resort-belek/cover.webp"
+      ],
       "insights": null
     },
     {
@@ -378,7 +398,12 @@
         "#moderndesign"
       ],
       "format": "reel",
-      "mediaUsed": [],
+      "mediaUsed": [
+        "https://constructionantalya.com/assets/blog/invest-1.webp",
+        "https://constructionantalya.com/assets/blog/invest-hero.webp",
+        "https://constructionantalya.com/assets/blog/invest-2.webp",
+        "https://constructionantalya.com/assets/blog/invest-4.webp"
+      ],
       "insights": null
     },
     {
@@ -504,7 +529,12 @@
         "#luxurylifestyle"
       ],
       "format": "reel",
-      "mediaUsed": [],
+      "mediaUsed": [
+        "/assets/photos/01-luxury-dining-marble.webp",
+        "/assets/photos/02-living-room-marble-wall.webp",
+        "/assets/photos/11-niche-wall-seating.webp",
+        "/assets/photos/15-joinery-shelf-detail.webp"
+      ],
       "insights": null
     },
     {
@@ -567,7 +597,12 @@
         "#interiordesign"
       ],
       "format": "reel",
-      "mediaUsed": [],
+      "mediaUsed": [
+        "/assets/photos/12-villa-lounge-staircase.webp",
+        "/assets/photos/13-villa-lounge-dark.webp",
+        "/assets/photos/19-dining-room-bright-stairs.webp",
+        "/assets/photos/21-stone-facade-terrace.webp"
+      ],
       "insights": null
     },
     {

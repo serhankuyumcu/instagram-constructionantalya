@@ -10,7 +10,7 @@ import { findFigures } from '../caption/figures.js';
 import { composePostImage } from '../image/compose.js';
 import { composeTipReel } from '../video/compose.js';
 import { generateTip } from '../caption/tip.js';
-import { loadPhotos, selectPhotos } from '../photos/library.js';
+import { freshCount, loadPhotos, selectPhotos } from '../photos/library.js';
 import { resolveFormat } from './format.js';
 import type { PostFormat } from './format.js';
 import { selectImage } from '../image/select.js';
@@ -63,9 +63,19 @@ export async function runDailyPost(config: Config, log: Logger): Promise<RunResu
   const { unit, isRecycled } = selectNextUnit(units, state);
   log(`Secilen bolum: ${unit.id} — "${unit.heading}"${isRecycled ? ' (havuz tukendi, yeniden dolasim)' : ''}`);
 
-  const choice = selectImage(unit, recentImageUrls(state));
-  log(`Secilen gorsel: ${choice.image.url.split('/').slice(-2).join('/')} (yazinin ${choice.position + 1}. gorseli)`);
+  // Simdiye kadar yayinlanmis butun kareler. Hem yazi gorselleri hem proje
+  // fotograflari ayni listeden eleniyor: bir kare bir kez yayinlanir.
+  const usedMedia = recentImageUrls(state);
 
+  const photoPool = await loadPhotos();
+  const fresh = freshCount(photoPool, usedMedia);
+  log(
+    fresh > 40
+      ? `Fotograf havuzu: ${fresh}/${photoPool.length} kare hic kullanilmamis`
+      : `UYARI: fotograf havuzunda yalnizca ${fresh} taze kare kaldi; yenisi eklenmezse gorseller tekrar etmeye baslayacak.`,
+  );
+
+  const choice = selectImage(unit, usedMedia);
   const topics = detectTopics(`${unit.heading} ${unit.text}`);
   const hashtags = buildHashtags(topics, state.posts.length);
 
@@ -80,8 +90,6 @@ export async function runDailyPost(config: Config, log: Logger): Promise<RunResu
    */
   let caption: string;
   let media: Buffer;
-  /** Reel'de kullanilan ilk fotograf; tekrar onleme bunun uzerinden yurur. */
-  let reelPhotoPath: string | null = null;
   /** Gonderide kullanilan tum gorseller; tekrar onleme bunlarin uzerinden yurur. */
   let mediaUsed: string[] = [];
 
@@ -97,24 +105,41 @@ export async function runDailyPost(config: Config, log: Logger): Promise<RunResu
     // Reels elle secilmis fotograf havuzundan beslenir. Yazinin kendi
     // gorselleri 4-6 taneydi ve reel 4 kare istedigi icin ayni yazidan
     // cikan videolar hep ayni fotograflari gosteriyordu.
-    const photos = selectPhotos(await loadPhotos(), topics, 4, recentImageUrls(state), { preferTall: true });
-    reelPhotoPath = photos[0]!.path;
+    const photos = selectPhotos(photoPool, topics, 4, usedMedia, { preferTall: true });
     mediaUsed = photos.map((p) => p.path);
     log(`Fotograflar: ${photos.map((p) => p.path.split('/').pop()).join(', ')}`);
 
     media = await composeTipReel({
       hook: tip.hook,
       lines: tip.lines,
-      imageUrls: photos.map((p) => p.path),
+      imageUrls: mediaUsed,
     });
   } else {
     const body = await generateCaption(anthropic, { unit, locale: config.captionLocale });
     caption = assembleCaption(joinBilingual(body), unit.articleUrl, hashtags.text);
 
+    /**
+     * Gorsel oncelikle yazinin kendi sayfasindan gelir; editoryal bagi en
+     * guclu kuran sey bu. Ama bir yazida ~5 gorsel, ~10 bolum var: bolumler
+     * ilerledikce yazinin kareleri tukeniyor. O noktada ayni kareyi ikinci
+     * kez yayinlamak yerine konusu eslesen taze bir proje fotografi
+     * kullaniliyor.
+     */
+    const imageUrl = choice.isFresh
+      ? choice.image.url
+      : selectPhotos(photoPool, topics, 1, usedMedia)[0]!.path;
+
+    mediaUsed = [imageUrl];
+    log(
+      choice.isFresh
+        ? `Secilen gorsel: ${imageUrl.split('/').slice(-2).join('/')} (yazinin ${choice.position + 1}. gorseli)`
+        : `Yazinin gorselleri tukendi; havuzdan: ${imageUrl.split('/').pop()}`,
+    );
+
     media = await composePostImage({
       heading: unit.heading,
       kicker: kickerFor(unit, topics[0]),
-      imageUrl: choice.image.url,
+      imageUrl,
     });
   }
 
@@ -140,7 +165,7 @@ export async function runDailyPost(config: Config, log: Logger): Promise<RunResu
   );
 
   if (config.dryRun) {
-    return { unit, isRecycled, format, sourceImageUrl: choice.image.url, caption, media, published: null };
+    return { unit, isRecycled, format, sourceImageUrl: mediaUsed[0]!, caption, media, published: null };
   }
 
   const instagram = new InstagramClient(config.instagram.igUserId, config.instagram.igAccessToken);
@@ -167,7 +192,7 @@ export async function runDailyPost(config: Config, log: Logger): Promise<RunResu
       unitId: unit.id,
       articleSlug: unit.articleSlug,
       heading: unit.heading,
-      imageUrl: reelPhotoPath ?? choice.image.url,
+      imageUrl: mediaUsed[0]!,
       mediaId: published.mediaId,
       permalink: published.permalink,
       publishedAt: new Date().toISOString(),
@@ -175,12 +200,12 @@ export async function runDailyPost(config: Config, log: Logger): Promise<RunResu
       topics,
       hashtags: [...hashtags.tags],
       format,
-      mediaUsed: mediaUsed.length > 0 ? mediaUsed : [choice.image.url],
+      mediaUsed,
       insights: null,
     }),
   );
 
-  return { unit, isRecycled, format, sourceImageUrl: choice.image.url, caption, media, published };
+  return { unit, isRecycled, format, sourceImageUrl: mediaUsed[0]!, caption, media, published };
 }
 
 /** Gorselin ust satirindaki kucuk etiket: once konu, yoksa yazinin adi. */
