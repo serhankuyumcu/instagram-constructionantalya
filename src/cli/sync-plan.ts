@@ -20,9 +20,34 @@ import sharp from 'sharp';
 const SOURCE = join(homedir(), 'Desktop/insta-plan');
 const TARGET = fileURLToPath(new URL('../../assets/plan', import.meta.url));
 
-/** Instagram akisinda bunun ustu gorunmuyor; fazlasi bosuna repo agirligi. */
-const MAX_EDGE = 1440;
+/**
+ * Carousel kareleri gun bazinda tek bir orana getiriliyor.
+ *
+ * Instagram bir carousel'in tamamini ILK karenin oranina gore kirpiyor;
+ * karisik oranli birakilirsa hangi kenarin ucacagina biz karar vermiyoruz.
+ * Ama tutarlilik yalnizca carousel ICINDE gerekiyor, gonderiler arasinda
+ * degil — bu yuzden oran her gun kendi gorsellerine gore seciliyor.
+ *
+ * Havuz neredeyse tam ikiye bolunuyor: 80 dikey, 75 manzara, 16 genis.
+ * Hepsini 4:5'e zorlamak manzara karelerini siyah bantla ezerdi, hepsini
+ * manzaraya zorlamak dikey santiye fotograflarini. Gunun kendi karakterine
+ * uymak ikisini de kurtariyor.
+ */
+const WIDTH = 1080;
 const QUALITY = 82;
+
+/**
+ * Kullanilan oranlar 4:5 ve 1:1 ile sinirli.
+ *
+ * Instagram 1.91:1'e de izin veriyor ve manzara karelerinde en az kirpma
+ * onunla oluyor; ama akista ince bir serit olarak duruyor, dikey alani
+ * bosa harciyor. Manzara gunlerinde 1:1'e kirpmak biraz kenar goturuyor,
+ * karsiliginda gonderi ekranda iki kat yer kapliyor.
+ */
+const RATIOS = [
+  { name: '4:5', value: 0.8 },
+  { name: '1:1', value: 1 },
+] as const;
 
 const DAY_PATTERN = /^\d{4}-\d{2}-\d{2} - /;
 const IMAGE_PATTERN = /^\d{2}-.+\.(webp|jpe?g|png|avif)$/i;
@@ -42,6 +67,7 @@ async function main(): Promise<void> {
     await mkdir(TARGET, { recursive: true });
   }
 
+  const ratios = new Map<string, string>();
   let images = 0;
   let bytesBefore = 0;
   let bytesAfter = 0;
@@ -52,6 +78,9 @@ async function main(): Promise<void> {
     if (files.length < 2 || files.length > 10) {
       throw new Error(`"${day}": carousel 2-10 gorsel ister, ${files.length} bulundu.`);
     }
+
+    const ratio = await chooseRatio(join(SOURCE, day), files);
+    ratios.set(day, ratio.name);
 
     if (!dryRun) await mkdir(join(TARGET, day), { recursive: true });
 
@@ -68,11 +97,7 @@ async function main(): Promise<void> {
         continue;
       }
 
-      await sharp(from)
-        .rotate()
-        .resize(MAX_EDGE, MAX_EDGE, { fit: 'inside', withoutEnlargement: true })
-        .webp({ quality: QUALITY })
-        .toFile(to);
+      await normalise(from, to, ratio.value);
 
       bytesAfter += (await stat(to)).size;
       images++;
@@ -86,10 +111,37 @@ async function main(): Promise<void> {
   if (!dryRun) await writeOverlap();
 
   const mb = (n: number): string => `${(n / 1048576).toFixed(0)} MB`;
+  const spread = [...ratios.values()].reduce<Record<string, number>>((acc, r) => ({ ...acc, [r]: (acc[r] ?? 0) + 1 }), {});
   console.log(`${days.length} gun, ${images} gorsel${dryRun ? ' (deneme, yazilmadi)' : ''}`);
+  console.log(`oranlar: ${Object.entries(spread).map(([r, n]) => `${r} × ${n} gun`).join(', ')}`);
   console.log(`${days[0]} -> ${days[days.length - 1]}`);
   if (!dryRun) console.log(`boyut: ${mb(bytesBefore)} -> ${mb(bytesAfter)}`);
   if (!dryRun) console.log('\nSonraki adim: git add assets/plan && git commit && git push');
+}
+
+/** Kareyi gunun oranina, ortadan kirparak getirir. */
+async function normalise(from: string, to: string, ratio: number): Promise<void> {
+  await sharp(from)
+    .rotate()
+    .resize(WIDTH, Math.round(WIDTH / ratio), { fit: 'cover', position: 'centre' })
+    .webp({ quality: QUALITY })
+    .toFile(to);
+}
+
+/** Gunun karelerine en az zarar veren izinli orani secer. */
+async function chooseRatio(dir: string, files: readonly string[]): Promise<(typeof RATIOS)[number]> {
+  const aspects: number[] = [];
+  for (const file of files) {
+    const { width = 0, height = 0 } = await sharp(join(dir, file)).rotate().metadata();
+    if (height > 0) aspects.push(width / height);
+  }
+
+  // Toplam kirpma kaybini en aza indiren oran. Kayip, kaynakla hedef oran
+  // arasindaki logaritmik mesafe: 2 kat genis de 2 kat dar da ayni agirlikta.
+  const cost = (target: number): number =>
+    aspects.reduce((sum, aspect) => sum + Math.abs(Math.log(aspect / target)), 0);
+
+  return [...RATIOS].sort((a, b) => cost(a.value) - cost(b.value))[0]!;
 }
 
 /**
@@ -110,10 +162,17 @@ async function writeOverlap(): Promise<void> {
   const pool = JSON.parse(await readFile(manifestPath, 'utf8')) as { path: string }[];
   const repoRoot = fileURLToPath(new URL('../..', import.meta.url));
 
+  /**
+   * Imzalar repodaki degil masaustundeki kopyadan cikariliyor.
+   *
+   * Repoya yazilan kare 4:5'e kirpildigi icin imzasi degisiyor ve havuzdaki
+   * ayni fotografla artik eslesmiyor. Kirpilmamis orijinalle karsilastirmak
+   * sart: ilk denemede bu gozden kacti ve ortusme 183'ten 52'ye dustu.
+   */
   const planHashes = new Set<bigint>();
-  for (const day of (await readdir(TARGET)).filter((n) => DAY_PATTERN.test(n))) {
-    for (const file of (await readdir(join(TARGET, day))).filter((n) => IMAGE_PATTERN.test(n))) {
-      planHashes.add(await dHash(join(TARGET, day, file)));
+  for (const day of (await readdir(SOURCE)).filter((n) => DAY_PATTERN.test(n))) {
+    for (const file of (await readdir(join(SOURCE, day))).filter((n) => IMAGE_PATTERN.test(n))) {
+      planHashes.add(await dHash(join(SOURCE, day, file)));
     }
   }
 
