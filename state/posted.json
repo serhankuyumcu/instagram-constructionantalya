@@ -858,6 +858,43 @@
         "/assets/photos/projects/kaya-palazzo-golf-resort-belek--g04.webp"
       ],
       "insights": null
+    },
+    {
+      "unitId": "plan:2026-08-09",
+      "articleSlug": "plan",
+      "heading": "Boş arsadan hafriyata",
+      "imageUrl": "/assets/plan/2026-08-09 - Mercure Konyaaltı - Boş arsadan hafriyata/01-cover.webp",
+      "mediaId": "18112919794999822",
+      "permalink": "https://www.instagram.com/p/Dbz1xRwEVQT/",
+      "publishedAt": "2026-08-09T06:53:34.893Z",
+      "topics": [
+        "shell"
+      ],
+      "hashtags": [
+        "#constructionantalya",
+        "#reinforcedconcrete",
+        "#betonarme",
+        "#kabainşaat",
+        "#structuralengineering",
+        "#belek",
+        "#lara",
+        "#kalkan",
+        "#kaş",
+        "#villayapımı",
+        "#анталия",
+        "#недвижимостьтурция",
+        "#домвтурции",
+        "#luxurylifestyle"
+      ],
+      "format": "carousel",
+      "mediaUsed": [
+        "/assets/plan/2026-08-09 - Mercure Konyaaltı - Boş arsadan hafriyata/01-cover.webp",
+        "/assets/plan/2026-08-09 - Mercure Konyaaltı - Boş arsadan hafriyata/02-g01.webp",
+        "/assets/plan/2026-08-09 - Mercure Konyaaltı - Boş arsadan hafriyata/03-g02.webp",
+        "/assets/plan/2026-08-09 - Mercure Konyaaltı - Boş arsadan hafriyata/04-g03.webp",
+        "/assets/plan/2026-08-09 - Mercure Konyaaltı - Boş arsadan hafriyata/05-g04.webp"
+      ],
+      "insights": null
     }
   ]
 }
