@@ -2402,6 +2402,39 @@
         "/assets/photos/22-apartment-bougainvillea.webp"
       ],
       "insights": null
+    },
+    {
+      "unitId": "plan:2026-09-01",
+      "articleSlug": "plan",
+      "heading": "Bar ve lobi imalatı",
+      "imageUrl": "/assets/plan/2026-09-01 - Kempinski Dome Belek - Bar ve lobi imalatı/01-g01.webp",
+      "mediaId": "18113400958958174",
+      "permalink": "https://www.instagram.com/p/Dcvg_AEDzh2/",
+      "publishedAt": "2026-09-01T11:06:25.714Z",
+      "topics": [],
+      "hashtags": [
+        "#constructionantalya",
+        "#antalyalife",
+        "#türkiye",
+        "#antalyaemlak",
+        "#antalyavilla",
+        "#строительствотурция",
+        "#buildingdesign",
+        "#civilengineering",
+        "#residentialdesign",
+        "#interiordesign",
+        "#realestate",
+        "#moderndesign"
+      ],
+      "format": "carousel",
+      "mediaUsed": [
+        "/assets/plan/2026-09-01 - Kempinski Dome Belek - Bar ve lobi imalatı/01-g01.webp",
+        "/assets/plan/2026-09-01 - Kempinski Dome Belek - Bar ve lobi imalatı/02-g02.webp",
+        "/assets/plan/2026-09-01 - Kempinski Dome Belek - Bar ve lobi imalatı/03-g07.webp",
+        "/assets/plan/2026-09-01 - Kempinski Dome Belek - Bar ve lobi imalatı/04-g17.webp",
+        "/assets/plan/2026-09-01 - Kempinski Dome Belek - Bar ve lobi imalatı/05-g20.webp"
+      ],
+      "insights": null
     }
   ]
 }
